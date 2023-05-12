@@ -4,5 +4,5 @@ from abc import ABC, abstractmethod
 class IControladorEventos(ABC):
 
     @abstractmethod
-    def checaEventos(self):
+    def checa_eventos(self):
         pass
