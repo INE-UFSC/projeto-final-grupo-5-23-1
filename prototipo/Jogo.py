@@ -2,6 +2,7 @@ import pygame
 
 from prototipo.Interfaces import IControladorEventos
 from prototipo.Interfaces import IControladorMapas
+from prototipo.Interfaces import IControladorMenus
 
 class Jogo:
 
