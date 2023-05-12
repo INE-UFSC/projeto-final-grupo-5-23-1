@@ -1,5 +1,9 @@
 from abc import ABC, abstractmethod
 
+from pygame import Surface
+
+from Interfaces.IMenu import IMenu
+
 
 class IControladorMenus(ABC):
 
@@ -8,9 +12,9 @@ class IControladorMenus(ABC):
         self.__menus = {}
 
     @abstractmethod
-    def inclui_menu(self, menu):
+    def inclui_menu(self, menu: IMenu):
         pass
 
     @abstractmethod
-    def desenha_menu(self, id_menu):
+    def desenha_menu(self, id_menu: str, tela: Surface):
         pass
