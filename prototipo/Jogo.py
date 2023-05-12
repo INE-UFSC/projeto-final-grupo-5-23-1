@@ -1,8 +1,8 @@
 import pygame
 
-from prototipo.Interfaces import IControladorEventos
-from prototipo.Interfaces import IControladorMapas
-from prototipo.Interfaces import IControladorMenus
+from Interfaces import IControladorEventos
+from Interfaces import IControladorMapas
+from Interfaces import IControladorMenus
 
 class Jogo:
 
@@ -22,15 +22,15 @@ class Jogo:
         #Dados relevantes:            
         self.__id_mapa_atual = 'campo'
         self.__id_menu_atual = 'principal'
-        self.__em_jogo = False
+        self.__em_jogo = True
         self.__pausa = False
 
     def __checa_eventos(self):
-        self.__controlador_eventos.checa_eventos(self)
+        self.__controlador_eventos.checa_eventos()
         return
     
-    def __desenha_mapa(self, id_mapa: str):
-        self.__controlador_mapas.desenha_mapa(id_mapa)
+    def __desenha_mapa(self, id_mapa: str, tela):
+        self.__controlador_mapas.desenha_mapa(id_mapa, tela)
         return
     
     def __desenha_menu(self, id_menu: str):
@@ -44,12 +44,9 @@ class Jogo:
                 if self.__pausa:
                     self.__desenha_menu(self.__id_menu_atual)
                 else:
-                    self.__desenha_mapa(self.__id_mapa_atual)
+                    self.__desenha_mapa(self.__id_mapa_atual, self.__tela)
             else:
                 self.__desenha_menu(self.__id_menu_atual)
             pygame.display.update()
-        clock.tick(60) #60 Quadros por segundo
+            self.__clock.tick(60) #60 Quadros por segundo
 
-if __name__ == '__main__':
-    jogo = Jogo()
-    jogo.iniciar()
