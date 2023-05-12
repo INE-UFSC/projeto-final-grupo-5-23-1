@@ -1,4 +1,5 @@
 from Interfaces.IControladorMenus import IControladorMenus
+from Interfaces.IMenu import IMenu
 
 class ControladorMenus(IControladorMenus):
 
