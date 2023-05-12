@@ -1,4 +1,6 @@
+from pygame import Surface
 from Interfaces.IControladorMapas import IControladorMapas
+from Interfaces.IMapa import IMapa
 
 class ControladorMapas(IControladorMapas):
 
@@ -7,13 +9,13 @@ class ControladorMapas(IControladorMapas):
 
     @property
     def mapas(self):
-        return super().__mapas
+        return super().mapas
     
     def inclui_mapa(self, mapa: IMapa):
         if isinstance(mapa, IMapa):
-            super().__mapas[mapa.id] = mapa
+            super().mapas[mapa.id] = mapa
         return
     
-    def desenha_mapa(self, id_mapa: str):
-        self.mapas[id_mapa].desenha()
+    def desenha_mapa(self, id_mapa: str, tela: Surface):
+        self.mapas[id_mapa].desenhar(tela)
         return
