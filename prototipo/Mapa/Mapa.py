@@ -22,10 +22,10 @@ class Mapa(IMapa):
         return self.__id
 
     def construir_blocos(self):
-        largura_bloco = 60
-        altura_bloco = 60
+        largura_bloco = 64
+        altura_bloco = 64
         qtd_blocos_x = 1280 // largura_bloco
-        qtd_blocos_y = 720 // altura_bloco
+        qtd_blocos_y = 768 // altura_bloco
         
         for x in range(qtd_blocos_x):
             for y in range(qtd_blocos_y):
