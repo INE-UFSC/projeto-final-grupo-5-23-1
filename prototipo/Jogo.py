@@ -12,7 +12,7 @@ class Jogo:
         pygame.init()
         self.__tela = pygame.display.set_mode((1280, 720))
         self.__clock = pygame.time.Clock()
-        pygame.display.set_caption('Fazendinha')
+        pygame.display.set_caption('Vale dos Cultivos')
 
         #Controladores:
         self.__controlador_eventos = controlador_eventos
