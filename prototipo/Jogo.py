@@ -4,6 +4,8 @@ from Interfaces import IControladorEventos
 from Interfaces import IControladorMapas
 from Interfaces import IControladorMenus
 
+from jogador import Jogador
+
 class Jogo:
 
     def __init__(self, controlador_eventos: IControladorEventos, controlador_mapas : IControladorMapas, controlador_menus: IControladorMenus):
@@ -12,6 +14,7 @@ class Jogo:
         pygame.init()
         self.__tela = pygame.display.set_mode((1280, 720))
         self.__clock = pygame.time.Clock()
+
         pygame.display.set_caption('Vale dos Cultivos')
 
         #Controladores:
@@ -25,6 +28,13 @@ class Jogo:
         self.__em_jogo = True
         self.__pausa = False
 
+        # Superficie
+        self.__display_surf = pygame.display.get_surface()
+        self.__grupoJogador = pygame.sprite.Group()
+
+        # Criar Jogador
+        self.__jogador = Jogador((640,360), self.__grupoJogador)
+
     def __checa_eventos(self):
         self.__controlador_eventos.checa_eventos()
         return
@@ -36,6 +46,10 @@ class Jogo:
     def __desenha_menu(self, id_menu: str):
         self.__controlador_menus.desenha_menu(id_menu)
         return
+
+    def __desenha_jogador(self):
+        self.__grupoJogador.draw(self.__display_surf)
+    
     
     def iniciar(self):
         while True:
@@ -44,9 +58,19 @@ class Jogo:
                 if self.__pausa:
                     self.__desenha_menu(self.__id_menu_atual)
                 else:
-                    self.__desenha_mapa(self.__id_mapa_atual, self.__tela)
+                    pass
+                    #self.__desenha_mapa(self.__id_mapa_atual, self.__tela)
             else:
                 self.__desenha_menu(self.__id_menu_atual)
+            
+            self.__desenha_jogador()
+            delta_time = self.__clock.tick() / 1000
+            self.__grupoJogador.update(delta_time)
+            
             pygame.display.update()
             self.__clock.tick(60) #60 Quadros por segundo
 
+    def running(self):
+        self.__desenha_jogador()
+        delta_time = self.__clock.tick() / 1000
+        self.__grupoJogador.update(delta_time)
