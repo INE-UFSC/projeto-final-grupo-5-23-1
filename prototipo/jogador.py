@@ -1,4 +1,5 @@
 import pygame
+from timer import Timer
 
 class Jogador(pygame.sprite.Sprite):
     def __init__(self, pos, group):
@@ -18,12 +19,25 @@ class Jogador(pygame.sprite.Sprite):
         self.__direcao = pygame.math.Vector2()
         self.__posicao = pygame.math.Vector2(self.__rect.center)
         self.__velocidade = 200
+        
+        # Timers
+        self.__timers = {
+            'usar ferramenta': Timer(350, self.usar_ferramenta),
+            'trocar ferramenta': Timer(200),
+            'usar semente': Timer(350, self.usar_semente),
+            'trocar semente': Timer(200),
+        }
 
         # Ferramentas
         self.__ferramentas = ['enxada', 'agua', 'machado', 'picareta']
         self.__index_ferramenta = 0
         self.__ferramenta_atual = self.__ferramentas[self.__index_ferramenta]
-    
+
+        # Sementes
+        self.__sementes = ['milho', 'feijao']
+        self.__index_semente = 0
+        self.__semente_atual = self.__sementes[self.__index_semente]
+
     def input(self):
         keys = pygame.key.get_pressed()
         
@@ -45,7 +59,45 @@ class Jogador(pygame.sprite.Sprite):
             self.__status = 'esquerda'
         else:
             self.__direcao.x = 0
-    
+        
+        # Ferramentas
+        if keys[pygame.K_SPACE]:
+            self.__timers['usar ferramenta'].ativar()
+            self.__direcao = pygame.math.Vector2() # Fazer o player parar no lugar
+
+        if keys[pygame.K_q] and not self.__timers['trocar ferramenta'].ativado:
+            self.__timers['trocar ferramenta'].ativar()
+            self.__index_ferramenta += 1
+            self.__index_ferramenta = self.__index_ferramenta if self.__index_ferramenta < len(self.__ferramentas) else 0
+            self.__ferramenta_atual = self.__ferramentas[self.__index_ferramenta]
+
+        # Sementes
+        if keys[pygame.K_LCTRL]:
+            self.__timers['usar semente'].ativar()
+            self.__direcao = pygame.math.Vector2()
+
+        if keys[pygame.K_e] and (self.__timers['trocar semente'].ativado == False):
+            self.__timers['trocar semente'].ativar()
+            self.__index_semente += 1
+            self.__index_semente = self.__index_semente if self.__index_semente < len(self.__sementes) else 0
+            self.__semente_atual = self.__sementes[self.__index_semente]
+
+    def usar_semente(self):
+        pass
+
+    def usar_ferramenta(self):
+        if self.__ferramenta_atual == 'enxada':
+            pass
+
+        elif self.__ferramenta_atual == 'agua':
+            pass
+
+        elif self.__ferramenta_atual == 'machado':
+            pass
+
+        elif self.__ferramenta_atual == 'picareta':
+            pass
+
     def movimentar(self, dt):
 
         # Normalizar vetor
@@ -72,9 +124,14 @@ class Jogador(pygame.sprite.Sprite):
         }
         return offsets[self.__status]
 
+    def update_timers(self):
+        for timer in self.__timers.values():
+            timer.update()
+
     def update(self, dt):
         self.input()
         self.get_pos_alvo()
+        self.update_timers()
 
         self.movimentar(dt)
         
@@ -86,3 +143,11 @@ class Jogador(pygame.sprite.Sprite):
     @property
     def rect(self):
         return self.__rect
+    
+    @property
+    def ferramenta_atual(self):
+        return self.__ferramenta_atual
+    
+    @property
+    def semente_atual(self):
+        return self.__semente_atual

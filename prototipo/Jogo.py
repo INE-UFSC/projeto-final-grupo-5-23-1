@@ -73,5 +73,19 @@ class Jogo:
 
     def run(self, dt):
         self.__display_surf.fill('black')
+        self.__desenha_mapa(self.__id_mapa_atual, self.__display_surf)
         self.__desenha_jogador()
         self.__grupoJogador.update(dt)
+        self.display_info()
+    
+    # Método temporário para saber qual a ferramenta e semente na mão do jogador
+    def display_info(self):
+        fonte = pygame.font.Font(None, 30)
+        
+        ferramenta = self.__jogador.ferramenta_atual
+        texto_ferramenta = fonte.render(f'{ferramenta}', False, 'black')
+        self.__tela.blit(texto_ferramenta, (50, self.__tela.get_height() - 100))
+
+        semente = self.__jogador.semente_atual
+        texto_semente = fonte.render(f'{semente}', False, 'black')
+        self.__tela.blit(texto_semente, (50, self.__tela.get_height() - 60))
