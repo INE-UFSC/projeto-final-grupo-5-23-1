@@ -59,18 +59,19 @@ class Jogo:
                     self.__desenha_menu(self.__id_menu_atual)
                 else:
                     pass
-                    #self.__desenha_mapa(self.__id_mapa_atual, self.__tela)
+                    self.__desenha_mapa(self.__id_mapa_atual, self.__tela)
             else:
                 self.__desenha_menu(self.__id_menu_atual)
             
             self.__desenha_jogador()
-            delta_time = self.__clock.tick() / 1000
+            delta_time = self.__clock.tick() / 200
             self.__grupoJogador.update(delta_time)
+            self.run(delta_time)
             
-            pygame.display.update()
             self.__clock.tick(60) #60 Quadros por segundo
+            pygame.display.update()
 
-    def running(self):
+    def run(self, dt):
+        self.__display_surf.fill('black')
         self.__desenha_jogador()
-        delta_time = self.__clock.tick() / 1000
-        self.__grupoJogador.update(delta_time)
+        self.__grupoJogador.update(dt)
