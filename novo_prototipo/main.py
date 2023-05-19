@@ -54,7 +54,7 @@ class Sistema(ObservadorModoDeJogo):
                 self.__modo_de_overlay.checa_eventos()
                 self.__modo_de_overlay.update()
             elif self.__modo_de_jogo is not None:
-                delta_tempo = self.__clock.tick(self.__fps) / 200
+                delta_tempo = self.__clock.tick(self.__fps) / 500
                 self.__modo_de_jogo.checa_eventos(delta_tempo)
                 try:
                     self.__modo_de_jogo.update()
