@@ -9,8 +9,8 @@ class ModoDeMenu(ModoGenerico):
     def __init__(self):        
         super().__init__()
         # Font
-        self.titleFont = pygame.font.Font("assets/ui/BD_Cartoon_Shout.ttf", 72)
-        self.itemFont = pygame.font.Font("assets/ui/BD_Cartoon_Shout.ttf", 48)
+        self.titleFont = pygame.font.Font("novo_prototipo/assets/ui/BD_Cartoon_Shout.ttf", 72)
+        self.itemFont = pygame.font.Font("novo_prototipo/assets/ui/BD_Cartoon_Shout.ttf", 48)
         
         # Menu items
         self.menuItems = [
@@ -40,7 +40,7 @@ class ModoDeMenu(ModoGenerico):
             item['surface'] = surface        
         
         self.currentMenuItem = 0
-        self.menuCursor = pygame.image.load("assets/ui/cursor.png")        
+        self.menuCursor = pygame.image.load("novo_prototipo/assets/ui/cursor.png")        
 
     def checa_eventos(self):
         for event in pygame.event.get():
