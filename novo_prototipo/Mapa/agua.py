@@ -1,5 +1,5 @@
 import pygame
-from Bloco import Bloco
+from Mapa.Bloco import Bloco
 
 class Agua(Bloco):
     def __init__(self,x,y,largura,altura):

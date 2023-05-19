@@ -1,6 +1,7 @@
 from pygame import Surface
 import pygame
-from Mapa.Bloco import Bloco
+from Mapa.Grama import BlocoDeGrama
+from Mapa.agua import Agua
 from Mapa.interfaces.IMapa import IMapa
 from entidades.jogador.jogador import Jogador
 
@@ -39,8 +40,12 @@ class Mapa(IMapa):
         for x in range(qtd_blocos_x):
             linha = []
             for y in range(qtd_blocos_y):
-                bloco = Bloco(x * largura_bloco, y * altura_bloco, largura_bloco, altura_bloco)
-                self.blocos.append(bloco)
+                if y == 0 or y == qtd_blocos_y -1:
+                    bloco = Agua(y*largura_bloco, x*altura_bloco, largura_bloco, altura_bloco)
+                else:
+                    bloco = BlocoDeGrama(y * largura_bloco, x * altura_bloco, largura_bloco, altura_bloco)
+                linha.append(bloco)
+            self.blocos.append(linha)
 
     def adiciona_entidades(self):
         self.__entidades.append(Jogador((640,360), self.__grupoJogador))
