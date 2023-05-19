@@ -1,7 +1,6 @@
 from pygame import Surface
 import pygame
 
-
 class Bloco:
     def __init__(self, x, y, largura, altura):
         self.x = x
