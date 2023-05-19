@@ -39,10 +39,8 @@ class Mapa(IMapa):
         for x in range(qtd_blocos_x):
             linha = []
             for y in range(qtd_blocos_y):
-                bloco = Bloco(y * largura_bloco, x * altura_bloco, largura_bloco, altura_bloco)
-                linha.append(bloco)
-
-            self.blocos.append(linha)
+                bloco = Bloco(x * largura_bloco, y * altura_bloco, largura_bloco, altura_bloco)
+                self.blocos.append(bloco)
 
     def adiciona_entidades(self):
         self.__entidades.append(Jogador((640,360), self.__grupoJogador))
@@ -52,3 +50,4 @@ class Mapa(IMapa):
             for bloco in linha:
                 bloco.desenhar(tela)
         self.__grupoJogador.draw(tela)
+
