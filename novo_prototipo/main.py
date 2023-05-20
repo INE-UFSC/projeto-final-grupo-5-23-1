@@ -9,7 +9,7 @@ class Sistema(ObservadorModoDeJogo):
     def __init__(self):
         # Janela
         pygame.init()
-        self.window = pygame.display.set_mode((1280, 720))
+        self.window = pygame.display.set_mode((1280, 768))
         pygame.display.set_caption("Vale dos cultivos")
 
         '''
@@ -28,9 +28,9 @@ class Sistema(ObservadorModoDeJogo):
         self.__rodando = True        
 
     def mostra_mensagem(self, message):
-        self.overlayGameMode = ModoDeMensagem(message)
-        self.overlayGameMode.adiciona_observador(self)
-        self.currentActiveMode = 'Overlay'
+        self.__modo_de_overlay = ModoDeMensagem(message)    
+        self.__modo_de_overlay.adiciona_observador(self)
+        self.__modo_ativo = 'Overlay'
 
     def worldSizeChanged(self, worldSize):
         self.window = pygame.display.set_mode((int(worldSize.x),int(worldSize.y)))
