@@ -1,7 +1,7 @@
 from pygame import Surface
 import pygame
-from Mapa.Grama import BlocoDeGrama
-from Mapa.agua import Agua
+from Mapa.Blocos.Grama import BlocoDeGrama
+from Mapa.Blocos.agua import Agua
 from Mapa.interfaces.IMapa import IMapa
 from entidades.jogador.jogador import Jogador
 
@@ -30,6 +30,10 @@ class Mapa(IMapa):
     @property
     def jogador(self):
         return self.__entidades[0]
+    
+    def troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
+        self.__blocos[posicao_y_matriz][posicao_x_matriz] = novo_bloco
+        return
 
     def construir_blocos(self):
         largura_bloco = 64
@@ -41,9 +45,9 @@ class Mapa(IMapa):
             linha = []
             for y in range(qtd_blocos_y):
                 if y == 0 or y == qtd_blocos_y -1:
-                    bloco = Agua(y*largura_bloco, x*altura_bloco, largura_bloco, altura_bloco)
+                    bloco = Agua(y*largura_bloco, x*altura_bloco, largura_bloco, altura_bloco, self)
                 else:
-                    bloco = BlocoDeGrama(y * largura_bloco, x * altura_bloco, largura_bloco, altura_bloco)
+                    bloco = BlocoDeGrama(y * largura_bloco, x * altura_bloco, largura_bloco, altura_bloco, self)
                 linha.append(bloco)
             self.blocos.append(linha)
 
