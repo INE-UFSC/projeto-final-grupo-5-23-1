@@ -1,5 +1,5 @@
 from Mapa.Mapa import Mapa
-from novo_prototipo.comandos import InteractCommand
+from comandos.ComandoDeInteracao import ComandoDeInteracao
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
 
 from estado import EstadoJogo
@@ -55,7 +55,7 @@ class ModoDeGameplay(ModoGenerico):
                     self.notifyShowMenuRequested()
                     break
                 if event.key == pygame.K_e:
-                    self.__command.append(InteractCommand(self.__jogador.posicao, self.__jogador.status, self.__mapa, self.__jogador.item))
+                    self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
         
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouseClicked = True
