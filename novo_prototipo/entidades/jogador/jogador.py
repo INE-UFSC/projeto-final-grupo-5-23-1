@@ -1,5 +1,4 @@
 import pygame
-from entidades.jogador.timer import Timer
 
 class Jogador(pygame.sprite.Sprite):
 
@@ -11,7 +10,7 @@ class Jogador(pygame.sprite.Sprite):
         # Setup Geral
         self.__image = pygame.Surface((40,80))
         self.__image.fill('red')
-        self.__rect = self.__image.get_rect(center= pos)
+        self.__rect = self.__image.get_rect(midbottom= pos)
         
         # Colisao
         #self.__hitbox = self.rect.copy().inflate()
@@ -19,18 +18,8 @@ class Jogador(pygame.sprite.Sprite):
 
         # Movimentação
         self.__status = 'baixo' # Refere-se a direção que o player está olhando
-        self.__direcao = pygame.math.Vector2()
-        self.__posicao = pygame.math.Vector2(self.__rect.center)
+        self.__posicao = pygame.math.Vector2(self.__rect.midbottom) #Troquei de .center para .midBottom para facilitar o comando de interagir
         self.__velocidade = 200
-        
-        # Timers
-        self.__timers = {
-            'usar ferramenta': Timer(350, self.usar_ferramenta),
-            'trocar ferramenta': Timer(200),
-            'usar semente': Timer(350, self.usar_semente),
-            'trocar semente': Timer(200),
-        }
-
         self.__item_atual = 'enxada'
 
     def atualiza_status(self, status):
@@ -38,10 +27,10 @@ class Jogador(pygame.sprite.Sprite):
         return
     
     def atualiza_posicao(self, posicao):
+        
         self.__posicao.x = posicao.x
         self.__posicao.y = posicao.y
-        self.__rect.centerx = round(posicao.x)
-        self.__rect.centery = round(posicao.y)
+        self.__rect.midbottom = posicao
         return
 
     def update_timers(self):
@@ -49,7 +38,6 @@ class Jogador(pygame.sprite.Sprite):
             timer.update()
 
     def update(self):
-        self.get_pos_alvo()
         self.update_timers()
 
     @property    
@@ -67,6 +55,13 @@ class Jogador(pygame.sprite.Sprite):
     @property
     def posicao(self):
         return self.__posicao
+    
+    @property
+    def posicao_matriz(self):
+        posicao_matriz = [self.__posicao.x, self.__posicao.y]
+        for index, posicao in enumerate(posicao_matriz):
+            posicao_matriz[index] = int(posicao // 64)
+        return posicao_matriz
     
     @property
     def velocidade(self):
