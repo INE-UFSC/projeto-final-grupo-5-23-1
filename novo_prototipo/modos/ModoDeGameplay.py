@@ -1,4 +1,5 @@
 from Mapa.Mapa import Mapa
+from comandos.ComandoDeInteracao import ComandoDeInteracao
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
 
 from estado import EstadoJogo
@@ -11,6 +12,9 @@ Esta classe implementa o modo de jogo Jogar, o qual tem os métodos
 "checa_eventos", "update", "render";
 '''
 class ModoDeGameplay(ModoGenerico):
+
+    #[TODO] - Implentar a criacao do evento de interacao
+
     def __init__(self):
         super().__init__()
         # Game state
@@ -50,6 +54,8 @@ class ModoDeGameplay(ModoGenerico):
                 if event.key == pygame.K_ESCAPE:
                     self.notifyShowMenuRequested()
                     break
+                if event.key == pygame.K_e:
+                    self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
         
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouseClicked = True
