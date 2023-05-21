@@ -92,14 +92,14 @@ class ModoDeGameplay(ModoGenerico):
             )
 
     def checa_colisao(self):
-        for x, linha in enumerate(self.__mapa.blocos):
-            for y, coluna in enumerate(linha):
-                bloco = self.__mapa.blocos[x][y]
+        colidiu = False
+        for y in range(len(self.__mapa.blocos)):
+            for x in range(len(self.__mapa.blocos[0])):
+                bloco = self.__mapa.blocos[y][x]
 
-                if pygame.sprite.collide_rect(self.__jogador, bloco) and bloco.colisao:
-                    return True
-                else:
-                    return False
+                if bloco.colisao and pygame.sprite.collide_rect(self.__jogador, bloco):
+                    colidiu = True
+        return colidiu
 
     def update(self):
         for comando in self.__comandos:
