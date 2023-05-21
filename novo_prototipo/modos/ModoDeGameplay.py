@@ -84,11 +84,23 @@ class ModoDeGameplay(ModoGenerico):
 
                     
         # Keyboard controls the moves of the player's unit
-        if direcao.x != 0 or direcao.y != 0:
+        if self.checa_colisao():
+            pass
+        elif direcao.x != 0 or direcao.y != 0:
             self.__comandos.append(
                 MoveCommand(self.__estado_jogo,self.__jogador, direcao, status, delta_tempo)
             )
-                     
+
+    def checa_colisao(self):
+        for x, linha in enumerate(self.__mapa.blocos):
+            for y, coluna in enumerate(linha):
+                bloco = self.__mapa.blocos[x][y]
+
+                if pygame.sprite.collide_rect(self.__jogador, bloco) and bloco.colisao:
+                    return True
+                else:
+                    return False
+
     def update(self):
         for comando in self.__comandos:
             comando.run()
