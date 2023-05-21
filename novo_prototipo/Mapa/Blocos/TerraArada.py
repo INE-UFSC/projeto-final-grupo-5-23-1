@@ -10,4 +10,4 @@ class TerraArada(BlocoComInteracao):
         pass
 
     def desenhar(self, tela):
-        pygame.draw.rect(tela, 'red', (self.x, self.y, self.largura, self.altura))
+        pygame.draw.rect(tela, (155,118,83), (self.x, self.y, self.largura, self.altura))

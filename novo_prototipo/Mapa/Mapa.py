@@ -44,7 +44,7 @@ class Mapa(IMapa):
         for x in range(qtd_blocos_x):
             linha = []
             for y in range(qtd_blocos_y):
-                if y == 0 or y == qtd_blocos_y -1:
+                if y == 0 or y == qtd_blocos_y -1 or x == 0 or x == qtd_blocos_x - 1:
                     bloco = Agua(y*largura_bloco, x*altura_bloco, largura_bloco, altura_bloco, self)
                 else:
                     bloco = BlocoDeGrama(y * largura_bloco, x * altura_bloco, largura_bloco, altura_bloco, self)
