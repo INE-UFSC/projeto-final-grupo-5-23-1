@@ -1,23 +1,31 @@
-from .Command import Comando
-from pygame.math import Vector2
+import copy
 
-class MoveCommand(Comando):
+import pygame
+from .Comando import Comando
+from pygame.math import Vector2
+from comandos.Utilitarios.Colisao import Colisao
+
+class ComandoMover(Comando):
     """
     Esse comando move uma unidade implementando também 
     as limitações do movimento
     """
-    def __init__(self, estado, entidade, direcao, status, delta_tempo):
-        self.__estado = estado
+    def __init__(self, matriz_mapa, entidade, direcao, status, delta_tempo):
+        self.__matriz_mapa = matriz_mapa
         self.__entidade = entidade
         self.__direcao = Vector2()
         self.__adiciona_direcao(direcao)
         self.__status = status
         self.__delta_tempo = delta_tempo
+        self.__verificar_colisao = Colisao()
 
     def __adiciona_direcao(self, direcao):
         if direcao.magnitude() > 0:
             self.__direcao = direcao.normalize()
         return
+    
+    def __checa_colisao(self, matriz_mapa, retangulo_nova_posicao):
+        return self.__verificar_colisao.checa_colisao(matriz_mapa, retangulo_nova_posicao)
 
     def run(self):
         unit = self.__entidade
@@ -32,5 +40,14 @@ class MoveCommand(Comando):
         nova_posicao.x = unit.posicao.x + movimento_x
         nova_posicao.y = unit.posicao.y + movimento_y
 
-        unit.atualiza_posicao(nova_posicao)
+        entidade_nova_posicao = pygame.sprite.Sprite(pygame.sprite.Group())
+        entidade_nova_posicao.rect = self.__entidade.rect.copy()
+        entidade_nova_posicao.rect.midbottom = nova_posicao
+
+        if self.__checa_colisao(self.__matriz_mapa, entidade_nova_posicao):
+            entidade_nova_posicao.kill()
+            return
+        else:
+            entidade_nova_posicao.kill()
+            unit.atualiza_posicao(nova_posicao)
         

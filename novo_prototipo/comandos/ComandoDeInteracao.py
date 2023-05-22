@@ -1,4 +1,4 @@
-from .Command import Comando
+from .Comando import Comando
 from Mapa.Blocos.BlocoComInteracao import BlocoComInteracao
 
 

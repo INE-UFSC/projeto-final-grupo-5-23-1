@@ -1,1 +1,1 @@
-from .MoveCommand import MoveCommand
+from .ComandoMover import ComandoMover
