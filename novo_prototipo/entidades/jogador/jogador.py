@@ -26,7 +26,7 @@ class Jogador(pygame.sprite.Sprite):
 
         #Adicição de itens provisória
         self.__inventario.adicionar_item(Enxada('Enxada de madeira'))
-        self.__inventario.adicionar_item(Semente1('Semente 1', 10))
+        self.__inventario.adicionar_item(Semente1('Trigo', 10))
 
     def seleciona_item(self, item):
         self.__item_atual = item
