@@ -20,7 +20,7 @@ class ModoDeInventario(ModoGenerico):
                 self.notifyQuitRequested()
                 break
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_i:
                     self.notifyShowGameRequested()
                 elif event.key == pygame.K_DOWN:
                     if self.__item_selecionado < len(self.__inventario.itens) - 1:
@@ -40,10 +40,9 @@ class ModoDeInventario(ModoGenerico):
     def render(self, window):
         largura_menu = 0
         for item in self.__inventario.itens:
-            surface = self.itemFont.render(item['title'], True, 'white')
+            surface = self.itemFont.render(item.nome, True, 'white')
             largura_menu = max(largura_menu, surface.get_width())
-            item['surface'] = surface  
-        
+
         # Altura inicial
         altura = 100
         
@@ -59,24 +58,11 @@ class ModoDeInventario(ModoGenerico):
             
             # Cursor
             if index == self.__item_selecionado:
-                item['surface'] = self.itemFont.render(item['title'], True, 'cyan')
+                surface = self.itemFont.render(item.nome, True, 'cyan')
             else:
-                item['surface'] = self.itemFont.render(item['title'], True, 'white')
+                surface = self.itemFont.render(item.nome, True, 'white')
             
             # Item text
-            surface = item['surface']
             window.blit(surface, (largura, altura))
 
             altura += (200 * surface.get_height()) // 100      
-
-
-
-
-        '''
-        posicao_texto = (posicao_inicial[0], posicao_inicial[1] + espacamento_vertical)
-        for semente in self.__inventario:
-            texto = fonte.render(semente, True, cor_texto)
-            window.blit(texto, posicao_texto)
-            posicao_texto = (posicao_texto[0], posicao_texto[1] + espacamento_vertical)
-        '''
-        
