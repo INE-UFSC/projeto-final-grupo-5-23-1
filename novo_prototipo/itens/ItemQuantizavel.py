@@ -1,7 +1,8 @@
 from .Item import Item
+from abc import abstractmethod
 
 class ItemQuantizavel(Item):
-
+    @abstractmethod
     def __init__(self, nome, quantidade):
         super().__init__(nome)
         self.__quantidade = quantidade
