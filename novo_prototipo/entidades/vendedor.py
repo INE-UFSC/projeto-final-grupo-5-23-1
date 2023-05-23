@@ -14,8 +14,8 @@ class Vendedor(BlocoComInteracao):
         tela.blit(self.__image, self.__rect)
 
     def interagir(self, item):
-        print('abre menu')
-    
+        print('Abre MenuVendas')
+
     @property
     def rect(self):
         return self.__rect
