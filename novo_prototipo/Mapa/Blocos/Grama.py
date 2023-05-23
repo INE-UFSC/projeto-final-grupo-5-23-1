@@ -7,7 +7,7 @@ class BlocoDeGrama(BlocoComInteracao):
         super().__init__(x, y, largura, altura, observador)
     
     def interagir(self, item):
-        if item == 'enxada':
+        if item == 'Enxada':
             self.notifica_troca_bloco(self.posicao_matriz[0], self.posicao_matriz[1], TerraArada(self.x, self.y, self.largura, self.altura, self.observador))
         
     def desenhar(self, tela):
