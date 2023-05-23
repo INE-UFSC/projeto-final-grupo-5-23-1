@@ -26,7 +26,7 @@ class Jogador(pygame.sprite.Sprite):
 
         #Adicição de itens provisória
         self.__inventario.adicionar_item(Enxada('Enxada de madeira'))
-        self.__inventario.adicionar_item(Semente1('Semente 1'))
+        self.__inventario.adicionar_item(Semente1('Semente 1', 10))
 
     def seleciona_item(self, item):
         self.__item_atual = item
@@ -42,12 +42,9 @@ class Jogador(pygame.sprite.Sprite):
         self.__rect.midbottom = posicao
         return
 
-    def update_timers(self):
-        for timer in self.__timers.values():
-            timer.update()
-
     def update(self):
-        self.update_timers()
+        if self.__item_atual not in self.__inventario.itens:
+            self.__item_atual = None
 
     @property    
     def status(self):
