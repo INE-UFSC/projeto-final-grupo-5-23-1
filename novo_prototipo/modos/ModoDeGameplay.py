@@ -96,7 +96,9 @@ class ModoDeGameplay(ModoComInventarioGenerico):
             comando.run()
         self.__comandos.clear()
         self.__estado_jogo.epoch += 1
-        
+        for planta in self.__mapa.plantas:
+            planta.update()
+
         
     def render(self, tela):
         self.__mapa.desenhar(tela)
