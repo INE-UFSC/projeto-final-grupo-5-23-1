@@ -4,6 +4,7 @@ from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.agua import Agua
 from Mapa.interfaces.IMapa import IMapa
 from entidades.jogador.jogador import Jogador
+from entidades.vendedor import Vendedor
 
 class Mapa(IMapa):
     def __init__(self):
@@ -11,6 +12,7 @@ class Mapa(IMapa):
         self.__blocos = []
         self.__entidades = []
         self.__grupoJogador = pygame.sprite.Group()
+        self.__grupoEntidades = pygame.sprite.Group()
         self.construir_blocos()
         self.adiciona_entidades()
 
@@ -44,7 +46,9 @@ class Mapa(IMapa):
         for x in range(qtd_blocos_x):
             linha = []
             for y in range(qtd_blocos_y):
-                if y == 0 or y == qtd_blocos_y -1 or x == 0 or x == qtd_blocos_x - 1:
+                if x == 2 and y == 2:
+                    bloco = Vendedor(y*largura_bloco, x*altura_bloco, largura_bloco, altura_bloco, self)
+                elif y == 0 or y == qtd_blocos_y -1 or x == 0 or x == qtd_blocos_x - 1:
                     bloco = Agua(y*largura_bloco, x*altura_bloco, largura_bloco, altura_bloco, self)
                 else:
                     bloco = BlocoDeGrama(y * largura_bloco, x * altura_bloco, largura_bloco, altura_bloco, self)
