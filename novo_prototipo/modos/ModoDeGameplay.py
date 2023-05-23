@@ -1,6 +1,7 @@
 from Mapa.Mapa import Mapa
 from comandos.ComandoDeInteracao import ComandoDeInteracao
-from .ClassesAbstratas.ModoGenerico import ModoGenerico
+from .ClassesAbstratas.ModoComInventarioGenerico import ModoComInventarioGenerico
+
 
 from estado import EstadoJogo
 from comandos import ComandoMover
@@ -11,7 +12,7 @@ from pygame.math import Vector2
 Esta classe implementa o modo de jogo Jogar, o qual tem os métodos
 "checa_eventos", "update", "render";
 '''
-class ModoDeGameplay(ModoGenerico):
+class ModoDeGameplay(ModoComInventarioGenerico):
 
     #[TODO] - Implentar a criacao do evento de interacao
 
@@ -56,7 +57,8 @@ class ModoDeGameplay(ModoGenerico):
                     break
                 if event.key == pygame.K_e:
                     self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
-        
+                if event.key == pygame.K_i:
+                    self.notifyShowInventoryRequested(self.__jogador.inventario, self.__jogador)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouseClicked = True
         
