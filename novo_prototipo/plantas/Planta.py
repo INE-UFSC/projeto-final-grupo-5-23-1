@@ -25,12 +25,12 @@ class Planta(pygame.sprite.Sprite):
             self.__progresso_crescimento +=  self.__taxa_de_crescimento
             posicao_antiga = self.__rect.midbottom
             if self.__progresso_crescimento < 1000:
-                self.__image = pygame.Surface((10,10))
+                self.__image = pygame.Surface((5,10))
                 self.__image.fill('saddlebrown')
             elif self.__progresso_crescimento < 2000: 
-                self.__image = pygame.Surface((20,40))
-                self.__image.fill('chartreuse3')
-            elif self.__progresso_crescimento < 4000:
-                self.__image = pygame.Surface((40,80))
+                self.__image = pygame.Surface((10,40))
                 self.__image.fill('chartreuse')
+            elif self.__progresso_crescimento < 4000:
+                self.__image = pygame.Surface((20,80))
+                self.__image.fill('yellow')
             self.__rect = self.__image.get_rect(midbottom = posicao_antiga)
