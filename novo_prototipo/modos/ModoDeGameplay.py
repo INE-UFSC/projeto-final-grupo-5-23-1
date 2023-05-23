@@ -98,6 +98,7 @@ class ModoDeGameplay(ModoComInventarioGenerico):
         self.__estado_jogo.epoch += 1
         for planta in self.__mapa.plantas:
             planta.update()
+        self.__jogador.update()
 
         
     def render(self, tela):
