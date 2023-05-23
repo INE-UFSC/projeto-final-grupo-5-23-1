@@ -3,6 +3,8 @@ from modos import ObservadorModoDeJogo, ModoDeMenu, ModoDeGameplay, ModoDeMensag
 import os
 import pygame
 
+from modos.ModoDeInventario import ModoDeInventario
+
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 class Sistema(ObservadorModoDeJogo):
@@ -38,6 +40,11 @@ class Sistema(ObservadorModoDeJogo):
     def showGameRequested(self):
         if self.__modo_de_jogo is not None:
             self.__modo_ativo = 'Jogo'
+
+    def showInventoryRequested(self, inventario, jogador):
+        self.__modo_de_overlay = ModoDeInventario(inventario, jogador)
+        self.__modo_de_overlay.adiciona_observador(self)
+        self.__modo_ativo = 'Overlay'
 
     def showMenuRequested(self):
         self.__modo_de_overlay = ModoDeMenu()
