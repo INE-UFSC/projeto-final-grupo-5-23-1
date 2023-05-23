@@ -1,9 +1,10 @@
-from pygame import Surface
+from pygame import Surface, Vector2
 import pygame
 from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.agua import Agua
 from Mapa.interfaces.IMapa import IMapa
 from entidades.jogador.jogador import Jogador
+from plantas.Planta import Planta
 
 class Mapa(IMapa):
     def __init__(self):
@@ -11,9 +12,14 @@ class Mapa(IMapa):
         self.__blocos = []
         self.__entidades = []
         self.__grupoJogador = pygame.sprite.Group()
+        self.__grupoPlantas = pygame.sprite.Group()
         self.construir_blocos()
         self.adiciona_entidades()
 
+    @property
+    def plantas(self):
+        return self.__grupoPlantas.sprites()
+    
     @property
     def blocos(self):
         return self.__blocos
@@ -34,6 +40,14 @@ class Mapa(IMapa):
     def troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
         self.__blocos[posicao_y_matriz][posicao_x_matriz] = novo_bloco
         return
+    
+    def plantar(self, posicao_x_matriz, posicao_y_matriz, item):
+        posicao_planta = Vector2()
+        posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].x + 32
+        posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].y + 40
+        planta = Planta(item.planta_a_ser_gerada, posicao_planta, self.__grupoPlantas)
+        self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
+        self.jogador.inventario.remover_item(item)
 
     def construir_blocos(self):
         largura_bloco = 64
@@ -58,5 +72,5 @@ class Mapa(IMapa):
         for linha in (self.blocos):
             for bloco in linha:
                 bloco.desenhar(tela)
+        self.__grupoPlantas.draw(tela)
         self.__grupoJogador.draw(tela)
-
