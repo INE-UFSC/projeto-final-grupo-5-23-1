@@ -24,6 +24,10 @@ class ModoGenerico(ABC):
     def notifyQuitRequested(self):
         for observer in self.__observers:
             observer.quitRequested()
+
+    @property
+    def observadores(self):
+        return self.__observers
     
     @abstractmethod
     def checa_eventos(self):
