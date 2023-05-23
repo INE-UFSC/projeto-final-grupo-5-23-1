@@ -1,6 +1,9 @@
 import pygame
 
 from entidades.jogador.inventario import Inventario
+from itens.ferramentas.Enxada import Enxada
+from itens.sementes.Semente1 import Semente1
+
 
 class Jogador(pygame.sprite.Sprite):
 
@@ -22,11 +25,11 @@ class Jogador(pygame.sprite.Sprite):
         self.__item_atual = None
 
         #Adicição de itens provisória
-        self.__inventario.adicionar_item({'title': 'Enxada'})
-        self.__inventario.adicionar_item({'title': 'Semente'})
+        self.__inventario.adicionar_item(Enxada('Enxada de madeira'))
+        self.__inventario.adicionar_item(Semente1('Semente 1'))
 
     def seleciona_item(self, item):
-        self.__item_atual = item['title']
+        self.__item_atual = item
 
     def atualiza_status(self, status):
         self.__status = status
