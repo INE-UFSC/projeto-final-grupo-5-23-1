@@ -1,6 +1,7 @@
 import pygame
 
 from comandos.ComandoSelecionaItemAtual import ComandoSelecionaItemAtual
+from itens.ItemQuantizavel import ItemQuantizavel
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
 
 class ModoDeInventario(ModoGenerico):
@@ -55,12 +56,15 @@ class ModoDeInventario(ModoGenerico):
         # Desenha o inventario
         largura = (window.get_width() - largura_menu) // 2
         for index, item in enumerate(self.__inventario.itens):
-            
+            if isinstance(item, ItemQuantizavel):
+                string_de_representação = item.nome + f'     x{item.quantidade}'
+            else:
+                string_de_representação = item.nome
             # Cursor
             if index == self.__item_selecionado:
-                surface = self.itemFont.render(item.nome, True, 'cyan')
+                surface = self.itemFont.render(string_de_representação, True, 'cyan')
             else:
-                surface = self.itemFont.render(item.nome, True, 'white')
+                surface = self.itemFont.render(string_de_representação, True, 'white')
             
             # Item text
             window.blit(surface, (largura, altura))
