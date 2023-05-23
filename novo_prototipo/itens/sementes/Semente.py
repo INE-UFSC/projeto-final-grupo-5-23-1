@@ -1,7 +1,7 @@
-from itens.Item import Item
+from itens.ItemQuantizavel import ItemQuantizavel
 from abc import abstractmethod
 
-class Semente(Item):
+class Semente(ItemQuantizavel):
     @abstractmethod
-    def __init__(self, nome):
-        super().__init__(nome)
+    def __init__(self, nome, quantidade):
+        super().__init__(nome, quantidade)
