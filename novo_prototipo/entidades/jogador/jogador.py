@@ -1,8 +1,10 @@
 import pygame
 
+from entidades.jogador.inventario import Inventario
+
 class Jogador(pygame.sprite.Sprite):
 
-    #[TODO] - Refatorar o inventario para algo mais coeso
+    #[TODO] - Refatorar o inventario
 
     def __init__(self, pos, group):
         super().__init__(group)
@@ -11,16 +13,20 @@ class Jogador(pygame.sprite.Sprite):
         self.__image = pygame.Surface((40,80))
         self.__image.fill('red')
         self.__rect = self.__image.get_rect(midbottom= pos)
-        
-        # Colisao
-        #self.__hitbox = self.rect.copy().inflate()
-
+        self.__inventario = Inventario(5)
 
         # Movimentação
         self.__status = 'baixo' # Refere-se a direção que o player está olhando
         self.__posicao = pygame.math.Vector2(self.__rect.midbottom) #Troquei de .center para .midBottom para facilitar o comando de interagir
         self.__velocidade = 200
-        self.__item_atual = 'enxada'
+        self.__item_atual = None
+
+        #Adicição de itens provisória
+        self.__inventario.adicionar_item({'title': 'Enxada'})
+        self.__inventario.adicionar_item({'title': 'Semente'})
+
+    def seleciona_item(self, item):
+        self.__item_atual = item['title']
 
     def atualiza_status(self, status):
         self.__status = status
@@ -70,3 +76,7 @@ class Jogador(pygame.sprite.Sprite):
     @property
     def item_atual(self):
         return self.__item_atual
+    
+    @property
+    def inventario(self):
+        return self.__inventario
