@@ -2,9 +2,9 @@ import pygame
 
 from comandos.ComandoSelecionaItemAtual import ComandoSelecionaItemAtual
 from itens.ItemQuantizavel import ItemQuantizavel
-from .ClassesAbstratas.ModoGenerico import ModoGenerico
+from modos.ClassesAbstratas.MenuGenerico import MenuGenerico
 
-class ModoDeInventario(ModoGenerico):
+class MenuInventario(MenuGenerico):
 
     def __init__(self, inventario, jogador):
         super().__init__()
@@ -15,14 +15,11 @@ class ModoDeInventario(ModoGenerico):
         self.titleFont = pygame.font.Font("novo_prototipo/assets/ui/font.ttf", 70)
         self.itemFont = pygame.font.Font("novo_prototipo/assets/ui/font.ttf", 50)
 
-    def checa_eventos(self):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.notifyQuitRequested()
-                break
-            elif event.type == pygame.KEYDOWN:
+    def checa_eventos(self, eventos):
+        for event in eventos:
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE or event.key == pygame.K_i:
-                    self.notifyShowGameRequested()
+                    self.notifica_desativa_menu()
                 elif event.key == pygame.K_DOWN:
                     if self.__item_selecionado < len(self.__inventario.itens) - 1:
                         self.__item_selecionado += 1
