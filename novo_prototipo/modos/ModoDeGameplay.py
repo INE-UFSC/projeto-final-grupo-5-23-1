@@ -2,6 +2,7 @@ from Mapa.Mapa import Mapa
 from comandos.ComandoDeInteracao import ComandoDeInteracao
 from menus.MenuInventario import MenuInventario
 from comandos.ComandoAbrirMenu import ComandoAbrirMenu
+from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
 
 from estado import EstadoJogo
@@ -39,8 +40,12 @@ class ModoDeGameplay(ModoGenerico):
         return int(self.__tamanho_bloco.y)
     
     def desativa_menu(self):
-        self.__estado_jogo.menu_ingame_ativo = False
-        self.__estado_jogo.menu_ingame = None
+        self.__estado_jogo.desativa_menu()
+        return
+    
+    def ativa_menu(self, menu: MenuGenerico, observador):
+        self.__estado_jogo.ativa_menu(menu, observador)
+        return
     
     def __roda_comandos(self):
         for comando in self.__comandos:
@@ -75,7 +80,7 @@ class ModoDeGameplay(ModoGenerico):
                     if event.key == pygame.K_e:
                         self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
                     if event.key == pygame.K_i:                  
-                        self.__comandos.append(ComandoAbrirMenu(self.__estado_jogo, MenuInventario(self.__jogador.inventario, self.__jogador), self))
+                        self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
                         
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouseClicked = True

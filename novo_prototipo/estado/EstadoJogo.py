@@ -1,6 +1,7 @@
 from pygame.math import Vector2
 
-from modos.ClassesAbstratas import ModoGenerico
+
+from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 '''
 Esta classe representa o estado de jogo de um certo modo de jogo
 '''
@@ -12,12 +13,23 @@ class EstadoJogo():
         self.__menu_ingame = None
         self.__observadores = [ ]
 
+    def desativa_menu(self):
+        self.__menu_ingame_ativo = False
+        self.__menu_ingame = None
+        return
+    
+    def ativa_menu(self, menu: MenuGenerico, observador):
+        self.__menu_ingame = menu
+        self.__menu_ingame.adiciona_observador(observador)
+        self.__menu_ingame_ativo = True
+        return
+
     @property
     def menu_ingame(self):
         return self.__menu_ingame
     
     @menu_ingame.setter
-    def menu_ingame(self, menu_ingame: ModoGenerico):
+    def menu_ingame(self, menu_ingame: MenuGenerico):
         self.__menu_ingame = menu_ingame
         return
 
