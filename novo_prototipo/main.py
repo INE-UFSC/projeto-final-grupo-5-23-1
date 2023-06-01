@@ -3,7 +3,6 @@ from modos import ObservadorModoDeJogo, ModoDeMenu, ModoDeGameplay, ModoDeMensag
 import os
 import pygame
 
-from modos.ModoDeInventario import ModoDeInventario
 from trilha.TrilhaSonora import TrilhaSonora
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
