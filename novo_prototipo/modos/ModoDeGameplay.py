@@ -1,6 +1,6 @@
 from Mapa.Mapa import Mapa
 from comandos.ComandoDeInteracao import ComandoDeInteracao
-from modos.MenuInventario import MenuInventario
+from menus.MenuInventario import MenuInventario
 from comandos.ComandoAbrirMenu import ComandoAbrirMenu
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
 

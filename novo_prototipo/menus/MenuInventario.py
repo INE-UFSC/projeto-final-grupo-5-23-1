@@ -2,7 +2,7 @@ import pygame
 
 from comandos.ComandoSelecionaItemAtual import ComandoSelecionaItemAtual
 from itens.ItemQuantizavel import ItemQuantizavel
-from modos.ClassesAbstratas.MenuGenerico import MenuGenerico
+from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 
 class MenuInventario(MenuGenerico):
 
