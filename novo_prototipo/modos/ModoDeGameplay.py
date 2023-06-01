@@ -1,6 +1,6 @@
 from Mapa.Mapa import Mapa
 from comandos.ComandoDeInteracao import ComandoDeInteracao
-from modos.ModoDeInventario import ModoDeInventario
+from modos.MenuInventario import MenuInventario
 from comandos.ComandoAbrirMenu import ComandoAbrirMenu
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
 
@@ -75,7 +75,7 @@ class ModoDeGameplay(ModoGenerico):
                     if event.key == pygame.K_e:
                         self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
                     if event.key == pygame.K_i:                  
-                        self.__comandos.append(ComandoAbrirMenu(self.__estado_jogo, ModoDeInventario(self.__jogador.inventario, self.__jogador), self))
+                        self.__comandos.append(ComandoAbrirMenu(self.__estado_jogo, MenuInventario(self.__jogador.inventario, self.__jogador), self))
                         
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouseClicked = True
