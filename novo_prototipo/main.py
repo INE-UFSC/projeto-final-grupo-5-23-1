@@ -2,6 +2,7 @@ from modos import ObservadorModoDeJogo, ModoDeMenu, ModoDeGameplay, ModoDeMensag
 
 import os
 import pygame
+from estado.EstadoJogo import EstadoJogo
 
 from trilha.TrilhaSonora import TrilhaSonora
 
@@ -17,7 +18,7 @@ class Sistema(ObservadorModoDeJogo):
         Coloca os atributos base para o ciclo do jogo
         '''
         # Modos de 'jogo'
-        self.__modo_de_jogo = ModoDeGameplay()
+        self.__modo_de_jogo = ModoDeGameplay(EstadoJogo())
         self.__modo_de_jogo.adiciona_observador(self)
         self.__modo_de_overlay = ModoDeMenu()
         self.__modo_de_overlay.adiciona_observador(self)

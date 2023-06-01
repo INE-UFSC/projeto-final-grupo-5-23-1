@@ -1,12 +1,8 @@
 from Mapa.Mapa import Mapa
-from comandos.ComandoDeInteracao import ComandoDeInteracao
-from menus.MenuInventario import MenuInventario
-from comandos.ComandoAbrirMenu import ComandoAbrirMenu
-from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
+from comandos import ComandoDeInteracao, ComandoAbrirMenu, ComandoMover
+from menus import MenuInventario, MenuGenerico
+from estado.ClassesAbstratas.IEstadoJogo import IEstadoJogo
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
-
-from estado import EstadoJogo
-from comandos import ComandoMover
 
 import pygame
 from pygame.math import Vector2
@@ -16,10 +12,10 @@ Esta classe implementa o modo de jogo Jogar, o qual tem os métodos
 '''
 class ModoDeGameplay(ModoGenerico):
 
-    def __init__(self):
+    def __init__(self, estado_de_jogo: IEstadoJogo):
         super().__init__()
         # Game state
-        self.__estado_jogo = EstadoJogo()
+        self.__estado_jogo = estado_de_jogo
         
         # Rendering properties
         self.__tamanho_bloco = Vector2(64,64)        
@@ -80,7 +76,9 @@ class ModoDeGameplay(ModoGenerico):
                     if event.key == pygame.K_e:
                         self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
                     if event.key == pygame.K_i:                  
-                        self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
+                        self.__comandos.append(\
+                            ComandoAbrirMenu(\
+                            MenuInventario(self.__jogador.inventario, self.__jogador), self))
                         
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouseClicked = True
