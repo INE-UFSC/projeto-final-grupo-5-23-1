@@ -1,13 +1,12 @@
-from pygame import Surface
+import pygame
 from abc import ABC, abstractmethod
 
 
-class Bloco(ABC):
-    def __init__(self, x, y, largura, altura, observador, colisao=False):
-        self.x = x
-        self.y = y
-        self.largura = largura
-        self.altura = altura
+class Bloco(ABC, pygame.sprite.Sprite):
+    def __init__(self, pos, surf, groups, observador, colisao=False):
+        super().__init__(groups)
+        self.__image = surf
+        self.__rect = self.__image.get_rect(topleft=pos)
         self.__observador = observador
         self.__colisao = colisao
 
@@ -26,6 +25,14 @@ class Bloco(ABC):
     def colisao(self):
         return self.__colisao
 
+    @property
+    def image(self):
+         return self.__image
+    
+    @property
+    def rect(self):
+         return self.__rect
+
     @abstractmethod
-    def desenhar(self, tela: Surface):
+    def desenhar(self, tela: pygame.Surface):
         pass

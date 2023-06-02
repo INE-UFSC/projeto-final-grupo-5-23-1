@@ -4,8 +4,8 @@ from itens.sementes.Semente import Semente
 
 class TerraArada(BlocoComInteracao):
 
-    def __init__(self, x, y, largura, altura, observador):
-        super().__init__(x, y, largura, altura, observador)
+    def __init__(self, pos, surf, groups, observador):
+        super().__init__(pos, surf, groups, observador)
         self.__planta = None
 
     def adiciona_planta(self, planta):
@@ -20,4 +20,4 @@ class TerraArada(BlocoComInteracao):
                 self.notifica_plantar(item)
 
     def desenhar(self, tela):
-        pygame.draw.rect(tela, (155,118,83), (self.x, self.y, self.largura, self.altura))
+        pygame.draw.rect(tela, (155,118,83), (self.pos.x, self.pos.y, 64, 64))
