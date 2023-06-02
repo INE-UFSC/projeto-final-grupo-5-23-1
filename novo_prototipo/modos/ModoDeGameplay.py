@@ -88,7 +88,7 @@ class ModoDeGameplay(ModoComInventarioGenerico):
         # Keyboard controls the moves of the player's unit
         if direcao.x != 0 or direcao.y != 0:
             self.__comandos.append(
-                ComandoMover(self.__mapa.blocos,self.__jogador, direcao, status, delta_tempo)
+                ComandoMover(self.__mapa.grupoBlocos,self.__jogador, direcao, status, delta_tempo)
             )
 
     def update(self):

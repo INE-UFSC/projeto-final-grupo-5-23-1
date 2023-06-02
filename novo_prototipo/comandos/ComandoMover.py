@@ -10,8 +10,8 @@ class ComandoMover(Comando):
     Esse comando move uma unidade implementando também 
     as limitações do movimento
     """
-    def __init__(self, matriz_mapa, entidade, direcao, status, delta_tempo):
-        self.__matriz_mapa = matriz_mapa
+    def __init__(self, grupoBlocos, entidade, direcao, status, delta_tempo):
+        self.__grupoBlocos = grupoBlocos
         self.__entidade = entidade
         self.__direcao = Vector2()
         self.__adiciona_direcao(direcao)
@@ -24,8 +24,8 @@ class ComandoMover(Comando):
             self.__direcao = direcao.normalize()
         return
     
-    def __checa_colisao(self, matriz_mapa, retangulo_nova_posicao):
-        return self.__verificar_colisao.checa_colisao(matriz_mapa, retangulo_nova_posicao)
+    def __checa_colisao(self, grupoBlocos, retangulo_nova_posicao):
+        return self.__verificar_colisao.checa_colisao(grupoBlocos, retangulo_nova_posicao)
 
     def run(self):
         unit = self.__entidade
@@ -44,7 +44,7 @@ class ComandoMover(Comando):
         entidade_nova_posicao.rect = self.__entidade.rect.copy()
         entidade_nova_posicao.rect.midbottom = nova_posicao
 
-        if self.__checa_colisao(self.__matriz_mapa, entidade_nova_posicao):
+        if self.__checa_colisao(self.__grupoBlocos, entidade_nova_posicao):
             entidade_nova_posicao.kill()
             return
         else:
