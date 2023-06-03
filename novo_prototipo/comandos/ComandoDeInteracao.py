@@ -25,10 +25,10 @@ class ComandoDeInteracao(Comando):
             return self.__matriz_blocos[posicao_y + 1][posicao_x]
 
     def run(self):
-        #try:
-        bloco = self.encontra_bloco()
-        if isinstance(bloco, BlocoComInteracao):
-            bloco.interagir(self.__item)
-        #except:
-         #   raise Exception("Jogador Fora do Mapa")
+        try:
+            bloco = self.encontra_bloco()
+            if isinstance(bloco, BlocoComInteracao):
+                bloco.interagir(self.__item)
+        except:
+            raise Exception("Jogador Fora do Mapa")
 

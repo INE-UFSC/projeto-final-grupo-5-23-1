@@ -11,7 +11,6 @@ class BlocoDeGrama(BlocoComInteracao):
     def interagir(self, item):
         if isinstance(item, Enxada):
             self.notifica_troca_bloco(self.posicao_matriz[0], self.posicao_matriz[1], TerraArada(self.pos,self.surf, self.__groups, self.observador))
-            print('Terra Arada')
 
     def desenhar(self, tela):
         pass
