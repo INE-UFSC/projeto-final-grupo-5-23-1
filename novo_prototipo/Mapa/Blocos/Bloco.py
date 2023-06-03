@@ -19,7 +19,7 @@ class Bloco(ABC, pygame.sprite.Sprite):
     
     @property
     def posicao_matriz(self):
-        posicao_matriz = [self.x, self.y]
+        posicao_matriz = [self.rect.x, self.rect.y]
         for index, posicao in enumerate(posicao_matriz):
                 posicao_matriz[index] = int((posicao // 64))
         return posicao_matriz

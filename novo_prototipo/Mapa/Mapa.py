@@ -19,7 +19,7 @@ class Mapa:
         self.__grupoPlantas = pygame.sprite.Group()
 
         # Criar matriz dos blocos
-        self.__blocos = [[ [] for coluna in range(49)]
+        self.__blocos = [[ None for coluna in range(49)]
                               for linha in range(49)]
 
         self.construir_blocos()
@@ -53,18 +53,13 @@ class Mapa:
     
 
     def troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
-        self.__blocos[posicao_y_matriz][posicao_x_matriz].append()
-        return
-    
-    def desenha_bloco_em_cima(self, posicao_x_matriz, posicao_y_matriz, novo_bloco, nome_bloco):
-        self.__blocos[posicao_y_matriz][posicao_x_matriz].append(nome_bloco)
-        self.__grupoBlocos.append(novo_bloco)
+        self.__blocos[posicao_y_matriz][posicao_x_matriz] = novo_bloco
         return
 
     def plantar(self, posicao_x_matriz, posicao_y_matriz, item):
         posicao_planta = Vector2()
-        posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].x + 32
-        posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].y + 40
+        posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.x + 32
+        posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.y + 40
         planta = Planta(item.planta_a_ser_gerada, posicao_planta, self.__grupoPlantas)
         self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
         self.jogador.inventario.remover_item(item)
@@ -76,20 +71,20 @@ class Mapa:
             if layer.name  == 'Fundo':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    Agua(pos= pos, surf= surf, groups= self.__grupoBlocos, observador=self)
-                    self.__blocos[y][x].append('Fundo')
+                    bloco = Agua(pos= pos, surf= surf, groups= self.__grupoBlocos, observador=self)
+                    self.__blocos[y][x] = bloco
 
             if layer.name == 'Parede':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    Parede(pos= pos, surf= surf, groups= self.__grupoBlocos, observador= self)
-                    self.__blocos[y][x].append('Parede')
+                    bloco = Parede(pos= pos, surf= surf, groups= self.__grupoBlocos, observador= self)
+                    self.__blocos[y][x] = bloco
 
             if layer.name == 'Grama':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    BlocoDeGrama(pos= pos, surf= surf, groups= self.__grupoBlocos, observador= self)
-                    self.__blocos[y][x].append('Grama')
+                    bloco = BlocoDeGrama(pos= pos, surf= surf, groups= self.__grupoBlocos, observador= self)
+                    self.__blocos[y][x] = bloco
             
             if layer.name == 'Interacao':
                 for obj in layer:
@@ -103,6 +98,10 @@ class Mapa:
 
     def desenhar(self, tela: Surface):
         self.__grupoBlocos.draw(tela)
+        for linha in self.blocos:
+            for bloco in linha:
+                bloco.desenhar(tela)
+
         self.__grupoPlantas.draw(tela)
         self.__grupoJogador.draw(tela)
 
