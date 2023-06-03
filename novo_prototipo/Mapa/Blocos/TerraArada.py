@@ -3,7 +3,6 @@ from Mapa.Blocos.BlocoComInteracao import BlocoComInteracao
 from itens.sementes.Semente import Semente
 
 class TerraArada(BlocoComInteracao):
-
     def __init__(self, pos, surf, groups, observador):
         super().__init__(pos, surf, groups, observador)
         self.__planta = None
@@ -20,4 +19,4 @@ class TerraArada(BlocoComInteracao):
                 self.notifica_plantar(item)
 
     def desenhar(self, tela):
-        pygame.draw.rect(tela, (155,118,83), (self.pos.x, self.pos.y, 64, 64))
+        pass

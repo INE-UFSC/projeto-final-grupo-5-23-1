@@ -12,14 +12,19 @@ from pytmx.util_pygame import load_pygame
 class Mapa:
     def __init__(self):
         self.__id = 'floresta'
-        self.__blocos = []
         self.__entidades = []
         self.__grupoBlocos = pygame.sprite.Group()
         self.__grupoJogador = pygame.sprite.Group()
         self.__grupoEntidades = pygame.sprite.Group()
         self.__grupoPlantas = pygame.sprite.Group()
+
+        # Criar matriz dos blocos
+        self.__blocos = [[ [] for coluna in range(49)]
+                              for linha in range(49)]
+
         self.construir_blocos()
         self.adiciona_entidades()
+
 
     @property
     def plantas(self):
@@ -46,10 +51,16 @@ class Mapa:
     def grupoBlocos(self):
         return self.__grupoBlocos
     
+
     def troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
-        self.__blocos[posicao_y_matriz][posicao_x_matriz] = novo_bloco
+        self.__blocos[posicao_y_matriz][posicao_x_matriz].append()
         return
     
+    def desenha_bloco_em_cima(self, posicao_x_matriz, posicao_y_matriz, novo_bloco, nome_bloco):
+        self.__blocos[posicao_y_matriz][posicao_x_matriz].append(nome_bloco)
+        self.__grupoBlocos.append(novo_bloco)
+        return
+
     def plantar(self, posicao_x_matriz, posicao_y_matriz, item):
         posicao_planta = Vector2()
         posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].x + 32
@@ -64,27 +75,35 @@ class Mapa:
         for layer in tmx_data.layers:
             if layer.name  == 'Fundo':
                 for x, y, surf in layer.tiles():
-                    pos = (x*64-1000, y*64-300)
-                    Agua(pos= pos, surf= surf, groups=self.__grupoBlocos, observador=self)
+                    pos = (x*64, y*64)
+                    Agua(pos= pos, surf= surf, groups= self.__grupoBlocos, observador=self)
+                    self.__blocos[y][x].append('Fundo')
 
             if layer.name == 'Parede':
                 for x, y, surf in layer.tiles():
-                    pos = (x*64-1000, y*64-300)
-                    Parede(pos, surf, self.__grupoBlocos, self)
+                    pos = (x*64, y*64)
+                    Parede(pos= pos, surf= surf, groups= self.__grupoBlocos, observador= self)
+                    self.__blocos[y][x].append('Parede')
 
             if layer.name == 'Grama':
                 for x, y, surf in layer.tiles():
-                    pos = (x*64-1000, y*64-300)
-                    BlocoDeGrama(pos, surf, self.__grupoBlocos, self)
+                    pos = (x*64, y*64)
+                    BlocoDeGrama(pos= pos, surf= surf, groups= self.__grupoBlocos, observador= self)
+                    self.__blocos[y][x].append('Grama')
+            
+            if layer.name == 'Interacao':
+                for obj in layer:
+                    if obj.name == 'Spawn':
+                        self.__playerSpawnX = obj.x
+                        self.__playerSpawnY = obj.y
 
 
     def adiciona_entidades(self):
-        self.__entidades.append(Jogador((640,360), self.__grupoJogador))
+        self.__entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), self.__grupoJogador))
 
     def desenhar(self, tela: Surface):
-        for linha in (self.blocos):
-            for bloco in linha:
-                bloco.desenhar(tela)
         self.__grupoBlocos.draw(tela)
         self.__grupoPlantas.draw(tela)
         self.__grupoJogador.draw(tela)
+
+

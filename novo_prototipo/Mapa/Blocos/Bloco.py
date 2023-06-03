@@ -10,6 +10,9 @@ class Bloco(ABC, pygame.sprite.Sprite):
         self.__observador = observador
         self.__colisao = colisao
 
+        self.__pos = pos
+        self.__surf = surf
+
     @property
     def observador(self):
         return self.__observador
@@ -32,6 +35,14 @@ class Bloco(ABC, pygame.sprite.Sprite):
     @property
     def rect(self):
          return self.__rect
+
+    @property
+    def pos(self):
+         return self.__pos
+    
+    @property
+    def surf(self):
+         return self.__surf
 
     @abstractmethod
     def desenhar(self, tela: pygame.Surface):

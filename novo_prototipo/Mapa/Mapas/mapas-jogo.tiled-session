@@ -5,8 +5,8 @@
     },
     "activeFile": "floresta.tmx",
     "expandedProjectPaths": [
-        ".",
-        "Tilesets"
+        "Tilesets",
+        "."
     ],
     "fileStates": {
         "Tilesets/tileset.tsx": {
@@ -15,10 +15,10 @@
         },
         "floresta.tmx": {
             "scale": 0.27233737244897954,
-            "selectedLayer": 0,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1560.5643697675782,
-                "y": 1606.4633218195659
+                "x": 1556.8924536034192,
+                "y": 1488.9620045664774
             }
         }
     },
