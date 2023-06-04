@@ -75,7 +75,7 @@ class ModoDeGameplay(ModoGenerico):
                         self.notifyShowMenuRequested()
                         break
                     if event.key == pygame.K_e:
-                        self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
+                        self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador))
                     if event.key == pygame.K_i:                  
                         self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
                         
