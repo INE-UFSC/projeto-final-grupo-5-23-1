@@ -6,11 +6,11 @@ class ComandoDeInteracao(Comando):
     """
     Esse comando interage com um bloco
     """
-    def __init__(self, posicao_matriz, status, matriz_blocos, item):
+    def __init__(self, posicao_matriz, status, matriz_blocos, jogador):
         self.__posicao_matriz = posicao_matriz
         self.__status = status
         self.__matriz_blocos = matriz_blocos
-        self.__item = item
+        self.__jogador = jogador
 
     def encontra_bloco(self):
         posicao_x = self.__posicao_matriz[0]
@@ -28,7 +28,7 @@ class ComandoDeInteracao(Comando):
         try:
             bloco = self.encontra_bloco()
             if isinstance(bloco, BlocoComInteracao):
-                bloco.interagir(self.__item)
+                bloco.interagir(self.__jogador)
         except:
             raise Exception("Jogador Fora do Mapa")
 
