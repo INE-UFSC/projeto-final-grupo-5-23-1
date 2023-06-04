@@ -7,6 +7,9 @@ class ItemQuantizavel(Item):
         super().__init__(nome, preco, caminho_imagem)
         self.__quantidade = quantidade
 
+    def aumenta_quantidade(self, quantidade_a_ser_aumentada):
+        self.__quantidade += quantidade_a_ser_aumentada
+
     def reduz_quantidade(self, quantidade_a_ser_reduzida):
         nova_quantidade = self.__quantidade - quantidade_a_ser_reduzida
         if nova_quantidade >= 0:
