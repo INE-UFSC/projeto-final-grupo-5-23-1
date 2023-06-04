@@ -1,18 +1,19 @@
 
+import pygame
 from itens.Item import Item
 
 
 class BotaoItem():
 
-    def __init__(self, fundo, posicao, fonte, cor_fonte, item: Item):
+    def __init__(self, caminho_fundo: str, posicao, caminho_fonte: str, cor_fonte, item: Item):
         #Informações do botão
         self.__x_pos = posicao[0]
         self.__y_pos = posicao[1]
-        self.__fonte = fonte
+        self.__fonte = pygame.font.Font(caminho_fonte, 30)
         self.__cor_fonte = cor_fonte
 
         #Fundo do botão
-        self.__fundo = fundo
+        self.__fundo = pygame.image.load(caminho_fundo)
         self.__rect_fundo = self.__fundo.get_rect(center=(self.__x_pos, self.__y_pos))
 
 		#Texto do nome do item
@@ -29,6 +30,7 @@ class BotaoItem():
         self.__imagem_item = item.imagem
         self.__rect_imagem_item = self.__imagem_item.get_rect(center=self.__calcula_posicao_imagem_item())        
 
+    #Métodos internos para calcular a posição dos componentes do botão:    
     def __calcula_posicao_imagem_item(self):
         posicao_x = self.rect.centerx - (self.rect.width * (1/2))
         posicao_y = self.rect.centery

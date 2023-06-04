@@ -3,8 +3,8 @@ from abc import abstractmethod
 
 class ItemQuantizavel(Item):
     @abstractmethod
-    def __init__(self, nome, quantidade):
-        super().__init__(nome)
+    def __init__(self, nome, preco, caminho_imagem, quantidade):
+        super().__init__(nome, preco, caminho_imagem)
         self.__quantidade = quantidade
 
     def reduz_quantidade(self, quantidade_a_ser_reduzida):

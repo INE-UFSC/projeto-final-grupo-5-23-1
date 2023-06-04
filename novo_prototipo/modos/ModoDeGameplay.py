@@ -21,6 +21,7 @@ class ModoDeGameplay(ModoGenerico):
         self.__tamanho_bloco = Vector2(64,64)        
         
         self.__mapa = Mapa()
+        self.__mapa.adiciona_observador(self)
         # All layers listen to game state events
         self.__estado_jogo.adiciona_observador(self.__mapa)
 
@@ -76,9 +77,7 @@ class ModoDeGameplay(ModoGenerico):
                     if event.key == pygame.K_e:
                         self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
                     if event.key == pygame.K_i:                  
-                        self.__comandos.append(\
-                            ComandoAbrirMenu(\
-                            MenuInventario(self.__jogador.inventario, self.__jogador), self))
+                        self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
                         
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     mouseClicked = True

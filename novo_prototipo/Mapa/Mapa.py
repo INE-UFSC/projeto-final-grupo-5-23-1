@@ -9,6 +9,7 @@ from plantas.Planta import Planta
 
 class Mapa(IMapa):
     def __init__(self):
+        super().__init__()
         self.__id = 'campo'
         self.__blocos = []
         self.__entidades = []
