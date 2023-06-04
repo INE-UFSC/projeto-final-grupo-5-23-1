@@ -14,10 +14,10 @@ class TerraArada(BlocoComInteracao):
     def notifica_plantar(self, item):
         self.observador.plantar(self.posicao_matriz[0], self.posicao_matriz[1], item)
 
-    def interagir(self, item):
+    def interagir(self, jogador):
         if self.__planta == None:
-            if isinstance(item, Semente):
-                self.notifica_plantar(item)
+            if isinstance(jogador.item_atual, Semente):
+                self.notifica_plantar(jogador.item_atual)
 
     def desenhar(self, tela):
         pygame.draw.rect(tela, (155,118,83), (self.x, self.y, self.largura, self.altura))
