@@ -3,13 +3,14 @@ import pygame
 from entidades.jogador.inventario import Inventario
 from itens.ferramentas.Enxada import Enxada
 from itens.sementes.Semente1 import Semente1
+from comandos.ComandoMover import ComandoMover
 
 
 class Jogador(pygame.sprite.Sprite):
 
     #[TODO] - Refatorar o inventario
 
-    def __init__(self, pos, group):
+    def __init__(self, pos, group, grupoBlocos):
         super().__init__(group)
 
         # Setup Geral
@@ -27,6 +28,11 @@ class Jogador(pygame.sprite.Sprite):
         #Adicição de itens provisória
         self.__inventario.adicionar_item(Enxada('Enxada de madeira'))
         self.__inventario.adicionar_item(Semente1('Trigo', 10))
+
+        # Comando de Movimento
+        self.__comando_mover = None
+        self.__grupoBlocos = grupoBlocos
+        self.__delta_tempo = 0        
 
     def seleciona_item(self, item):
         self.__item_atual = item
