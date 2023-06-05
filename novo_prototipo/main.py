@@ -31,6 +31,7 @@ class Sistema(ObservadorModoDeJogo):
 
         # Trilha sonora
         self.trilha_sonora = TrilhaSonora()
+        self.trilha_sonora.set_volume(0)
 
     def mostra_mensagem(self, message):
         self.__modo_de_overlay = ModoDeMensagem(message)

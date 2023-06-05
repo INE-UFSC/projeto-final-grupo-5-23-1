@@ -11,3 +11,6 @@ class TrilhaSonora:
 
     def parar(self):
         pygame.mixer.music.stop()
+    
+    def set_volume(self, volume):
+        pygame.mixer.music.set_volume(volume)
