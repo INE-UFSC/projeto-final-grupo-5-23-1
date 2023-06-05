@@ -40,11 +40,6 @@ class ComandoMover(Comando):
         nova_posicao.x = unit.posicao.x + movimento_x
         nova_posicao.y = unit.posicao.y + movimento_y
 
-        # Manter o jogador no centro da tela
-        centro_tela = Vector2(pygame.display.get_surface().get_size()) / 2
-        deslocamento = centro_tela - nova_posicao
-        nova_posicao += deslocamento
-
         entidade_nova_posicao = pygame.sprite.Sprite(pygame.sprite.Group())
         entidade_nova_posicao.rect = self.__entidade.rect.copy()
         entidade_nova_posicao.rect.midbottom = nova_posicao
