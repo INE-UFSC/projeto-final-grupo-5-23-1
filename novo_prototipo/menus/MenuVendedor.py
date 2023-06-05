@@ -77,7 +77,7 @@ class MenuVendedor(MenuGenerico):
                 if event.key == pygame.K_ESCAPE:
                     self.notifica_desativa_menu()
                 elif event.key == pygame.K_DOWN:
-                    if self.__item_selecionado < self.__num_itens_por_pagina -1:
+                    if self.__item_selecionado < len(self.__botoes[self.__pagina_atual]) -1:
                         self.__item_selecionado += 1
                     elif self.__pagina_atual < len(self.botoes) - 1:
                         self.__item_selecionado = 0
