@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "floresta.tmx",
+    "activeFile": "savana.tmx",
     "expandedProjectPaths": [
         "Tilesets",
         "."
@@ -14,15 +14,29 @@
             "scaleInEditor": 1
         },
         "floresta.tmx": {
-            "scale": 0.27233737244897954,
-            "selectedLayer": 3,
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 0.33,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 1556.8924536034192,
-                "y": 1488.9620045664774
+                "x": 1263.6363636363635,
+                "y": 1131.8181818181818
+            }
+        },
+        "savana.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 0.25,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 1580,
+                "y": 1690
             }
         }
     },
-    "last.imagePath": "/home/gabriel/Downloads",
+    "last.imagePath": "/home/gabriel/Documentos/projeto-final-grupo-5-23-1/novo_prototipo/Mapa/Mapas/Tilesets",
     "map.height": 49,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -30,12 +44,13 @@
     "map.width": 49,
     "openFiles": [
         "floresta.tmx",
-        "Tilesets/tileset.tsx"
+        "savana.tmx"
     ],
     "project": "mapas-jogo.tiled-project",
     "recentFiles": [
-        "Tilesets/tileset.tsx",
-        "floresta.tmx"
+        "floresta.tmx",
+        "savana.tmx",
+        "Tilesets/tileset.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
