@@ -1,7 +1,7 @@
 from Mapa.Mapa import Mapa
 from comandos.ComandoDeInteracao import ComandoDeInteracao
 from .ClassesAbstratas.ModoComInventarioGenerico import ModoComInventarioGenerico
-
+from Mapa.ControleMapa import ControleMapa
 
 from estado import EstadoJogo
 from comandos import ComandoMover
@@ -24,12 +24,12 @@ class ModoDeGameplay(ModoComInventarioGenerico):
         # Rendering properties
         self.__tamanho_bloco = Vector2(64,64)        
         
-        self.__mapa = Mapa()
+        self.__controleMapa = ControleMapa(self)
         # All layers listen to game state events
-        self.__estado_jogo.adiciona_observador(self.__mapa)
+        self.__estado_jogo.adiciona_observador(self.__controleMapa)
 
         # Controls
-        self.__jogador = self.__mapa.jogador
+        self.__jogador = self.__controleMapa.mapa_atual.jogador
         self.__comandos = [ ]
         
     @property
@@ -59,6 +59,13 @@ class ModoDeGameplay(ModoComInventarioGenerico):
                     self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__mapa.blocos, self.__jogador.item_atual))
                 if event.key == pygame.K_i:
                     self.notifyShowInventoryRequested(self.__jogador.inventario, self.__jogador)
+
+                if event.key == pygame.K_p:
+                    self.__controleMapa.trocar_mapa_atual('savana')
+                
+                if event.key == pygame.K_o:
+                    self.__controleMapa.trocar_mapa_atual('floresta')
+
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouseClicked = True
         
@@ -88,7 +95,7 @@ class ModoDeGameplay(ModoComInventarioGenerico):
         # Keyboard controls the moves of the player's unit
         if direcao.x != 0 or direcao.y != 0:
             self.__comandos.append(
-                ComandoMover(self.__mapa.grupoBlocos,self.__jogador, direcao, status, delta_tempo)
+                ComandoMover(self.__controleMapa.mapa_atual.grupoBlocos,self.__jogador, direcao, status, delta_tempo)
             )
 
     def update(self):
@@ -96,10 +103,10 @@ class ModoDeGameplay(ModoComInventarioGenerico):
             comando.run()
         self.__comandos.clear()
         self.__estado_jogo.epoch += 1
-        for planta in self.__mapa.plantas:
+        for planta in self.__controleMapa.mapa_atual.plantas:
             planta.update()
         self.__jogador.update()
 
         
     def render(self, tela):
-        self.__mapa.desenhar(tela)
+        self.__controleMapa.mapa_atual.desenhar(tela)
