@@ -10,7 +10,7 @@ class ControleMapa:
             "savana" : MapaSavana(self)
         }
 
-        self.__mapa_atual = self.__mapas['savana']
+        self.__mapa_atual = self.__mapas['floresta']
 
     
     def trocar_mapa_atual(self, novo_mapa):

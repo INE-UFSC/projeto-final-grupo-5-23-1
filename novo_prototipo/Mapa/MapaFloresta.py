@@ -23,25 +23,25 @@ class MapaFloresta(IMapa):
             if layer.name  == 'Fundo':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Agua(pos= pos, surf= surf, groups= self.grupoBlocos, observador=self)
+                    bloco = Agua(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador=self)
                     self.blocos[y][x] = bloco
 
             if layer.name == 'Parede':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Parede(pos= pos, surf= surf, groups= self.grupoBlocos, observador= self)
+                    bloco = Parede(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
 
             if layer.name == 'Grama':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = BlocoDeGrama(pos= pos, surf= surf, groups= self.grupoBlocos, observador= self)
+                    bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
 
             if layer.name == 'Caminho':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Caminho(pos= pos, surf= surf, groups= self.grupoBlocos, observador= self)
+                    bloco = Caminho(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Interacao':
@@ -51,4 +51,4 @@ class MapaFloresta(IMapa):
                         self.__playerSpawnY = obj.y
     
     def adiciona_entidades(self):
-        self.entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), self.grupoJogador))
+        self.entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), [self.grupoAll, self.grupoJogador]))

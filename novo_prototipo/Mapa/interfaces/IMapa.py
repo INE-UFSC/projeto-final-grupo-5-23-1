@@ -9,6 +9,7 @@ class IMapa(ABC):
     @abstractmethod
     def __init__(self, observador):
         self.__entidades = []
+        self.__grupoAll = pygame.sprite.Group()
         self.__grupoBlocos = pygame.sprite.Group()
         self.__grupoJogador = pygame.sprite.Group()
         self.__grupoEntidades = pygame.sprite.Group()
@@ -28,7 +29,7 @@ class IMapa(ABC):
         pass
 
     def adiciona_entidades(self):
-        self.__entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), self.__grupoJogador))
+        self.__entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), [self.__grupoAll, self.__grupoJogador]))
 
     def troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
         self.__blocos[posicao_y_matriz][posicao_x_matriz] = novo_bloco
@@ -38,7 +39,7 @@ class IMapa(ABC):
         posicao_planta = Vector2()
         posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.x + 32
         posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.y + 40
-        planta = Planta(item.planta_a_ser_gerada, posicao_planta, self.__grupoPlantas)
+        planta = Planta(item.planta_a_ser_gerada, posicao_planta, [self.__grupoAll, self.__grupoPlantas])
         self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
         self.jogador.inventario.remover_item(item)
 
@@ -68,6 +69,10 @@ class IMapa(ABC):
     @property
     def entidades(self):
         return self.__entidades
+    
+    @property
+    def grupoAll(self):
+        return self.__grupoAll
 
     @property
     def grupoBlocos(self):
