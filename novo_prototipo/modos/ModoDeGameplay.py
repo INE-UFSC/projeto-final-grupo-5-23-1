@@ -39,6 +39,13 @@ class ModoDeGameplay(ModoComInventarioGenerico):
     @property
     def altura_bloco(self):
         return int(self.__tamanho_bloco.y)
+    
+    @property
+    def jogador(self):
+        return self.__jogador
+    
+    def set_jogador(self, jogador):
+        self.__jogador = jogador
 
     def checa_eventos(self, delta_tempo):
         # Eventos Pygame
@@ -65,6 +72,9 @@ class ModoDeGameplay(ModoComInventarioGenerico):
                 
                 if event.key == pygame.K_o:
                     self.__controleMapa.trocar_mapa_atual('floresta')
+
+                if event.key == pygame.K_l:
+                    print(self.__controleMapa.mapa_atual.jogador.posicao)
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouseClicked = True

@@ -15,6 +15,7 @@ class ControleMapa:
     
     def trocar_mapa_atual(self, novo_mapa):
         self.__mapa_atual = self.__mapas[novo_mapa]
+        self.observador.set_jogador(self.mapa_atual.jogador)
 
 
     @property
