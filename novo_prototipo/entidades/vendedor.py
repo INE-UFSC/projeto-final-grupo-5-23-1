@@ -16,7 +16,7 @@ class Vendedor(BlocoComInteracao):
         
         #Atributos personalidade:
         self.__nome = "Flofler, a vendedora"
-        self.__inventario = Inventario(10)
+        self.__inventario = Inventario(20)
         self.__inventario.adicionar_item(Semente1(nome = 'Trigo', quantidade = 10))
         self.__inventario.adicionar_item(Enxada('Enxada'))
         self.__inventario.adicionar_item(Semente1(nome = 'Trigo2', quantidade = 10))
@@ -35,7 +35,7 @@ class Vendedor(BlocoComInteracao):
         tela.blit(self.__image, self.__rect)
 
     def interagir(self, jogador):
-        self.observador.notifica_ativa_menu(MenuVendedor(vendedor=self, caminho_fundo='novo_prototipo/assets/ui/fundo_menu_TESTE.png', jogador=jogador))
+        self.observador.notifica_ativa_menu(MenuVendedor(vendedor=self, caminho_fundo='novo_prototipo/assets/ui/fundo_menu_TESTE.png',caminho_seta='novo_prototipo/assets/ui/seta_TESTE.png', jogador=jogador))
 
     @property
     def rect(self):

@@ -23,7 +23,7 @@ class Jogador(pygame.sprite.Sprite):
         self.__item_atual = None
 
         #Adicição de itens provisória
-        self.__inventario.adicionar_item(Enxada('Enxada de madeira'))
+        self.__inventario.adicionar_item(Enxada('Enxada'))
         self.__inventario.adicionar_item(Semente1(nome = 'Trigo', quantidade = 10))
 
         #Comércio
