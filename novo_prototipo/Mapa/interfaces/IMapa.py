@@ -4,6 +4,8 @@ import pygame
 from entidades.jogador.jogador import Jogador
 from plantas.Planta import Planta
 
+from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
+
 class IMapa(ABC):
 
     @abstractmethod
@@ -14,15 +16,28 @@ class IMapa(ABC):
         self.__grupoJogador = pygame.sprite.Group()
         self.__grupoEntidades = pygame.sprite.Group()
         self.__grupoPlantas = pygame.sprite.Group()
+        self.__observadores = []
 
         # Criar matriz dos blocos
         self.__blocos = [[ None for coluna in range(49)]
                               for linha in range(49)]
         
-        self.__observador = observador
+        self.adiciona_observador(observador)
 
         self.construir_blocos()
         self.adiciona_entidades()
+        
+    
+    @property
+    def observadores(self):
+        return self.__observadores
+    
+    def adiciona_observador(self, observador):
+        self.__observadores.append(observador)
+
+    def notifica_ativa_menu(self, menu: MenuGenerico):
+        for observador in self.__observadores:
+            observador.notifica_ativa_menu(menu)
 
     @abstractmethod
     def construir_blocos(self):
@@ -53,11 +68,6 @@ class IMapa(ABC):
         self.__grupoPlantas.draw(tela)
         self.__grupoEntidades.draw(tela)
         self.__grupoJogador.draw(tela)
-    
-    def set_jogador(self, jogador):
-        for sprite in self.__grupoJogador.sprites():
-            sprite.kill()
-        self.__entidades[0] = jogador
 
     @property
     def plantas(self):

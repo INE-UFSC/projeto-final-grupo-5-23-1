@@ -10,5 +10,5 @@ class BlocoComInteracao(Bloco):
         self.observador.troca_bloco(posicao_x_matriz, posicao_y_matriz, novo_bloco)
 
     @abstractmethod
-    def interagir(self, item):
+    def interagir(self, jogador):
         pass

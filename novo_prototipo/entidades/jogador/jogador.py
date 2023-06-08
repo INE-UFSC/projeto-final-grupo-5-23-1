@@ -7,8 +7,6 @@ from itens.sementes.Semente1 import Semente1
 
 class Jogador(pygame.sprite.Sprite):
 
-    #[TODO] - Refatorar o inventario
-
     def __init__(self, pos, group):
         super().__init__(group)
 
@@ -25,8 +23,19 @@ class Jogador(pygame.sprite.Sprite):
         self.__item_atual = None
 
         #Adicição de itens provisória
-        self.__inventario.adicionar_item(Enxada('Enxada de madeira'))
-        self.__inventario.adicionar_item(Semente1('Trigo', 10))      
+        self.__inventario.adicionar_item(Enxada('Enxada'))
+        self.__inventario.adicionar_item(Semente1(nome = 'Trigo', quantidade = 10))
+
+        #Comércio
+        self.__moedas = 15
+
+    def adiciona_moedas(self, quantidade_de_moedas: int):
+        if isinstance(quantidade_de_moedas, int) and quantidade_de_moedas > 0:
+            self.__moedas += quantidade_de_moedas
+
+    def remove_moedas(self, quantidade_de_moedas: int):
+        if isinstance(quantidade_de_moedas, int) and quantidade_de_moedas > 0:
+            self.__moedas -= quantidade_de_moedas
 
     def seleciona_item(self, item):
         self.__item_atual = item
@@ -80,3 +89,8 @@ class Jogador(pygame.sprite.Sprite):
     @property
     def inventario(self):
         return self.__inventario
+    
+    @property
+    def moedas(self):
+        return self.__moedas
+

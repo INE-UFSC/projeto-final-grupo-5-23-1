@@ -3,5 +3,5 @@ from abc import abstractmethod
 
 class Semente(ItemQuantizavel):
     @abstractmethod
-    def __init__(self, nome, quantidade):
-        super().__init__(nome, quantidade)
+    def __init__(self, nome, preco, caminho_imagem, quantidade):
+        super().__init__(nome, preco, caminho_imagem, quantidade)

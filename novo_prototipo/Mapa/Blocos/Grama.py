@@ -8,9 +8,9 @@ class BlocoDeGrama(BlocoComInteracao):
         super().__init__(pos, surf, groups, observador)
         self.__groups = groups
     
-    def interagir(self, item):
-        if isinstance(item, Enxada):
+    def interagir(self, jogador):
+        if isinstance(jogador.item_atual, Enxada):
             self.notifica_troca_bloco(self.posicao_matriz[0], self.posicao_matriz[1], TerraArada(self.pos,self.surf, self.__groups, self.observador))
-
+        
     def desenhar(self, tela):
         pass

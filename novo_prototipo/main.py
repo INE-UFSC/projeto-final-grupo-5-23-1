@@ -2,8 +2,8 @@ from modos import ObservadorModoDeJogo, ModoDeMenu, ModoDeGameplay, ModoDeMensag
 
 import os
 import pygame
+from estado.EstadoJogo import EstadoJogo
 
-from modos.ModoDeInventario import ModoDeInventario
 from trilha.TrilhaSonora import TrilhaSonora
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
@@ -18,7 +18,7 @@ class Sistema(ObservadorModoDeJogo):
         Coloca os atributos base para o ciclo do jogo
         '''
         # Modos de 'jogo'
-        self.__modo_de_jogo = ModoDeGameplay()
+        self.__modo_de_jogo = ModoDeGameplay(EstadoJogo())
         self.__modo_de_jogo.adiciona_observador(self)
         self.__modo_de_overlay = ModoDeMenu()
         self.__modo_de_overlay.adiciona_observador(self)
@@ -44,11 +44,6 @@ class Sistema(ObservadorModoDeJogo):
     def showGameRequested(self):
         if self.__modo_de_jogo is not None:
             self.__modo_ativo = 'Jogo'
-
-    def showInventoryRequested(self, inventario, jogador):
-        self.__modo_de_overlay = ModoDeInventario(inventario, jogador)
-        self.__modo_de_overlay.adiciona_observador(self)
-        self.__modo_ativo = 'Overlay'
 
     def showMenuRequested(self):
         self.__modo_de_overlay = ModoDeMenu()
