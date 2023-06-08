@@ -1,6 +1,7 @@
 import pygame
 from Mapa.MapaFloresta import MapaFloresta
 from Mapa.MapaSavana import MapaSavana
+from entidades.jogador.jogador import Jogador
 
 class ControleMapa:
     def __init__(self, observador):

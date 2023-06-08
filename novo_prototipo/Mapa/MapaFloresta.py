@@ -5,6 +5,7 @@ from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.agua import Agua
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Caminho import Caminho
+from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
 
 class MapaFloresta(IMapa):
@@ -44,11 +45,18 @@ class MapaFloresta(IMapa):
                     bloco = Caminho(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
+            if layer.name == 'Vendedor':
+                for x, y, surf in layer.tiles():
+                    pos = (x*64, y*64)
+                    bloco = Vendedor(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
+                    self.blocos[y][x] = bloco
+            
             if layer.name == 'Interacao':
                 for obj in layer:
                     if obj.name == 'Spawn':
                         self.__playerSpawnX = obj.x
                         self.__playerSpawnY = obj.y
+        
     
     def adiciona_entidades(self):
         self.entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), [self.grupoAll, self.grupoJogador]))

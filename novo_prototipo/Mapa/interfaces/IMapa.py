@@ -53,6 +53,11 @@ class IMapa(ABC):
         self.__grupoPlantas.draw(tela)
         self.__grupoEntidades.draw(tela)
         self.__grupoJogador.draw(tela)
+    
+    def set_jogador(self, jogador):
+        for sprite in self.__grupoJogador.sprites():
+            sprite.kill()
+        self.__entidades[0] = jogador
 
     @property
     def plantas(self):
