@@ -55,6 +55,9 @@ class Jogador(pygame.sprite.Sprite):
         if self.__item_atual not in self.__inventario.itens:
             self.__item_atual = None
 
+    def set_inventario(self, inventario):
+        self.__inventario = inventario
+
     @property    
     def status(self):
         return self.__status

@@ -26,11 +26,7 @@ class IMapa(ABC):
 
         self.construir_blocos()
         self.adiciona_entidades()
-        
     
-    @property
-    def observadores(self):
-        return self.__observadores
     
     def adiciona_observador(self, observador):
         self.__observadores.append(observador)
@@ -69,6 +65,10 @@ class IMapa(ABC):
         self.__grupoEntidades.draw(tela)
         self.__grupoJogador.draw(tela)
 
+    @property
+    def observadores(self):
+        return self.__observadores
+    
     @property
     def plantas(self):
         return self.__grupoPlantas.sprites()
