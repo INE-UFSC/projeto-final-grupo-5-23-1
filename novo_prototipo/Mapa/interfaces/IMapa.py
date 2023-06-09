@@ -31,6 +31,9 @@ class IMapa(ABC):
     def adiciona_observador(self, observador):
         self.__observadores.append(observador)
 
+    def notifica_troca_mapa(self, mapa):
+        self.__observadores[0].trocar_mapa_atual(mapa)
+
     def notifica_ativa_menu(self, menu: MenuGenerico):
         for observador in self.__observadores:
             observador.notifica_ativa_menu(menu)

@@ -85,13 +85,6 @@ class ModoDeGameplay(ModoGenerico):
                         self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__controleMapa.mapa_atual.blocos, self.__jogador))
                     if event.key == pygame.K_i:
                         self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
-
-                    if event.key == pygame.K_p:
-                        self.__controleMapa.trocar_mapa_atual('savana')
-                    
-                    if event.key == pygame.K_o:
-                        self.__controleMapa.trocar_mapa_atual('floresta')
-
                     if event.key == pygame.K_l:
                         print(self.__controleMapa.mapa_atual.jogador.posicao)
 
