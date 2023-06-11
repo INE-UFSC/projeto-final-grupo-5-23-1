@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
-from pygame import Surface, Vector2
+from pygame import Vector2
 import pygame
 from entidades.jogador.jogador import Jogador
-from plantas.Planta import Planta
+from itens.sementes.ISemente import ISemente
+
 
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 
@@ -49,13 +50,13 @@ class IMapa(ABC):
         self.__blocos[posicao_y_matriz][posicao_x_matriz] = novo_bloco
         return
     
-    def plantar(self, posicao_x_matriz, posicao_y_matriz, item):
+    def plantar(self, posicao_x_matriz, posicao_y_matriz, semente: ISemente):
         posicao_planta = Vector2()
         posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.x + 32
         posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.y + 40
-        planta = Planta(item.planta_a_ser_gerada, posicao_planta, [self.__grupoAll, self.__grupoPlantas])
+        planta = semente.constroi_planta(posicao_planta, self.__grupoPlantas)
         self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
-        self.jogador.inventario.remover_item(item)
+        self.jogador.inventario.remover_item(semente)
 
     
     def desenhar(self, tela: pygame.Surface):

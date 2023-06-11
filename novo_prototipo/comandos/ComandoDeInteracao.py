@@ -1,5 +1,5 @@
 from .Comando import Comando
-from Mapa.Blocos.BlocoComInteracao import BlocoComInteracao
+from Mapa.Blocos.interfaces.IBlocoComInteracao import IBlocoComInteracao
 
 
 class ComandoDeInteracao(Comando):
@@ -27,7 +27,7 @@ class ComandoDeInteracao(Comando):
     def run(self):
         try:
             bloco = self.encontra_bloco()
-            if isinstance(bloco, BlocoComInteracao):
+            if isinstance(bloco, IBlocoComInteracao):
                 bloco.interagir(self.__jogador)
         except Exception as e:
             raise Exception(f"Falha na interação:\n {e}")

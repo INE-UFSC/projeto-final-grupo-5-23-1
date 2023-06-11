@@ -1,4 +1,3 @@
-from Mapa.Mapa import Mapa
 from comandos import ComandoDeInteracao, ComandoAbrirMenu, ComandoMover
 from menus import MenuInventario, MenuGenerico
 from estado.ClassesAbstratas.IEstadoJogo import IEstadoJogo

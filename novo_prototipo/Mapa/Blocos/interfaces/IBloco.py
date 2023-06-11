@@ -2,7 +2,7 @@ import pygame
 from abc import ABC, abstractmethod
 
 
-class Bloco(ABC, pygame.sprite.Sprite):
+class IBloco(ABC, pygame.sprite.Sprite):
     def __init__(self, pos, surf, groups, observador, colisao=False):
         super().__init__(groups)
         self.__image = surf

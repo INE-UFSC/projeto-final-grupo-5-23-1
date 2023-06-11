@@ -1,8 +1,7 @@
-import pygame
 from entidades.jogador.jogador import Jogador
 from pytmx.util_pygame import load_pygame
 from Mapa.Blocos.Grama import BlocoDeGrama
-from Mapa.Blocos.agua import Agua
+from Mapa.Blocos.Agua import Agua
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Caminho import Caminho
 from Mapa.Blocos.Transporte import Transporte

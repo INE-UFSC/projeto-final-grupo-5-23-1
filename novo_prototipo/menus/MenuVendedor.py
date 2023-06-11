@@ -145,9 +145,11 @@ class MenuVendedor(MenuGenerico):
             self.lista_botoes_vazia = True
         else:
             self.lista_botoes_vazia = False
-
-        if (self.__item_selecionado > 0) and (self.__item_selecionado > len(self.botoes[self.__pagina_atual_inventario]) - 1):
-            self.__item_selecionado -= 1
+        while True:
+            if (self.__item_selecionado > 0) and (self.__item_selecionado > len(self.botoes[self.__pagina_atual_inventario]) - 1):
+                self.__item_selecionado -= 1
+            else:
+                break
         
         self.__texto_numero_moedas = self.__fonte_texto_numero_moedas.render(str(self.__jogador.moedas), True, 'White')
 
