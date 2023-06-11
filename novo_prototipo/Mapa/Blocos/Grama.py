@@ -1,9 +1,8 @@
-import pygame
-from Mapa.Blocos.BlocoComInteracao import BlocoComInteracao
+from Mapa.Blocos.interfaces.IBlocoComInteracao import IBlocoComInteracao
 from Mapa.Blocos.TerraArada import TerraArada
 from itens.ferramentas.Enxada import Enxada
 
-class BlocoDeGrama(BlocoComInteracao):
+class BlocoDeGrama(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador):
         super().__init__(pos, surf, groups, observador)
         self.__groups = groups

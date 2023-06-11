@@ -1,13 +1,11 @@
 import pygame
-from Mapa.Blocos.BlocoComInteracao import BlocoComInteracao
+from Mapa.Blocos.interfaces.IBlocoComInteracao import IBlocoComInteracao
 from menus.MenuVendedor import MenuVendedor
 from entidades.jogador.inventario import Inventario
-from itens.sementes.Semente1 import Semente1
+from itens.sementes.SementeDeTrigo import SementeDeTrigo
 from itens.ferramentas.Enxada import Enxada
 
-# Vendedor temporariamente um bloco para MVP
-
-class Vendedor(BlocoComInteracao):
+class Vendedor(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador):
         super().__init__(pos, surf, groups, observador, True)
         self.__image = pygame.Surface((64,64))
@@ -17,17 +15,17 @@ class Vendedor(BlocoComInteracao):
         #Atributos personalidade:
         self.__nome = "Flofler, a vendedora"
         self.__inventario = Inventario(20)
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo', quantidade = 10))
         self.__inventario.adicionar_item(Enxada('Enxada'))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo2', quantidade = 10))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo3', quantidade = 10))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo4', quantidade = 10))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo5', quantidade = 10))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo6', quantidade = 10))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo7', quantidade = 10))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo8', quantidade = 10))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo9', quantidade = 10))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo10', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo2', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo3', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo4', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo5', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo6', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo7', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo8', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo9', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo10', quantidade = 10))
         self.__imagem = pygame.image.load('novo_prototipo/assets/ui/vendedor_TESTE.png')
         self.__imagem_dialogo = pygame.image.load('novo_prototipo/assets/ui/dialogo_TESTE.png')
 

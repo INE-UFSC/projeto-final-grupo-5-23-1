@@ -1,13 +1,16 @@
 import pygame
 
-class Planta(pygame.sprite.Sprite):
+from plantas.interfaces.IPlanta import IPlanta
 
-    def __init__(self, nome, pos, group):
-        super().__init__(group)
-        self.__nome = nome
+class Trigo(IPlanta):
+
+    def __init__(self, pos, grupo):
+        super().__init__(nome='Trigo', pos=pos, grupo=grupo)
+        #Trocar por uma classe que lidará com as sprites depois:
         self.__image = pygame.Surface((10,10))
         self.__image.fill('saddlebrown')
-        self.__rect = self.__image.get_rect(midbottom = pos)
+        self.__rect = self.__image.get_rect(midbottom=pos)
+        #--------------------------------------------------------
         self.__taxa_de_crescimento = 10
         self.__progresso_crescimento = 0
         self.__em_crescimento = True

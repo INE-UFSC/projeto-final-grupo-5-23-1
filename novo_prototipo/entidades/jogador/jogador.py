@@ -2,7 +2,7 @@ import pygame
 
 from entidades.jogador.inventario import Inventario
 from itens.ferramentas.Enxada import Enxada
-from itens.sementes.Semente1 import Semente1
+from itens.sementes.SementeDeTrigo import SementeDeTrigo
 
 
 class Jogador(pygame.sprite.Sprite):
@@ -24,7 +24,7 @@ class Jogador(pygame.sprite.Sprite):
 
         #Adicição de itens provisória
         self.__inventario.adicionar_item(Enxada('Enxada'))
-        self.__inventario.adicionar_item(Semente1(nome = 'Trigo', quantidade = 10))
+        self.__inventario.adicionar_item(SementeDeTrigo(quantidade = 10))
 
         #Comércio
         self.__moedas = 15

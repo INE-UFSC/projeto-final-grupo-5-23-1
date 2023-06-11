@@ -1,7 +1,7 @@
-from Mapa.Blocos.Bloco import Bloco
+from Mapa.Blocos.interfaces.IBloco import IBloco
 from abc import abstractmethod
 
-class BlocoComInteracao(Bloco):
+class IBlocoComInteracao(IBloco):
 
     def __init__(self, pos, surf, groups, observador, colisao=False):
         super().__init__(pos, surf, groups, observador, colisao)
