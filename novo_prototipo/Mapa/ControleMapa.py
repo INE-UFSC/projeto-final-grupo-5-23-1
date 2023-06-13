@@ -11,14 +11,32 @@ class ControleMapa:
         }
 
         self.__mapa_atual = self.__mapas['floresta']
+        self.__jogador = self.__mapa_atual.jogador
 
+    def __atualizar_mapa(self, novo_mapa):
+        self.__mapa_atual = self.__mapas[novo_mapa]
+    
+    def __atualizar_jogador(self):
+        self.__jogador = self.__mapa_atual.jogador
+    
+    def __salvar_dados_jogador(self):
+        self.__inventario = self.__jogador.inventario
+        self.__posicao = self.__jogador.posicao
+    
+    def __carregar_dados_jogador(self):
+        self.__jogador.set_inventario(self.__inventario)
+        self.__jogador.atualiza_posicao(self.__posicao)
     
     def trocar_mapa_atual(self, novo_mapa):
-        self.__mapa_atual = self.__mapas[novo_mapa]
+        self.__salvar_dados_jogador()
+        self.__atualizar_mapa(novo_mapa)
+        self.__atualizar_jogador()
+        self.__carregar_dados_jogador()
         self.observador.set_jogador(self.mapa_atual.jogador)
 
     def notifica_ativa_menu(self, menu: MenuGenerico):
         self.__observador.ativa_menu(menu, self.__observador)
+
 
 
     @property

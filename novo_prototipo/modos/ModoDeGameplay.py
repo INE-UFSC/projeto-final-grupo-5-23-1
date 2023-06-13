@@ -22,7 +22,7 @@ class ModoDeGameplay(ModoGenerico):
         
         self.__controleMapa = ControleMapa(self)
         # All layers listen to game state events
-        self.__estado_jogo.adiciona_observador(self.__controleMapa)
+        self.estado_jogo.adiciona_observador(self.__controleMapa)
 
         # Controls
         self.__jogador = self.__controleMapa.mapa_atual.jogador
@@ -40,27 +40,32 @@ class ModoDeGameplay(ModoGenerico):
     def jogador(self):
         return self.__jogador
     
+    @property
+    def estado_jogo(self):
+        return self.__estado_jogo
+    
     def set_jogador(self, jogador):
         self.__jogador = jogador
+
     def desativa_menu(self):
-        self.__estado_jogo.desativa_menu()
+        self.estado_jogo.desativa_menu()
         return
     
     def ativa_menu(self, menu: MenuGenerico, observador):
-        self.__estado_jogo.ativa_menu(menu, observador)
+        self.estado_jogo.ativa_menu(menu, observador)
         return
     
     def __roda_comandos(self):
         for comando in self.__comandos:
             comando.run()
         self.__comandos.clear()
-        if self.__estado_jogo.menu_ingame_ativo:
-            self.__estado_jogo.menu_ingame.update()
+        if self.estado_jogo.menu_ingame_ativo:
+            self.estado_jogo.menu_ingame.update()
         return
     
     def __atualiza_entidades(self):
-        for planta in self.__controleMapa.mapa_atual.plantas:
-            planta.update()
+        for mapa in self.__controleMapa.mapas.values():
+            mapa.grupoPlantas.update()
         self.__jogador.update()
         return
 
@@ -76,7 +81,7 @@ class ModoDeGameplay(ModoGenerico):
                 break
 
             if event.type == pygame.KEYDOWN:
-                if not self.__estado_jogo.menu_ingame_ativo:
+                if not self.estado_jogo.menu_ingame_ativo:
                     if event.key == pygame.K_ESCAPE:
                         self.notifyShowMenuRequested()
                         break
@@ -84,20 +89,13 @@ class ModoDeGameplay(ModoGenerico):
                         self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__controleMapa.mapa_atual.blocos, self.__jogador))
                     if event.key == pygame.K_i:
                         self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
-
-                    if event.key == pygame.K_p:
-                        self.__controleMapa.trocar_mapa_atual('savana')
-                    
-                    if event.key == pygame.K_o:
-                        self.__controleMapa.trocar_mapa_atual('floresta')
-
                     if event.key == pygame.K_l:
                         print(self.__controleMapa.mapa_atual.jogador.posicao)
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouseClicked = True
         
-        if not self.__estado_jogo.menu_ingame_ativo:
+        if not self.estado_jogo.menu_ingame_ativo:
             keys = pygame.key.get_pressed()
 
             # Direções ---
@@ -127,15 +125,15 @@ class ModoDeGameplay(ModoGenerico):
                     ComandoMover(self.__controleMapa.mapa_atual.grupoBlocos,self.__jogador, direcao, status, delta_tempo)
                 )
         else:
-            self.__estado_jogo.menu_ingame.checa_eventos(eventos)
+            self.estado_jogo.menu_ingame.checa_eventos(eventos)
 
     def update(self):
         self.__roda_comandos()
         self.__atualiza_entidades()
-        self.__estado_jogo.epoch += 1
+        self.estado_jogo.ticks += 1
 
 
     def render(self, tela):
         self.__controleMapa.mapa_atual.desenhar(tela)
-        if self.__estado_jogo.menu_ingame_ativo:
-            self.__estado_jogo.menu_ingame.render(tela)
+        if self.estado_jogo.menu_ingame_ativo:
+            self.estado_jogo.menu_ingame.render(tela)

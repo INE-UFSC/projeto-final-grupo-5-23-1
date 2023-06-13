@@ -27,22 +27,20 @@ class IMapa(ABC):
 
         self.construir_blocos()
         self.adiciona_entidades()
-        
     
-    @property
-    def observadores(self):
-        return self.__observadores
+    @abstractmethod
+    def construir_blocos(self):
+        pass
     
     def adiciona_observador(self, observador):
         self.__observadores.append(observador)
 
+    def notifica_troca_mapa(self, mapa):
+        self.__observadores[0].trocar_mapa_atual(mapa)
+
     def notifica_ativa_menu(self, menu: MenuGenerico):
         for observador in self.__observadores:
             observador.notifica_ativa_menu(menu)
-
-    @abstractmethod
-    def construir_blocos(self):
-        pass
 
     def adiciona_entidades(self):
         self.__entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), [self.__grupoAll, self.__grupoJogador]))
@@ -59,7 +57,11 @@ class IMapa(ABC):
         self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
         self.jogador.inventario.remover_item(semente)
 
-    
+    def exclui_entidade(self, entidade_a_ser_excluida):
+        grupos_de_entidades = [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]
+        for grupo in grupos_de_entidades:
+            grupo.remove(entidade_a_ser_excluida)
+
     def desenhar(self, tela: pygame.Surface):
         self.__grupoBlocos.draw(tela)
         for linha in self.blocos:
@@ -69,6 +71,10 @@ class IMapa(ABC):
         self.__grupoPlantas.draw(tela)
         self.__grupoEntidades.draw(tela)
         self.__grupoJogador.draw(tela)
+
+    @property
+    def observadores(self):
+        return self.__observadores
 
     @property
     def plantas(self):
@@ -97,6 +103,10 @@ class IMapa(ABC):
     @property
     def grupoPlantas(self):
         return self.__grupoPlantas
+    
+    @grupoPlantas.setter
+    def grupoPlantas(self, lista_de_plantas):
+        self.__grupoPlantas = lista_de_plantas
     
     @property
     def grupoJogador(self):

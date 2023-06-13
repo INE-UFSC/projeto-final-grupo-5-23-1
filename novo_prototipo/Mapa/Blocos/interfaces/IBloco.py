@@ -1,8 +1,6 @@
 import pygame
 from abc import ABC, abstractmethod
 
-from novo_prototipo.settings import LAYERS
-
 
 class IBloco(ABC, pygame.sprite.Sprite):
     def __init__(self, pos, surf, groups, observador, colisao=False):
@@ -11,7 +9,7 @@ class IBloco(ABC, pygame.sprite.Sprite):
         self.__rect = self.__image.get_rect(topleft=pos)
         self.__observador = observador
         self.__colisao = colisao
-        self.__z = LAYERS['Blocos']
+
         self.__pos = pos
         self.__surf = surf
 
@@ -45,10 +43,6 @@ class IBloco(ABC, pygame.sprite.Sprite):
     @property
     def surf(self):
          return self.__surf
-    
-    @property
-    def z(self):
-         return self.__z
 
     @abstractmethod
     def desenhar(self, tela: pygame.Surface):
