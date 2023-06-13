@@ -22,9 +22,13 @@ class Inventario:
                     indice_item = lista_de_nomes.index(item_a_ser_adicionado.nome)
                     self.__itens[indice_item].aumenta_quantidade(item_a_ser_adicionado.quantidade)
                 elif len(self.__itens) < self.__capacidade:
-                    self.__itens.append(item_a_ser_adicionado)
+                    classe_item = item_a_ser_adicionado.__class__
+                    novo_item = classe_item(nome=item_a_ser_adicionado.nome,quantidade=item_a_ser_adicionado.quantidade)
+                    self.__itens.append(novo_item)
             elif len(self.__itens) < self.__capacidade:
-                self.__itens.append(item_a_ser_adicionado)
+                classe_item = item_a_ser_adicionado.__class__
+                novo_item = classe_item()
+                self.__itens.append(novo_item)
                 
     def remover_item(self, item):
         if item in self.__itens:  
