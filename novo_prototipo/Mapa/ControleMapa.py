@@ -13,7 +13,7 @@ class ControleMapa:
             "Planicie" : MapaPlanicie(self)
         }
 
-        self.__mapa_atual = self.__mapas['Planicie']
+        self.__mapa_atual = self.__mapas['Floresta']
         self.__jogador = self.__mapa_atual.jogador
 
     def __atualizar_mapa(self, novo_mapa):
