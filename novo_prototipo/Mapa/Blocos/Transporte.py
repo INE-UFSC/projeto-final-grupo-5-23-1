@@ -1,7 +1,7 @@
 import pygame
-from Mapa.Blocos.BlocoComInteracao import BlocoComInteracao
+from Mapa.Blocos.interfaces.IBlocoComInteracao import IBlocoComInteracao
 
-class Transporte(BlocoComInteracao):
+class Transporte(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador, mapa):
         super().__init__(pos, surf, groups, observador, True)
         self.__groups = groups

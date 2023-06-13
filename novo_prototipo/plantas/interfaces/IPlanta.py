@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 import pygame
 
-from novo_prototipo.settings import LAYERS
+from settings import LAYERS
 
 class IPlanta(pygame.sprite.Sprite, ABC):
 

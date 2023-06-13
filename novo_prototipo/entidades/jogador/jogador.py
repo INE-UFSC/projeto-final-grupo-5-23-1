@@ -3,7 +3,7 @@ import pygame
 from entidades.jogador.inventario import Inventario
 from itens.ferramentas.Enxada import Enxada
 from itens.sementes.SementeDeTrigo import SementeDeTrigo
-from novo_prototipo.settings import LAYERS
+from settings import LAYERS
 
 
 class Jogador(pygame.sprite.Sprite):

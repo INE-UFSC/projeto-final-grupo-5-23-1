@@ -1,7 +1,7 @@
 import pygame
 from abc import ABC, abstractmethod
 
-from novo_prototipo.settings import LAYERS
+from settings import LAYERS
 
 
 class IBloco(ABC, pygame.sprite.Sprite):
