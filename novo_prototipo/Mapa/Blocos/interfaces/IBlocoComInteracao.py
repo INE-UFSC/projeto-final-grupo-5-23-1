@@ -9,6 +9,9 @@ class IBlocoComInteracao(IBloco):
     def notifica_troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
         self.observador.troca_bloco(posicao_x_matriz, posicao_y_matriz, novo_bloco)
 
+    def notifica_exclui_entidade(self, entidade):
+        self.observador.exclui_entidade(entidade)
+
     @abstractmethod
     def interagir(self, jogador):
         pass
