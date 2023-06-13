@@ -12,7 +12,7 @@ from Mapa.interfaces.IMapa import IMapa
 class MapaFloresta(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.__id = 'floresta'
+        self.__id = 'Floresta'
     
     @property
     def id(self):
@@ -55,7 +55,7 @@ class MapaFloresta(IMapa):
             if layer.name == 'Transporte':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='savana')
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Savana')
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Interacao':
@@ -63,6 +63,10 @@ class MapaFloresta(IMapa):
                     if obj.name == 'Spawn':
                         self.__playerSpawnX = obj.x
                         self.__playerSpawnY = obj.y
+                    
+                    if obj.name == 'Savana':
+                        self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
+                        
                     
     
     def adiciona_entidades(self):

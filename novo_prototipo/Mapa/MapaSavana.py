@@ -6,11 +6,12 @@ from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Caminho import Caminho
 from Mapa.Blocos.Transporte import Transporte
 from Mapa.interfaces.IMapa import IMapa
+import pygame
 
 class MapaSavana(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.__id = 'savana'
+        self.__id = 'Savana'
     
     @property
     def id(self):
@@ -55,6 +56,9 @@ class MapaSavana(IMapa):
                     if obj.name == 'Spawn':
                         self.__playerSpawnX = obj.x
                         self.__playerSpawnY = obj.y
+                    
+                    if obj.name == 'Floresta':
+                        self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
     
     def adiciona_entidades(self):
         self.entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), [self.grupoAll, self.grupoJogador]))

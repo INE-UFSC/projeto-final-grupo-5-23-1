@@ -5,8 +5,8 @@
     },
     "activeFile": "savana.tmx",
     "expandedProjectPaths": [
-        "Tilesets",
-        "."
+        ".",
+        "Tilesets"
     ],
     "fileStates": {
         "Tilesets/tileset.tsx": {
@@ -17,22 +17,22 @@
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 1,
-            "selectedLayer": 5,
+            "scale": 0.75,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 863,
-                "y": 541.5
+                "x": 346.66666666666663,
+                "y": 1566
             }
         },
         "savana.tmx": {
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 1.5,
-            "selectedLayer": 4,
+            "scale": 0.5,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 862,
-                "y": 645.6666666666667
+                "x": 1562,
+                "y": 351
             }
         }
     },

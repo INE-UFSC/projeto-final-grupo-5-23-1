@@ -18,6 +18,7 @@ class IMapa(ABC):
         self.__grupoEntidades = pygame.sprite.Group()
         self.__grupoPlantas = pygame.sprite.Group()
         self.__observadores = []
+        self.__spawns = {}
 
         # Criar matriz dos blocos
         self.__blocos = [[ None for coluna in range(49)]
@@ -120,3 +121,6 @@ class IMapa(ABC):
     def observador(self):
         return self.__observador
     
+    @property
+    def spawns(self):
+        return self.__spawns
