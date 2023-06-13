@@ -14,6 +14,11 @@ class TerraArada(IBlocoComInteracao):
     def adiciona_planta(self, planta: IPlanta):
         if isinstance(planta, IPlanta):
             self.__planta = planta
+            self.__planta.adiciona_observador(self)
+
+    def excluir_planta(self):
+        self.notifica_exclui_entidade(self.__planta)
+        self.__planta = None
 
     def notifica_plantar(self, semente: ISemente):
         if isinstance(semente, ISemente):
@@ -23,6 +28,8 @@ class TerraArada(IBlocoComInteracao):
         if self.__planta == None:
             if isinstance(jogador.item_atual, ISemente):
                 self.notifica_plantar(jogador.item_atual)
+        else:
+            self.__planta.interagir(jogador)
 
     def desenhar(self, tela):
         tela.blit(self.__image, self.__rect)
