@@ -1,3 +1,4 @@
+import pygame
 from entidades.jogador.jogador import Jogador
 from pytmx.util_pygame import load_pygame
 from Mapa.Blocos.Grama import BlocoDeGrama
@@ -5,20 +6,20 @@ from Mapa.Blocos.agua import Agua
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Caminho import Caminho
 from Mapa.Blocos.Transporte import Transporte
+from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
-import pygame
 
-class MapaSavana(IMapa):
+class MapaPlanicie(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.__id = 'Savana'
+        self.__id = 'Planicie'
     
     @property
     def id(self):
         return self.__id
     
     def construir_blocos(self):
-        tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/savana.tmx')
+        tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/planicie.tmx')
         
         for layer in tmx_data.layers:
             if layer.name  == 'Fundo':
@@ -45,29 +46,27 @@ class MapaSavana(IMapa):
                     bloco = Caminho(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransporteFloresta':
+            if layer.name == 'Vendedor':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Floresta')
+                    bloco = Vendedor(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransportePlanicie':
+            if layer.name == 'TransporteSavana':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Planicie')
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Savana')
                     self.blocos[y][x] = bloco
-
+            
             if layer.name == 'Interacao':
                 for obj in layer:
                     if obj.name == 'Spawn':
                         self.__playerSpawnX = obj.x
                         self.__playerSpawnY = obj.y
                     
-                    if obj.name == 'Floresta':
-                        self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
-                    
-                    if obj.name == 'Planicie':
-                        self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
+                    if obj.name == 'Savana':
+                        self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
+                        
                     
     
     def adiciona_entidades(self):

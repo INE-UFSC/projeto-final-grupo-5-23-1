@@ -1,5 +1,6 @@
 from Mapa.MapaFloresta import MapaFloresta
 from Mapa.MapaSavana import MapaSavana
+from Mapa.MapaPlanicie import MapaPlanicie
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 import pygame
 
@@ -8,10 +9,11 @@ class ControleMapa:
         self.__observador = observador
         self.__mapas = {
             "Floresta" : MapaFloresta(self),
-            "Savana" : MapaSavana(self)
+            "Savana" : MapaSavana(self),
+            "Planicie" : MapaPlanicie(self)
         }
 
-        self.__mapa_atual = self.__mapas['Floresta']
+        self.__mapa_atual = self.__mapas['Planicie']
         self.__jogador = self.__mapa_atual.jogador
 
     def __atualizar_mapa(self, novo_mapa):
