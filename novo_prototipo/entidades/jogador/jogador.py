@@ -3,14 +3,12 @@ import pygame
 from entidades.jogador.inventario import Inventario
 from itens.ferramentas.Enxada import Enxada
 from itens.sementes.SementeDeTrigo import SementeDeTrigo
-from novo_prototipo.settings import LAYERS
 
 
 class Jogador(pygame.sprite.Sprite):
 
     def __init__(self, pos, group):
         super().__init__(group)
-        self.__z = LAYERS['Entidades']        
 
         # Setup Geral
         self.__image = pygame.Surface((40,80))
@@ -96,6 +94,3 @@ class Jogador(pygame.sprite.Sprite):
     def moedas(self):
         return self.__moedas
 
-    @property
-    def z(self):
-         return self.__z
