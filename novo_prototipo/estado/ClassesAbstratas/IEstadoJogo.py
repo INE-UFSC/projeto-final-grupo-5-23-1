@@ -8,12 +8,19 @@ from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 class IEstadoJogo(ABC):
 
     def __init__(self):
-        self.epoch = 0
+        self.__ticks = 0
         self.__tamanho_mapa = Vector2(64,64)
         self.__menu_ingame_ativo = False
         self.__menu_ingame = None
         self.__observadores = [ ]
-        
+    
+    @property
+    def ticks(self):
+        return self.__ticks
+    
+    @ticks.setter
+    def ticks(self, ticks: int):
+        self.__ticks = ticks
     @property
     def menu_ingame(self):
         return self.__menu_ingame
