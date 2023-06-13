@@ -65,12 +65,12 @@ class Sistema(ObservadorModoDeJogo):
             elif self.__modo_de_jogo is not None:
                 delta_tempo = self.__clock.tick(self.__fps) / 500
                 self.__modo_de_jogo.checa_eventos(delta_tempo)
-                try:
-                    self.__modo_de_jogo.update()
-                except Exception as ex:
-                    print(ex)
-                    self.__modo_de_jogo = None
-                    self.mostra_mensagem("Erro durante o update...")
+                #try:
+                self.__modo_de_jogo.update()
+                #except Exception as ex:
+                 #   print(ex)
+                  #  self.__modo_de_jogo = None
+                   # self.mostra_mensagem("Erro durante o update...")
 
             # Renderiza o jogo (se ter algum), e então o overlay (se estiver ativo)
             if self.__modo_de_jogo is not None:

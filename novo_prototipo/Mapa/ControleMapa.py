@@ -23,19 +23,16 @@ class ControleMapa:
     
     def __salvar_dados_jogador(self):
         self.__inventario = self.__jogador.inventario
-    
-    def __determinar_nova_pos_jogador(self):
-        self.__jogador.atualiza_posicao(self.__mapa_atual.spawns[self.__mapa_anterior.id])
 
     def __carregar_dados_jogador(self):
         self.__jogador.set_inventario(self.__inventario)
+        self.__jogador.atualiza_posicao(self.__mapa_atual.spawns[self.__mapa_anterior.id])
 
     
     def trocar_mapa_atual(self, novo_mapa):
         self.__salvar_dados_jogador()
         self.__atualizar_mapa(novo_mapa)
         self.__atualizar_jogador()
-        self.__determinar_nova_pos_jogador
         self.__carregar_dados_jogador()
         self.observador.set_jogador(self.mapa_atual.jogador)
 

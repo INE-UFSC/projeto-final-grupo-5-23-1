@@ -48,7 +48,7 @@ class MapaSavana(IMapa):
             if layer.name == 'Transporte':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='floresta')
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Floresta')
                     self.blocos[y][x] = bloco
 
             if layer.name == 'Interacao':
