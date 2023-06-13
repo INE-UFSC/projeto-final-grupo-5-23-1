@@ -8,7 +8,6 @@ from Mapa.Blocos.Caminho import Caminho
 from Mapa.Blocos.Transporte import Transporte
 from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
-from settings import LAYERS 
 
 class MapaFloresta(IMapa):
     def __init__(self, observador):
