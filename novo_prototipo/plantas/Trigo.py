@@ -1,4 +1,5 @@
 import pygame
+from itens.recursos.FardoDeTrigo import FardoDeTrigo
 
 from plantas.interfaces.IPlanta import IPlanta
 
@@ -13,7 +14,7 @@ class Trigo(IPlanta):
         #--------------------------------------------------------
         self.__taxa_de_crescimento = 10
         self.__progresso_crescimento = 0
-        self.__em_crescimento = True
+        
 
     @property
     def image(self):
@@ -24,7 +25,7 @@ class Trigo(IPlanta):
         return self.__rect
     
     def update(self):
-        if self.__em_crescimento:
+        if self.em_crescimento:
             self.__progresso_crescimento +=  self.__taxa_de_crescimento
             posicao_antiga = self.__rect.midbottom
             if self.__progresso_crescimento < 1000:
@@ -36,4 +37,10 @@ class Trigo(IPlanta):
             elif self.__progresso_crescimento < 4000:
                 self.__image = pygame.Surface((20,80))
                 self.__image.fill('yellow')
+                self.em_crescimento = False
             self.__rect = self.__image.get_rect(midbottom = posicao_antiga)
+
+    def interagir(self, jogador):
+        if not self.em_crescimento:
+            jogador.inventario.adicionar_item(FardoDeTrigo())
+            self.notifica_exclui_planta()
