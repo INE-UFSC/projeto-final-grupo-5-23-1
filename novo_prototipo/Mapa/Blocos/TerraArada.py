@@ -35,7 +35,7 @@ class TerraArada(IBlocoComInteracao):
     def definir_textura(self):
         if self.observador.id == 'Floresta':
             return (64, 0, 64, 64)
-        if self.observador.id == 'Savana':
+        if self.observador.id == 'Deserto':
             return (512, 0, 64, 64)
         if self.observador.id == 'Planicie':
             return (128, 64, 64, 64)

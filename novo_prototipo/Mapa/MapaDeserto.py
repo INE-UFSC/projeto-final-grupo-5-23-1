@@ -18,7 +18,7 @@ class MapaDeserto(IMapa):
         return self.__id
     
     def construir_blocos(self):
-        tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/savana.tmx')
+        tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/deserto.tmx')
         
         for layer in tmx_data.layers:
             if layer.name  == 'Fundo':

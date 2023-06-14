@@ -52,10 +52,10 @@ class MapaFloresta(IMapa):
                     bloco = Vendedor(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'Transporte':
+            if layer.name == 'TransporteDeserto':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Savana')
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Interacao':
@@ -64,7 +64,7 @@ class MapaFloresta(IMapa):
                         self.__playerSpawnX = obj.x
                         self.__playerSpawnY = obj.y
                     
-                    if obj.name == 'Savana':
+                    if obj.name == 'Deserto':
                         self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
                         
                     
