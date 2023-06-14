@@ -91,16 +91,6 @@ class ModoDeGameplay(ModoGenerico):
                         self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
                     if event.key == pygame.K_l:
                         print(self.__controleMapa.mapa_atual.jogador.posicao)
-                    if event.key == pygame.K_1:
-                        self.__controleMapa.trocar_mapa_atual('Floresta')
-                    if event.key == pygame.K_2:
-                        self.__controleMapa.trocar_mapa_atual('Deserto')
-                    if event.key == pygame.K_3:
-                        self.__controleMapa.trocar_mapa_atual('Neve')
-                    if event.key == pygame.K_4:
-                        self.__controleMapa.trocar_mapa_atual('Planicie')
-                    if event.key == pygame.K_5:
-                        self.__controleMapa.trocar_mapa_atual('Caverna')
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouseClicked = True
@@ -127,6 +117,18 @@ class ModoDeGameplay(ModoGenerico):
             else:
                 direcao.x = 0
             # -----------
+
+            # Keybinds temporárias para teleportar entre mapas
+            if keys[pygame.K_LCTRL] and keys[pygame.K_1]:
+                self.__controleMapa.trocar_mapa_atual('Floresta')
+            if keys[pygame.K_LCTRL] and keys[pygame.K_2]:
+                self.__controleMapa.trocar_mapa_atual('Deserto')
+            if keys[pygame.K_LCTRL] and keys[pygame.K_3]:
+                self.__controleMapa.trocar_mapa_atual('Neve')
+            if keys[pygame.K_LCTRL] and keys[pygame.K_4]:
+                self.__controleMapa.trocar_mapa_atual('Planicie')
+            if keys[pygame.K_LCTRL] and keys[pygame.K_5]:
+                self.__controleMapa.trocar_mapa_atual('Caverna')
 
                         
             # Keyboard controls the moves of the player's unit

@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "savana.tmx",
+    "activeFile": "neve.tmx",
     "expandedProjectPaths": [
-        ".",
-        "Tilesets"
+        "Tilesets",
+        "."
     ],
     "fileStates": {
         "Tilesets/tileset.tsx": {
@@ -50,22 +50,22 @@
             "expandedObjectLayers": [
                 8
             ],
-            "scale": 0.75,
+            "scale": 0.33,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 1210.6666666666665,
-                "y": 767.3333333333333
+                "x": 1581.818181818182,
+                "y": 1434.8484848484848
             }
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 0.27233737244897954,
-            "selectedLayer": 5,
+            "scale": 0.75,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 348.8320355951057,
-                "y": 1566.0722440138165
+                "x": 994.6666666666666,
+                "y": 954
             }
         },
         "savana.tmx": {
@@ -88,13 +88,18 @@
     "map.width": 49,
     "openFiles": [
         "floresta.tmx",
-        "savana.tmx",
-        "planicie.tmx"
+        "planicie.tmx",
+        "deserto.tmx",
+        "neve.tmx",
+        "caverna.tmx"
     ],
     "project": "mapas-jogo.tiled-project",
     "recentFiles": [
         "floresta.tmx",
         "planicie.tmx",
+        "deserto.tmx",
+        "caverna.tmx",
+        "neve.tmx",
         "savana.tmx",
         "Tilesets/tileset.tsx"
     ],
