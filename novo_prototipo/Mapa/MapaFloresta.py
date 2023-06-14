@@ -59,14 +59,7 @@ class MapaFloresta(IMapa):
 
             if layer.name == 'Spawns':
                 for obj in layer:
-                    if obj.name == 'Default':
-                        self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
-                    
-                    if obj.name == 'Deserto':
-                        self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
-                    
-                    if obj.name == 'Neve':
-                        self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
+                    self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
                         
                     
     
