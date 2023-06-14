@@ -17,11 +17,11 @@
             "expandedObjectLayers": [
                 6
             ],
-            "scale": 0.27233737244897954,
-            "selectedLayer": 5,
+            "scale": 0.5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1571.580118260055,
-                "y": 1569.7441601779756
+                "x": 1316,
+                "y": 1073
             }
         },
         "deserto.tmx": {
@@ -31,8 +31,8 @@
             "scale": 0.27233737244897954,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 1567.908202095896,
-                "y": 2708.038171067268
+                "x": 1564.2362859317373,
+                "y": 1382.4764358058665
             }
         },
         "floresta.tmx": {
@@ -50,11 +50,11 @@
             "expandedObjectLayers": [
                 8
             ],
-            "scale": 0.27233737244897954,
-            "selectedLayer": 6,
+            "scale": 0.75,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 1567.908202095896,
-                "y": 427.7782331245244
+                "x": 1210.6666666666665,
+                "y": 767.3333333333333
             }
         },
         "planicie.tmx": {
