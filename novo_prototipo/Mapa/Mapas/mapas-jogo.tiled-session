@@ -13,15 +13,26 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "caverna.tmx": {
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 0.27233737244897954,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 1571.580118260055,
+                "y": 1569.7441601779756
+            }
+        },
         "deserto.tmx": {
             "expandedObjectLayers": [
                 5
             ],
             "scale": 0.27233737244897954,
-            "selectedLayer": -1,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 1564.2362859317373,
-                "y": 1566.0722440138165
+                "x": 1567.908202095896,
+                "y": 2708.038171067268
             }
         },
         "floresta.tmx": {
@@ -29,10 +40,10 @@
                 4
             ],
             "scale": 0.33,
-            "selectedLayer": 1,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1563.6363636363635,
-                "y": 1559.0909090909092
+                "x": 348.4848484848485,
+                "y": 1565.151515151515
             }
         },
         "neve.tmx": {
@@ -42,8 +53,8 @@
             "scale": 0.27233737244897954,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1571.580118260055,
-                "y": 1569.7441601779756
+                "x": 1567.908202095896,
+                "y": 427.7782331245244
             }
         },
         "planicie.tmx": {
@@ -51,9 +62,9 @@
                 4
             ],
             "scale": 0.27233737244897954,
-            "selectedLayer": -1,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 1564.2362859317373,
+                "x": 348.8320355951057,
                 "y": 1566.0722440138165
             }
         },
