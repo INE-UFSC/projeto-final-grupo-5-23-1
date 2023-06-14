@@ -53,8 +53,7 @@ class MapaNeve(IMapa):
             if layer.name == 'Spawns':
                 for obj in layer:
                     if obj.name == 'Default':
-                        self.__playerSpawnX = obj.x
-                        self.__playerSpawnY = obj.y
+                        self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
                     
                     if obj.name == 'Floresta':
                         self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
@@ -62,4 +61,4 @@ class MapaNeve(IMapa):
                     
     
     def adiciona_entidades(self):
-        self.entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), [self.grupoAll, self.grupoJogador]))
+        self.entidades.append(Jogador(self.spawns['Default'], [self.grupoAll, self.grupoJogador]))

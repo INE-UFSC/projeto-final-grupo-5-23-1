@@ -91,6 +91,16 @@ class ModoDeGameplay(ModoGenerico):
                         self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
                     if event.key == pygame.K_l:
                         print(self.__controleMapa.mapa_atual.jogador.posicao)
+                    if event.key == pygame.K_1:
+                        self.__controleMapa.trocar_mapa_atual('Floresta')
+                    if event.key == pygame.K_2:
+                        self.__controleMapa.trocar_mapa_atual('Deserto')
+                    if event.key == pygame.K_3:
+                        self.__controleMapa.trocar_mapa_atual('Neve')
+                    if event.key == pygame.K_4:
+                        self.__controleMapa.trocar_mapa_atual('Planicie')
+                    if event.key == pygame.K_5:
+                        self.__controleMapa.trocar_mapa_atual('Caverna')
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouseClicked = True

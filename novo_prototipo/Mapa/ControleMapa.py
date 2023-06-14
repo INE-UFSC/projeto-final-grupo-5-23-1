@@ -30,7 +30,10 @@ class ControleMapa:
 
     def __carregar_dados_jogador(self):
         self.__jogador.set_inventario(self.__inventario)
-        self.__jogador.atualiza_posicao(self.__mapa_atual.spawns[self.__mapa_anterior.id])
+        try:
+            self.__jogador.atualiza_posicao(self.__mapa_atual.spawns[self.__mapa_anterior.id])
+        except KeyError:
+            self.__jogador.atualiza_posicao(self.__mapa_atual.spawns['Default'])
 
     
     def trocar_mapa_atual(self, novo_mapa):
