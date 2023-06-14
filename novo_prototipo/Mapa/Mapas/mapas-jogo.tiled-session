@@ -25,11 +25,19 @@
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 0.25,
+            "scale": 0.33,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 1863.6363636363635,
+                "y": 1550
+            }
+        },
+        "neve.tmx": {
+            "scale": 0.27233737244897954,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1564,
-                "y": 1562
+                "x": 1571.580118260055,
+                "y": 1569.7441601779756
             }
         },
         "planicie.tmx": {
