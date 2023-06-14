@@ -39,6 +39,8 @@ class TerraArada(IBlocoComInteracao):
             return (512, 0, 64, 64)
         if self.observador.id == 'Planicie':
             return (128, 64, 64, 64)
+        if self.observador.id == 'Neve':
+            return (448, 64, 64, 64)
 
     def desenhar(self, tela):
         tela.blit(self.__image, self.__rect, self.__textura)

@@ -4,22 +4,20 @@ from pytmx.util_pygame import load_pygame
 from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.agua import Agua
 from Mapa.Blocos.Parede import Parede
-from Mapa.Blocos.Caminho import Caminho
 from Mapa.Blocos.Transporte import Transporte
-from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
 
-class MapaFloresta(IMapa):
+class MapaNeve(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.__id = 'Floresta'
+        self.__id = 'Neve'
     
     @property
     def id(self):
         return self.__id
     
     def construir_blocos(self):
-        tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/floresta.tmx')
+        tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/neve.tmx')
         
         for layer in tmx_data.layers:
             if layer.name  == 'Fundo':
@@ -39,42 +37,27 @@ class MapaFloresta(IMapa):
                     pos = (x*64, y*64)
                     bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
-
-            if layer.name == 'Caminho':
+        
+            if layer.name == 'TransporteFloresta':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Caminho(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Floresta')
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'Vendedor':
+            if layer.name == 'TransporteCaverna':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Vendedor(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Caverna')
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransporteDeserto':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
-                    self.blocos[y][x] = bloco
-            
-            if layer.name == 'TransporteNeve':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
-                    self.blocos[y][x] = bloco
-
-            if layer.name == 'Interacao':
+            if layer.name == 'Spawns':
                 for obj in layer:
-                    if obj.name == 'Spawn':
+                    if obj.name == 'Default':
                         self.__playerSpawnX = obj.x
                         self.__playerSpawnY = obj.y
                     
-                    if obj.name == 'Deserto':
+                    if obj.name == 'Floresta':
                         self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
-                    
-                    if obj.name == 'Neve':
-                        self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
                         
                     
     
