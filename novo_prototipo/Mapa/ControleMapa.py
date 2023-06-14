@@ -2,6 +2,7 @@ from Mapa.MapaFloresta import MapaFloresta
 from Mapa.MapaDeserto import MapaDeserto
 from Mapa.MapaPlanicie import MapaPlanicie
 from Mapa.MapaNeve import MapaNeve
+from Mapa.MapaCaverna import MapaCaverna
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 import pygame
 
@@ -12,7 +13,8 @@ class ControleMapa:
             "Floresta" : MapaFloresta(self),
             "Deserto" : MapaDeserto(self),
             "Planicie" : MapaPlanicie(self),
-            "Neve" : MapaNeve(self)
+            "Neve" : MapaNeve(self),
+            "Caverna" : MapaCaverna(self)
         }
 
         self.__mapa_atual = self.__mapas['Floresta']

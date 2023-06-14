@@ -7,17 +7,17 @@ from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
 from Mapa.interfaces.IMapa import IMapa
 
-class MapaPlanicie(IMapa):
+class MapaCaverna(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.__id = 'Planicie'
+        self.__id = 'Caverna'
     
     @property
     def id(self):
         return self.__id
     
     def construir_blocos(self):
-        tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/planicie.tmx')
+        tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/caverna.tmx')
         
         for layer in tmx_data.layers:
             if layer.name  == 'Fundo':
@@ -38,16 +38,16 @@ class MapaPlanicie(IMapa):
                     bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransporteDeserto':
+            if layer.name == 'TransportePlanicie':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Planicie')
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransporteCaverna':
+            if layer.name == 'TransporteNeve':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Caverna')
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Spawns':
@@ -55,11 +55,11 @@ class MapaPlanicie(IMapa):
                     if obj.name == 'Default':
                         self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
                     
-                    if obj.name == 'Deserto':
+                    if obj.name == 'Planicie':
                         self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
                     
-                    if obj.name == 'Caverna':
-                        self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
+                    if obj.name == 'Neve':  
+                        self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
                         
                     
     

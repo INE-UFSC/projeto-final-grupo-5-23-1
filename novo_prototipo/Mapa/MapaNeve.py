@@ -57,6 +57,9 @@ class MapaNeve(IMapa):
                     
                     if obj.name == 'Floresta':
                         self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
+                    
+                    if obj.name == 'Caverna':
+                        self.spawns[obj.name] = pygame.math.Vector2(obj.x,obj.y)
                         
                     
     
