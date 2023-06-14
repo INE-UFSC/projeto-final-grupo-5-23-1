@@ -14,11 +14,14 @@
             "scaleInEditor": 1
         },
         "deserto.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
             "scale": 0.27233737244897954,
-            "selectedLayer": 0,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 1571.580118260055,
-                "y": 1569.7441601779756
+                "x": 1564.2362859317373,
+                "y": 1566.0722440138165
             }
         },
         "floresta.tmx": {
@@ -26,13 +29,16 @@
                 4
             ],
             "scale": 0.33,
-            "selectedLayer": 7,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1863.6363636363635,
-                "y": 1550
+                "x": 1563.6363636363635,
+                "y": 1559.0909090909092
             }
         },
         "neve.tmx": {
+            "expandedObjectLayers": [
+                8
+            ],
             "scale": 0.27233737244897954,
             "selectedLayer": 6,
             "viewCenter": {
@@ -45,9 +51,9 @@
                 4
             ],
             "scale": 0.27233737244897954,
-            "selectedLayer": 4,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 414.9265265499678,
+                "x": 1564.2362859317373,
                 "y": 1566.0722440138165
             }
         },

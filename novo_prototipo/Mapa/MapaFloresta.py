@@ -4,7 +4,6 @@ from pytmx.util_pygame import load_pygame
 from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.agua import Agua
 from Mapa.Blocos.Parede import Parede
-from Mapa.Blocos.Caminho import Caminho
 from Mapa.Blocos.Transporte import Transporte
 from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
@@ -39,12 +38,6 @@ class MapaFloresta(IMapa):
                     pos = (x*64, y*64)
                     bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
-
-            if layer.name == 'Caminho':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Caminho(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
-                    self.blocos[y][x] = bloco
             
             if layer.name == 'Vendedor':
                 for x, y, surf in layer.tiles():
@@ -64,9 +57,9 @@ class MapaFloresta(IMapa):
                     bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
                     self.blocos[y][x] = bloco
 
-            if layer.name == 'Interacao':
+            if layer.name == 'Spawns':
                 for obj in layer:
-                    if obj.name == 'Spawn':
+                    if obj.name == 'Default':
                         self.__playerSpawnX = obj.x
                         self.__playerSpawnY = obj.y
                     
