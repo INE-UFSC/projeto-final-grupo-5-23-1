@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "planicie.tmx",
+    "activeFile": "savana.tmx",
     "expandedProjectPaths": [
-        "Tilesets",
-        "."
+        ".",
+        "Tilesets"
     ],
     "fileStates": {
         "Tilesets/tileset.tsx": {
@@ -29,10 +29,10 @@
                 4
             ],
             "scale": 0.27233737244897954,
-            "selectedLayer": 4,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 1619.3150283941225,
-                "y": 1404.5079327908202
+                "x": 1321.8898190972427,
+                "y": 1624.822902640361
             }
         },
         "savana.tmx": {
@@ -42,8 +42,8 @@
             "scale": 0.25,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 1872,
-                "y": 1502
+                "x": 1868,
+                "y": 1498
             }
         }
     },
@@ -61,8 +61,8 @@
     "project": "mapas-jogo.tiled-project",
     "recentFiles": [
         "floresta.tmx",
-        "savana.tmx",
         "planicie.tmx",
+        "savana.tmx",
         "Tilesets/tileset.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",

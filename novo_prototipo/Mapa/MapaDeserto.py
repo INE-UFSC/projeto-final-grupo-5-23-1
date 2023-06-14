@@ -8,10 +8,10 @@ from Mapa.Blocos.Transporte import Transporte
 from Mapa.interfaces.IMapa import IMapa
 import pygame
 
-class MapaSavana(IMapa):
+class MapaDeserto(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.__id = 'Savana'
+        self.__id = 'Deserto'
     
     @property
     def id(self):

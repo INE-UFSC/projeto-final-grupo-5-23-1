@@ -1,5 +1,5 @@
 from Mapa.MapaFloresta import MapaFloresta
-from Mapa.MapaSavana import MapaSavana
+from Mapa.MapaDeserto import MapaDeserto
 from Mapa.MapaPlanicie import MapaPlanicie
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 import pygame
@@ -9,7 +9,7 @@ class ControleMapa:
         self.__observador = observador
         self.__mapas = {
             "Floresta" : MapaFloresta(self),
-            "Savana" : MapaSavana(self),
+            "Deserto" : MapaDeserto(self),
             "Planicie" : MapaPlanicie(self)
         }
 
