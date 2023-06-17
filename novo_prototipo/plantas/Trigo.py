@@ -1,5 +1,6 @@
 import pygame
 from itens.recursos.FardoDeTrigo import FardoDeTrigo
+from itens.Item import Item
 
 from plantas.interfaces.IPlanta import IPlanta
 
@@ -42,5 +43,11 @@ class Trigo(IPlanta):
 
     def interagir(self, jogador):
         if not self.em_crescimento:
-            jogador.inventario.adicionar_item(FardoDeTrigo())
-            self.notifica_exclui_planta()
+            lista_nomes_itens = []
+            for item in jogador.inventario.itens:
+                if isinstance(item, Item):
+                    lista_nomes_itens.append(item.nome)
+            item = FardoDeTrigo()
+            if (jogador.inventario.capacidade_atual < jogador.inventario.capacidade_maxima) or (item.nome in  lista_nomes_itens):
+                jogador.inventario.adicionar_item(item)
+                self.notifica_exclui_planta()
