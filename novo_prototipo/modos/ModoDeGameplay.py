@@ -1,6 +1,7 @@
 from comandos import ComandoDeInteracao, ComandoAbrirMenu, ComandoMover
 from menus import MenuInventario, MenuGenerico
 from estado.ClassesAbstratas.IEstadoJogo import IEstadoJogo
+from menus.MenuHud import MenuHud
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
 from Mapa.ControleMapa import ControleMapa
 
@@ -27,6 +28,9 @@ class ModoDeGameplay(ModoGenerico):
         # Controls
         self.__jogador = self.__controleMapa.mapa_atual.jogador
         self.__comandos = [ ]
+
+        # Menu do hud:
+        self.__hud = MenuHud(self.__jogador.inventario, self.__jogador)
         
     @property
     def comprimento_bloco(self):
@@ -74,6 +78,7 @@ class ModoDeGameplay(ModoGenerico):
         direcao = Vector2()
         mouseClicked = False
         eventos = pygame.event.get()
+        
         for event in eventos:
 
             if event.type == pygame.QUIT:
@@ -97,7 +102,8 @@ class ModoDeGameplay(ModoGenerico):
         
         if not self.estado_jogo.menu_ingame_ativo:
             keys = pygame.key.get_pressed()
-
+            # Hud
+            self.__hud.checa_eventos(eventos)
             # Direções ---
             if keys[pygame.K_w]:
                 direcao.y = -1
@@ -129,11 +135,14 @@ class ModoDeGameplay(ModoGenerico):
 
     def update(self):
         self.__roda_comandos()
+        self.__hud.update()
         self.__atualiza_entidades()
         self.estado_jogo.ticks += 1
 
 
     def render(self, tela):
         self.__controleMapa.mapa_atual.desenhar(tela)
+        self.__hud.render(tela)
         if self.estado_jogo.menu_ingame_ativo:
             self.estado_jogo.menu_ingame.render(tela)
+        
