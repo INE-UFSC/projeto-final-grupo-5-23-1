@@ -29,7 +29,7 @@ class BotaoItem():
         self.__texto_preco_visual_rect = self.__texto_preco_visual.get_rect(center=self.__calcula_posicao_preco())
         
         #Imagem do item
-        self.__imagem_item = item.imagem
+        self.__imagem_item = pygame.transform.scale(item.imagem, (72, 72))
         self.__rect_imagem_item = self.__imagem_item.get_rect(center=self.__calcula_posicao_imagem_item())        
         
         #Seleção
@@ -65,4 +65,4 @@ class BotaoItem():
         tela.blit(self.__texto_nome_visual, self.__texto_nome_visual_rect)
         tela.blit(self.__texto_preco_visual, self.__texto_preco_visual_rect)
         if self.__selecionado == True:
-            pygame.draw.rect(tela, 'white', pygame.Rect(self.rect.x, self.rect.y, 320, 82), 1)
+            pygame.draw.rect(tela, 'white', pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height), 1)
