@@ -129,6 +129,8 @@ class ModoDeGameplay(ModoGenerico):
                 self.__controleMapa.trocar_mapa_atual('Planicie')
             if keys[pygame.K_LCTRL] and keys[pygame.K_5]:
                 self.__controleMapa.trocar_mapa_atual('Caverna')
+            if keys[pygame.K_LCTRL] and keys[pygame.K_6]:
+                self.__controleMapa.trocar_mapa_atual('Transporte')
 
                         
             # Keyboard controls the moves of the player's unit

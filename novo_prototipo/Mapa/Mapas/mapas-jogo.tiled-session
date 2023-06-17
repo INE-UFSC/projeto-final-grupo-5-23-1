@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "planicie.tmx",
+    "activeFile": "transporte.tmx",
     "expandedProjectPaths": [
         ".",
         "Tilesets"
@@ -20,8 +20,8 @@
             "scale": 0.25,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1564,
-                "y": 1562
+                "x": 1556,
+                "y": 1558
             }
         },
         "deserto.tmx": {
@@ -31,8 +31,8 @@
             "scale": 0.27233737244897954,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1560.5643697675782,
-                "y": 1562.4003278496575
+                "x": 1567.9082020958963,
+                "y": 1566.0722440138165
             }
         },
         "floresta.tmx": {
@@ -42,8 +42,8 @@
             "scale": 0.33,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1563.6363636363635,
-                "y": 1562.1212121212122
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "neve.tmx": {
@@ -53,8 +53,8 @@
             "scale": 0.25,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1560,
-                "y": 1562
+                "x": 1568,
+                "y": 1566
             }
         },
         "planicie.tmx": {
@@ -64,8 +64,8 @@
             "scale": 0.25,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1768,
-                "y": 1374
+                "x": 1568,
+                "y": 1566
             }
         },
         "savana.tmx": {
@@ -78,28 +78,38 @@
                 "x": 1868,
                 "y": 1498
             }
+        },
+        "transporte.tmx": {
+            "scale": 0.34216746794871794,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 1318.068028803934,
+                "y": 1196.782389789825
+            }
         }
     },
     "last.imagePath": "/home/gabriel/Documentos/projeto-final-grupo-5-23-1/novo_prototipo/Mapa/Mapas/Tilesets",
-    "map.height": 49,
+    "map.height": 39,
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
-    "map.width": 49,
+    "map.width": 39,
     "openFiles": [
         "floresta.tmx",
         "planicie.tmx",
         "deserto.tmx",
         "neve.tmx",
-        "caverna.tmx"
+        "caverna.tmx",
+        "transporte.tmx"
     ],
     "project": "mapas-jogo.tiled-project",
     "recentFiles": [
         "floresta.tmx",
-        "caverna.tmx",
-        "neve.tmx",
-        "deserto.tmx",
         "planicie.tmx",
+        "deserto.tmx",
+        "neve.tmx",
+        "caverna.tmx",
+        "transporte.tmx",
         "savana.tmx",
         "Tilesets/tileset.tsx"
     ],
