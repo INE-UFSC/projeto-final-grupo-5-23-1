@@ -9,7 +9,6 @@ class MenuHud(MenuGenerico):
     def __init__(self, inventario, jogador):
         super().__init__()
         self.__inventario = inventario.itens[0:inventario.tamanho_matriz[0]]
-        print(inventario.itens)
         self.__jogador = jogador
         self.__indice_selecionado = 0
         self.__comandos = []

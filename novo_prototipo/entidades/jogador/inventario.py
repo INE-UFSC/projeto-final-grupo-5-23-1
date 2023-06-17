@@ -35,6 +35,8 @@ class Inventario:
                 for item in self.__itens:
                     if isinstance(item, Item):
                         lista_de_nomes.append(item.nome)
+                    else:
+                        lista_de_nomes.append(None)
 
                 if item_a_ser_adicionado.nome in lista_de_nomes:
                     indice_item = lista_de_nomes.index(item_a_ser_adicionado.nome)
