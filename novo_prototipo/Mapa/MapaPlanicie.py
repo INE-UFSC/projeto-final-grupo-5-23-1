@@ -38,13 +38,13 @@ class MapaPlanicie(IMapa):
                     bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransporteDeserto':
+            if layer.name == 'TpDeserto':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
                     bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransporteCaverna':
+            if layer.name == 'TpCaverna':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
                     bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Caverna')

@@ -45,13 +45,13 @@ class MapaFloresta(IMapa):
                     bloco = Vendedor(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransporteDeserto':
+            if layer.name == 'TpDeserto':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
                     bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TransporteNeve':
+            if layer.name == 'TpNeve':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
                     bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')

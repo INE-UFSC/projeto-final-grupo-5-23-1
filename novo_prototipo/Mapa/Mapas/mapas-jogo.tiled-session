@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "neve.tmx",
+    "activeFile": "planicie.tmx",
     "expandedProjectPaths": [
-        "Tilesets",
-        "."
+        ".",
+        "Tilesets"
     ],
     "fileStates": {
         "Tilesets/tileset.tsx": {
@@ -17,11 +17,11 @@
             "expandedObjectLayers": [
                 6
             ],
-            "scale": 0.5,
+            "scale": 0.25,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1316,
-                "y": 1073
+                "x": 1564,
+                "y": 1562
             }
         },
         "deserto.tmx": {
@@ -29,10 +29,10 @@
                 5
             ],
             "scale": 0.27233737244897954,
-            "selectedLayer": 5,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1564.2362859317373,
-                "y": 1382.4764358058665
+                "x": 1560.5643697675782,
+                "y": 1562.4003278496575
             }
         },
         "floresta.tmx": {
@@ -40,32 +40,32 @@
                 4
             ],
             "scale": 0.33,
-            "selectedLayer": 6,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 348.4848484848485,
-                "y": 1565.151515151515
+                "x": 1563.6363636363635,
+                "y": 1562.1212121212122
             }
         },
         "neve.tmx": {
             "expandedObjectLayers": [
                 8
             ],
-            "scale": 0.33,
-            "selectedLayer": 5,
+            "scale": 0.25,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 1581.818181818182,
-                "y": 1434.8484848484848
+                "x": 1560,
+                "y": 1562
             }
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 0.75,
-            "selectedLayer": 3,
+            "scale": 0.25,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 994.6666666666666,
-                "y": 954
+                "x": 1768,
+                "y": 1374
             }
         },
         "savana.tmx": {
@@ -96,10 +96,10 @@
     "project": "mapas-jogo.tiled-project",
     "recentFiles": [
         "floresta.tmx",
-        "planicie.tmx",
-        "deserto.tmx",
         "caverna.tmx",
         "neve.tmx",
+        "deserto.tmx",
+        "planicie.tmx",
         "savana.tmx",
         "Tilesets/tileset.tsx"
     ],
