@@ -1,5 +1,9 @@
 from Mapa.MapaFloresta import MapaFloresta
-from Mapa.MapaSavana import MapaSavana
+from Mapa.MapaDeserto import MapaDeserto
+from Mapa.MapaPlanicie import MapaPlanicie
+from Mapa.MapaNeve import MapaNeve
+from Mapa.MapaCaverna import MapaCaverna
+from Mapa.MapaTransporte import MapaTransporte
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 import pygame
 
@@ -7,8 +11,12 @@ class ControleMapa:
     def __init__(self, observador):
         self.__observador = observador
         self.__mapas = {
-            "Floresta" : MapaFloresta(self),
-            "Savana" : MapaSavana(self)
+            'Floresta' : MapaFloresta(self),
+            'Deserto' : MapaDeserto(self),
+            'Planicie' : MapaPlanicie(self),
+            'Neve' : MapaNeve(self),
+            'Caverna' : MapaCaverna(self),
+            'Transporte' : MapaTransporte(self)
         }
 
         self.__mapa_atual = self.__mapas['Floresta']
@@ -26,7 +34,10 @@ class ControleMapa:
 
     def __carregar_dados_jogador(self):
         self.__jogador.set_inventario(self.__inventario)
-        self.__jogador.atualiza_posicao(self.__mapa_atual.spawns[self.__mapa_anterior.id])
+        try:
+            self.__jogador.atualiza_posicao(self.__mapa_atual.spawns[self.__mapa_anterior.id])
+        except KeyError:
+            self.__jogador.atualiza_posicao(self.__mapa_atual.spawns['Default'])
 
     
     def trocar_mapa_atual(self, novo_mapa):
