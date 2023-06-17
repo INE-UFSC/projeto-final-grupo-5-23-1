@@ -38,6 +38,12 @@ class MapaNeve(IMapa):
                     bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
         
+            if layer.name == 'TpTransporte':
+                for x, y, surf in layer.tiles():
+                    pos = (x*64, y*64)
+                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Transporte')
+                    self.blocos[y][x] = bloco
+
             if layer.name == 'TpFloresta':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)

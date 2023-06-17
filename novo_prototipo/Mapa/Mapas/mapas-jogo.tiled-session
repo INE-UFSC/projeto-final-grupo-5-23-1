@@ -18,10 +18,10 @@
                 6
             ],
             "scale": 0.25,
-            "selectedLayer": 3,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1556,
-                "y": 1558
+                "x": 1548,
+                "y": 1554
             }
         },
         "deserto.tmx": {
@@ -29,10 +29,10 @@
                 5
             ],
             "scale": 0.27233737244897954,
-            "selectedLayer": 3,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1567.9082020958963,
-                "y": 1566.0722440138165
+                "x": 1564.2362859317373,
+                "y": 1562.4003278496575
             }
         },
         "floresta.tmx": {
@@ -40,10 +40,10 @@
                 4
             ],
             "scale": 0.33,
-            "selectedLayer": 4,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 1566.6666666666665,
-                "y": 1565.151515151515
+                "x": 1563.6363636363635,
+                "y": 1925.7575757575755
             }
         },
         "neve.tmx": {
@@ -51,10 +51,10 @@
                 8
             ],
             "scale": 0.25,
-            "selectedLayer": 4,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 1568,
-                "y": 1566
+                "x": 1564,
+                "y": 1562
             }
         },
         "planicie.tmx": {
@@ -62,10 +62,10 @@
                 4
             ],
             "scale": 0.25,
-            "selectedLayer": 4,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1568,
-                "y": 1566
+                "x": 1564,
+                "y": 1562
             }
         },
         "savana.tmx": {
@@ -80,11 +80,11 @@
             }
         },
         "transporte.tmx": {
-            "scale": 0.34216746794871794,
+            "scale": 0.75,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1318.068028803934,
-                "y": 1196.782389789825
+                "x": 930.6666666666666,
+                "y": 680.6666666666666
             }
         }
     },
