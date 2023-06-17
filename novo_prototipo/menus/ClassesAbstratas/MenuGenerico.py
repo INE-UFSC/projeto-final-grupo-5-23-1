@@ -18,7 +18,7 @@ class MenuGenerico(ABC):
         return self.__observadores
 
     @abstractmethod
-    def checa_eventos(self):
+    def checa_eventos(self, eventos):
         pass
     @abstractmethod
     def update(self):
