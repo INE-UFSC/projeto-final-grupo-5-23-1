@@ -1,3 +1,4 @@
+from itens.Item import Item
 import pygame
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 from entidades.jogador.jogador import Jogador
@@ -29,6 +30,8 @@ class MenuVendedor(MenuGenerico):
         #Texto nome do Vendedor
         self.__fonte_nome_vendedor = pygame.font.Font('novo_prototipo/assets/ui/raidercrusadersemistraight.ttf', 25)
         self.__texto_nome_vendedor = self.__fonte_nome_vendedor.render(vendedor.nome, True, 'white')
+        
+        
         #Coluna da direita:
         #Texto 'Comprar':
         self.__fonte_comprar = pygame.font.Font('novo_prototipo/assets/ui/font.ttf', 16)
@@ -80,15 +83,16 @@ class MenuVendedor(MenuGenerico):
 
         indice_botao_provisorio = 0
         for item in itens:
-            if indice_botao_provisorio == self.__item_selecionado:
-                pagina_provisoria.append(BotaoItem(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_TESTE.png', posicao=posicoes_botoes[indice_botao_provisorio], caminho_fonte=self.__fonte_botoes, cor_fonte=self.__cor_fonte_botoes, item=item, selecionado=True))
-            else:
-                pagina_provisoria.append(BotaoItem(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_TESTE.png', posicao=posicoes_botoes[indice_botao_provisorio], caminho_fonte=self.__fonte_botoes, cor_fonte=self.__cor_fonte_botoes, item=item, selecionado=False))
-            indice_botao_provisorio += 1
-            if len(pagina_provisoria) == self.__num_itens_por_pagina:
-                matriz_paginas.append(pagina_provisoria)
-                pagina_provisoria = []
-                indice_botao_provisorio = 0
+            if isinstance(item, Item):
+                if indice_botao_provisorio == self.__item_selecionado:
+                    pagina_provisoria.append(BotaoItem(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_TESTE.png', posicao=posicoes_botoes[indice_botao_provisorio], caminho_fonte=self.__fonte_botoes, cor_fonte=self.__cor_fonte_botoes, item=item, selecionado=True))
+                else:
+                    pagina_provisoria.append(BotaoItem(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_TESTE.png', posicao=posicoes_botoes[indice_botao_provisorio], caminho_fonte=self.__fonte_botoes, cor_fonte=self.__cor_fonte_botoes, item=item, selecionado=False))
+                indice_botao_provisorio += 1
+                if len(pagina_provisoria) == self.__num_itens_por_pagina:
+                    matriz_paginas.append(pagina_provisoria)
+                    pagina_provisoria = []
+                    indice_botao_provisorio = 0
                 
         if len(pagina_provisoria) != 0:
             matriz_paginas.append(pagina_provisoria)
@@ -141,7 +145,7 @@ class MenuVendedor(MenuGenerico):
             comando.run()
         self.__comandos.clear()
 
-        if len(self.__inventario_selecionado[self.__modo_vendedor].itens) == 0:
+        if self.__inventario_selecionado[self.__modo_vendedor].capacidade_atual == 0:
             self.lista_botoes_vazia = True
         else:
             self.lista_botoes_vazia = False

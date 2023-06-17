@@ -14,7 +14,7 @@ class Vendedor(IBlocoComInteracao):
         
         #Atributos personalidade:
         self.__nome = "Flofler, a vendedora"
-        self.__inventario = Inventario(20)
+        self.__inventario = Inventario([4, 5])
         self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo', quantidade = 10))
         self.__inventario.adicionar_item(Enxada('Enxada'))
         self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo2', quantidade = 10))
