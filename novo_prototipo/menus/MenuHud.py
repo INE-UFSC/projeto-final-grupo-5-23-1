@@ -19,8 +19,9 @@ class MenuHud(MenuGenerico):
         self.__espacamento_slots = 10
         self.__slots_hud = self.__criar_slots()
 
-    def __atualiza_itens(self):
-        self.__inventario = self.__jogador.inventario.itens[0:3]
+    def __atualiza_itens(self, jogador):
+        self.__inventario = jogador.inventario.itens[0:3]
+        self.__jogador = jogador
         self.__slots_hud = self.__criar_slots()
         return
     
@@ -64,11 +65,11 @@ class MenuHud(MenuGenerico):
                 self.__comandos.append(ComandoSelecionaItemAtual(self.__jogador, self.__inventario[self.__indice_selecionado]))
         
                         
-    def update(self):
+    def update(self, jogador):
         for comando in self.__comandos:
             comando.run()
         self.__comandos.clear()
-        self.__atualiza_itens()
+        self.__atualiza_itens(jogador)
 
     def render(self, tela):
         for slot in self.__slots_hud:

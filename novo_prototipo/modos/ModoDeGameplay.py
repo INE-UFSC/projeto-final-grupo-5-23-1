@@ -149,7 +149,7 @@ class ModoDeGameplay(ModoGenerico):
 
     def update(self):
         self.__roda_comandos()
-        self.__hud.update()
+        self.__hud.update(self.__jogador)
         self.__atualiza_entidades()
         self.estado_jogo.ticks += 1
 
