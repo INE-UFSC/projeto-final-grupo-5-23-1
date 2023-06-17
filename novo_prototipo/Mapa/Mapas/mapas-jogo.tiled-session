@@ -18,7 +18,7 @@
                 6
             ],
             "scale": 0.25,
-            "selectedLayer": 6,
+            "selectedLayer": -1,
             "viewCenter": {
                 "x": 1548,
                 "y": 1554
@@ -29,9 +29,9 @@
                 5
             ],
             "scale": 0.27233737244897954,
-            "selectedLayer": 6,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 1564.2362859317373,
+                "x": 1560.5643697675782,
                 "y": 1562.4003278496575
             }
         },
@@ -51,9 +51,9 @@
                 8
             ],
             "scale": 0.25,
-            "selectedLayer": 7,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 1564,
+                "x": 1560,
                 "y": 1562
             }
         },
@@ -62,9 +62,9 @@
                 4
             ],
             "scale": 0.25,
-            "selectedLayer": 6,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 1564,
+                "x": 1560,
                 "y": 1562
             }
         },
@@ -80,11 +80,11 @@
             }
         },
         "transporte.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 3,
+            "scale": 0.33,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 930.6666666666666,
-                "y": 680.6666666666666
+                "x": 1260.6060606060605,
+                "y": 1268.181818181818
             }
         }
     },

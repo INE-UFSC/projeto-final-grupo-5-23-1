@@ -2,7 +2,6 @@ import pygame
 from entidades.jogador.jogador import Jogador
 from pytmx.util_pygame import load_pygame
 from Mapa.Blocos.Grama import BlocoDeGrama
-from Mapa.Blocos.agua import Agua
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
 from entidades.vendedor import Vendedor
@@ -24,13 +23,7 @@ class MapaFloresta(IMapa):
             if layer.name  == 'Fundo':
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
-                    bloco = Agua(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador=self)
-                    self.blocos[y][x] = bloco
-
-            if layer.name == 'Parede':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Parede(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
+                    bloco = Parede(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador=self)
                     self.blocos[y][x] = bloco
 
             if layer.name == 'Grama':
