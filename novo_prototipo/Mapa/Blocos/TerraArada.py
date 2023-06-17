@@ -6,9 +6,10 @@ from plantas.interfaces.IPlanta import IPlanta
 class TerraArada(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador):
         super().__init__(pos, surf, groups, observador)
-        self.__image = pygame.Surface((64,64))
-        self.__image.fill((160,82,45))
+        self.__image = pygame.image.load('novo_prototipo/Mapa/Mapas/Tilesets/tileset.png')
+        #self.__image.fill((160,82,45))
         self.__rect = self.__image.get_rect(topleft= pos)
+        self.__textura = self.definir_textura()
         self.__planta = None
 
     def adiciona_planta(self, planta: IPlanta):
@@ -31,5 +32,17 @@ class TerraArada(IBlocoComInteracao):
         else:
             self.__planta.interagir(jogador)
 
+    def definir_textura(self):
+        if self.observador.id == 'Floresta':
+            return (64, 0, 64, 64)
+        if self.observador.id == 'Deserto':
+            return (512, 0, 64, 64)
+        if self.observador.id == 'Planicie':
+            return (128, 64, 64, 64)
+        if self.observador.id == 'Neve':
+            return (448, 64, 64, 64)
+        if self.observador.id == 'Caverna':
+            return (320, 0, 64, 64)
+
     def desenhar(self, tela):
-        tela.blit(self.__image, self.__rect)
+        tela.blit(self.__image, self.__rect, self.__textura)
