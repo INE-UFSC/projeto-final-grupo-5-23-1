@@ -9,12 +9,13 @@ class Jogador(pygame.sprite.Sprite):
 
     def __init__(self, pos, group):
         super().__init__(group)
-
-        # Setup Geral
+        self.__nome = 'Nome do Principal'
+        # Setup Geral TROCAR NOME DO ATRIBUTO 'IMAGE' NA IMPLEMENTAÇÃO DA TEXTURA
         self.__image = pygame.Surface((40,80))
         self.__image.fill('red')
         self.__rect = self.__image.get_rect(midbottom= pos)
-        self.__inventario = Inventario(5)
+        self.__inventario = Inventario([3,4])
+        self.__imagem = pygame.image.load('novo_prototipo/assets/ui/jogador_TESTE.png')
 
         # Movimentação
         self.__status = 'baixo' # Refere-se a direção que o player está olhando
@@ -58,6 +59,10 @@ class Jogador(pygame.sprite.Sprite):
     def set_inventario(self, inventario):
         self.__inventario = inventario
 
+    @property
+    def nome(self):
+        return self.__nome
+
     @property    
     def status(self):
         return self.__status
@@ -84,6 +89,10 @@ class Jogador(pygame.sprite.Sprite):
     @property
     def velocidade(self):
         return self.__velocidade
+    
+    @property
+    def imagem(self):
+        return self.__imagem
     
     @property
     def item_atual(self):
