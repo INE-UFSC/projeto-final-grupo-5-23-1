@@ -3,16 +3,18 @@ from pygame import Vector2
 import pygame
 from entidades.jogador.jogador import Jogador
 from itens.sementes.ISemente import ISemente
-
+from Mapa.Blocos.TerraArada import TerraArada
 
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
+
+from Mapa.Camera import Camera
 
 class IMapa(ABC):
 
     @abstractmethod
     def __init__(self, observador):
         self.__entidades = []
-        self.__grupoAll = pygame.sprite.Group()
+        self.__grupoAll = Camera()
         self.__grupoBlocos = pygame.sprite.Group()
         self.__grupoJogador = pygame.sprite.Group()
         self.__grupoEntidades = pygame.sprite.Group()
@@ -49,12 +51,12 @@ class IMapa(ABC):
     def troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
         self.__blocos[posicao_y_matriz][posicao_x_matriz] = novo_bloco
         return
-    
+
     def plantar(self, posicao_x_matriz, posicao_y_matriz, semente: ISemente):
         posicao_planta = Vector2()
         posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.x + 32
         posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.y + 40
-        planta = semente.constroi_planta(posicao_planta, self.__grupoPlantas)
+        planta = semente.constroi_planta(posicao_planta, [self.__grupoAll, self.__grupoPlantas])
         self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
         self.jogador.inventario.remover_item(semente)
 
@@ -64,14 +66,15 @@ class IMapa(ABC):
             grupo.remove(entidade_a_ser_excluida)
 
     def desenhar(self, tela: pygame.Surface):
-        self.__grupoBlocos.draw(tela)
-        for linha in self.blocos:
-            for bloco in linha:
-                bloco.desenhar(tela)
+        self.grupoAll.custom_draw(self.jogador)
+        #self.__grupoBlocos.draw(tela)
+        #for linha in self.blocos:
+         #   for bloco in linha:
+          #      bloco.desenhar(tela)
 
-        self.__grupoPlantas.draw(tela)
-        self.__grupoEntidades.draw(tela)
-        self.__grupoJogador.draw(tela)
+        #self.__grupoPlantas.draw(tela)
+        #self.__grupoEntidades.draw(tela)
+        #self.__grupoJogador.draw(tela)
 
     @property
     def observadores(self):

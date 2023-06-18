@@ -67,8 +67,3 @@ class MapaTransporte(IMapa):
     
     def adiciona_entidades(self):
         self.entidades.append(Jogador(self.spawns['Default'], [self.grupoAll, self.grupoJogador]))
-
-    def desenhar(self, tela: pygame.Surface):
-        self.grupoBlocos.draw(tela)
-        self.grupoEntidades.draw(tela)
-        self.grupoJogador.draw(tela)

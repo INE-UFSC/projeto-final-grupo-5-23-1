@@ -1,4 +1,5 @@
 import pygame
+from settings import *
 
 from entidades.jogador.inventario import Inventario
 from itens.ferramentas.Enxada import Enxada
@@ -16,6 +17,7 @@ class Jogador(pygame.sprite.Sprite):
         self.__rect = self.__image.get_rect(midbottom= pos)
         self.__inventario = Inventario([3,4])
         self.__imagem = pygame.image.load('novo_prototipo/assets/ui/jogador_TESTE.png')
+        self.__z = LAYERS['main']
 
         # Movimentação
         self.__status = 'baixo' # Refere-se a direção que o player está olhando
@@ -106,3 +108,6 @@ class Jogador(pygame.sprite.Sprite):
     def moedas(self):
         return self.__moedas
 
+    @property
+    def z(self):
+        return self.__z

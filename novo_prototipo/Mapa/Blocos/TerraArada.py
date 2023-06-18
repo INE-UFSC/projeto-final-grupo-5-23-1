@@ -2,15 +2,16 @@ import pygame
 from Mapa.Blocos.interfaces.IBlocoComInteracao import IBlocoComInteracao
 from itens.sementes.ISemente import ISemente
 from plantas.interfaces.IPlanta import IPlanta
+from settings import *
 
 class TerraArada(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador):
         super().__init__(pos, surf, groups, observador)
         self.__image = pygame.image.load('novo_prototipo/Mapa/Mapas/Tilesets/tileset.png')
-        #self.__image.fill((160,82,45))
         self.__rect = self.__image.get_rect(topleft= pos)
         self.__textura = self.definir_textura()
         self.__planta = None
+        self.__z = LAYERS['solo']
 
     def adiciona_planta(self, planta: IPlanta):
         if isinstance(planta, IPlanta):
@@ -44,5 +45,24 @@ class TerraArada(IBlocoComInteracao):
         if self.observador.id == 'Caverna':
             return (320, 0, 64, 64)
 
-    def desenhar(self, tela):
+    def draw(self, tela):
         tela.blit(self.__image, self.__rect, self.__textura)
+    
+    def desenhar(self, tela):
+        pass
+
+    @property
+    def z(self):
+        return self.__z
+    
+    @property
+    def image(self):
+        return self.__image
+    
+    @property
+    def rect(self):
+        return self.__rect
+    
+    @property
+    def textura(self):
+        return self.__textura

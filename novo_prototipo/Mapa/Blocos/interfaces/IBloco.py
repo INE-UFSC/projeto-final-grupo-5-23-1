@@ -1,4 +1,5 @@
 import pygame
+from settings import *
 from abc import ABC, abstractmethod
 
 
@@ -9,6 +10,7 @@ class IBloco(ABC, pygame.sprite.Sprite):
         self.__rect = self.__image.get_rect(topleft=pos)
         self.__observador = observador
         self.__colisao = colisao
+        self.__z = LAYERS['blocos']
 
         self.__pos = pos
         self.__surf = surf
@@ -43,7 +45,19 @@ class IBloco(ABC, pygame.sprite.Sprite):
     @property
     def surf(self):
          return self.__surf
+    
+    @property
+    def z(self):
+         return self.__z
+    
+    @image.setter
+    def image(self, image):
+         self.__image = image
+        
+    @rect.setter
+    def rect(self, rect):
+         self.__rect = rect
 
-    @abstractmethod
-    def desenhar(self, tela: pygame.Surface):
-        pass
+    #@abstractmethod
+    #def desenhar(self, tela: pygame.Surface):
+     #   pass

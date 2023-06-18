@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 import pygame
+from settings import *
 
 class IPlanta(pygame.sprite.Sprite, ABC):
 
@@ -10,6 +11,7 @@ class IPlanta(pygame.sprite.Sprite, ABC):
         self.__pos = pos
         self.__observadores = []
         self.__em_crescimento = True
+        self.__z = LAYERS['main']
 
     @property
     def nome(self):
@@ -43,6 +45,10 @@ class IPlanta(pygame.sprite.Sprite, ABC):
     def notifica_exclui_planta(self):
         for observador in self.__observadores:
             observador.excluir_planta()
+    
+    @property
+    def z(self):
+        return self.__z
 
     @abstractmethod
     def update(self):
