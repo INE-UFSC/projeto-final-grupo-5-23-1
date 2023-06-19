@@ -61,4 +61,5 @@ class MapaDeserto(IMapa):
         pygame.mixer.music.stop()        
         pygame.mixer.init()
         pygame.mixer.music.load("./novo_prototipo/trilha/trilha_deserto.mp3")
+        pygame.mixer.music.set_volume(0.2)        
         pygame.mixer.music.play(-1)
