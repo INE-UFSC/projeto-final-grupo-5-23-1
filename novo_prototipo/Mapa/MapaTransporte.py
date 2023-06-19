@@ -7,8 +7,8 @@ from Mapa.Blocos.Transporte import Transporte
 from Mapa.interfaces.IMapa import IMapa
 
 class MapaTransporte(IMapa):
-    def __init__(self, observador):
-        super().__init__(observador)
+    def __init__(self, observador, tamanho):
+        super().__init__(observador, tamanho)
         self.__id = 'Transporte'
     
     @property

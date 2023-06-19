@@ -12,9 +12,9 @@ from Mapa.Camera import Camera
 class IMapa(ABC):
 
     @abstractmethod
-    def __init__(self, observador):
+    def __init__(self, observador, tamanho=49):
         self.__entidades = []
-        self.__grupoAll = Camera()
+        self.__grupoAll = Camera(tamanho)
         self.__grupoBlocos = pygame.sprite.Group()
         self.__grupoJogador = pygame.sprite.Group()
         self.__grupoEntidades = pygame.sprite.Group()
@@ -22,9 +22,10 @@ class IMapa(ABC):
         self.__observadores = []
         self.__spawns = {}
 
+
         # Criar matriz dos blocos
-        self.__blocos = [[ None for coluna in range(49)]
-                              for linha in range(49)]
+        self.__blocos = [[ None for coluna in range(tamanho)]
+                              for linha in range(tamanho)]
         
         self.adiciona_observador(observador)
 

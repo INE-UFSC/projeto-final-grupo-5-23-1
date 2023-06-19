@@ -11,6 +11,7 @@ class MapaFloresta(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
         self.__id = 'Floresta'
+        self.tamanho = 49
     
     @property
     def id(self):

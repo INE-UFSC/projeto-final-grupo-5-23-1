@@ -16,7 +16,7 @@ class ControleMapa:
             'Planicie' : MapaPlanicie(self),
             'Neve' : MapaNeve(self),
             'Caverna' : MapaCaverna(self),
-            'Transporte' : MapaTransporte(self)
+            'Transporte' : MapaTransporte(self,39)
         }
 
         self.__mapa_atual = self.__mapas['Floresta']
