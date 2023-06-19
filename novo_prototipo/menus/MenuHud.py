@@ -19,9 +19,20 @@ class MenuHud(MenuGenerico):
         self.__espacamento_slots = 10
         self.__slots_hud = self.__criar_slots()
 
+        #Imagem moeda do jogo: 25x25
+        self.__imagem_moeda = pygame.image.load('novo_prototipo/assets/ui/imagem_moeda_TESTE.png')
+        self.__rect_imagem_moeda = self.__imagem_moeda.get_rect()
+        self.__rect_imagem_moeda.midleft = (self.__slots_hud[0].rect.topleft[0], self.__slots_hud[0].rect.topleft[1] - ((self.__rect_imagem_moeda.height/2) + 10))
+        #Número de moedas do jogador
+        self.__fonte_texto_numero_moedas = pygame.font.Font('novo_prototipo/assets/ui/font.ttf', 16)
+        self.__texto_numero_moedas = self.__fonte_texto_numero_moedas.render(str(self.__jogador.moedas), True, 'White')
+        self.__rect_texto_numero_moedas = self.__texto_numero_moedas.get_rect(midleft=(self.__rect_imagem_moeda.midright[0] + 10, self.__rect_imagem_moeda.midright[1]))
+        
+
     def __atualiza_itens(self, jogador):
         self.__inventario = jogador.inventario.itens[0:3]
         self.__jogador = jogador
+        self.__texto_numero_moedas = self.__fonte_texto_numero_moedas.render(str(self.__jogador.moedas), True, 'White')
         self.__slots_hud = self.__criar_slots()
         return
     
@@ -72,5 +83,9 @@ class MenuHud(MenuGenerico):
         self.__atualiza_itens(jogador)
 
     def render(self, tela):
+        # Número de moedas do hud
+        tela.blit(self.__imagem_moeda, self.__rect_imagem_moeda)
+        tela.blit(self.__texto_numero_moedas, self.__rect_texto_numero_moedas)
+        # Slots do hud
         for slot in self.__slots_hud:
             slot.render(tela)
