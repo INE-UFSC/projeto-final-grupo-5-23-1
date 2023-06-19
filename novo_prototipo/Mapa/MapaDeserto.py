@@ -56,3 +56,9 @@ class MapaDeserto(IMapa):
     
     def adiciona_entidades(self):
         self.entidades.append(Jogador(self.spawns['Default'], [self.grupoAll, self.grupoJogador]))
+
+    def tocar_musica(self):
+        pygame.mixer.music.stop()        
+        pygame.mixer.init()
+        pygame.mixer.music.load("./novo_prototipo/trilha/trilha_deserto.mp3")
+        pygame.mixer.music.play(-1)

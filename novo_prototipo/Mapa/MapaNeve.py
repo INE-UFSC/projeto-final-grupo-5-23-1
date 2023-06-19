@@ -57,3 +57,10 @@ class MapaNeve(IMapa):
     
     def adiciona_entidades(self):
         self.entidades.append(Jogador(self.spawns['Default'], [self.grupoAll, self.grupoJogador]))
+
+    def tocar_musica(self):
+        pygame.mixer.music.stop()        
+        pygame.mixer.init()
+        pygame.mixer.music.load("./novo_prototipo/trilha/trilha_neve.mp3")
+        pygame.mixer.music.play(-1)
+        #pygame.mixer.music.stop()

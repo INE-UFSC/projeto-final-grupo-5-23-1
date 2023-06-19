@@ -4,7 +4,6 @@ import os
 import pygame
 from estado.EstadoJogo import EstadoJogo
 
-from trilha.TrilhaSonora import TrilhaSonora
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 class Sistema(ObservadorModoDeJogo):
@@ -29,10 +28,6 @@ class Sistema(ObservadorModoDeJogo):
         self.__fps = 60
         self.__rodando = True
 
-        # Trilha sonora
-        self.trilha_sonora = TrilhaSonora()
-        self.trilha_sonora.set_volume(0)
-
     def mostra_mensagem(self, message):
         self.__modo_de_overlay = ModoDeMensagem(message)
         self.__modo_de_overlay.adiciona_observador(self)
@@ -54,8 +49,6 @@ class Sistema(ObservadorModoDeJogo):
         self.__rodando = False
 
     def run(self):
-        # Tocar a trilha sonora ao iniciar o jogo
-        self.trilha_sonora.tocar()
 
         while self.__rodando:
             # Os eventos e updates são exclusivos dos modos
@@ -86,9 +79,6 @@ class Sistema(ObservadorModoDeJogo):
             # Update display
             pygame.display.update()
             self.__clock.tick(self.__fps)
-
-        # Parar a trilha sonora ao fechar o jogo
-        self.trilha_sonora.parar()
 
         pygame.quit()
 

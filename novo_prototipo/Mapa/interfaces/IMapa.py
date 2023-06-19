@@ -8,6 +8,7 @@ from Mapa.Blocos.TerraArada import TerraArada
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 
 from Mapa.Camera import Camera
+from Mapa import ControleMapa
 
 class IMapa(ABC):
 
@@ -22,7 +23,6 @@ class IMapa(ABC):
         self.__observadores = []
         self.__spawns = {}
 
-
         # Criar matriz dos blocos
         self.__blocos = [[ None for coluna in range(tamanho)]
                               for linha in range(tamanho)]
@@ -31,9 +31,16 @@ class IMapa(ABC):
 
         self.construir_blocos()
         self.adiciona_entidades()
+
+        self.parar_musica_anterior()
+        self.tocar_musica()
     
     @abstractmethod
     def construir_blocos(self):
+        pass
+
+    @abstractmethod
+    def tocar_musica(self):
         pass
     
     def adiciona_observador(self, observador):
@@ -68,6 +75,9 @@ class IMapa(ABC):
 
     def desenhar(self, tela: pygame.Surface):
         self.grupoAll.custom_draw(self.jogador)
+
+    def parar_musica_anterior(self):
+        pygame.mixer.music.stop()
 
     @property
     def observadores(self):
