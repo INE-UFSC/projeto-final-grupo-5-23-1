@@ -19,12 +19,14 @@ class ControleMapa:
             'Transporte' : MapaTransporte(self,tamanho=39)
         }
 
-        self.__mapa_atual = self.__mapas['Floresta']
+        self.__mapa_atual = None #self.__mapas['Floresta']
+        self.__atualizar_mapa('Floresta')
         self.__jogador = self.__mapa_atual.jogador
 
     def __atualizar_mapa(self, novo_mapa):
         self.__mapa_anterior = self.__mapa_atual
         self.__mapa_atual = self.__mapas[novo_mapa]
+        self.__mapa_atual.tocar_musica()
     
     def __atualizar_jogador(self):
         self.__jogador = self.__mapa_atual.jogador

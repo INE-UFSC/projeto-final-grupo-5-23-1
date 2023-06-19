@@ -31,9 +31,6 @@ class IMapa(ABC):
 
         self.construir_blocos()
         self.adiciona_entidades()
-
-        self.parar_musica_anterior()
-        self.tocar_musica()
     
     @abstractmethod
     def construir_blocos(self):
@@ -75,9 +72,6 @@ class IMapa(ABC):
 
     def desenhar(self, tela: pygame.Surface):
         self.grupoAll.custom_draw(self.jogador)
-
-    def parar_musica_anterior(self):
-        pygame.mixer.music.stop()
 
     @property
     def observadores(self):

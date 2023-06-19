@@ -73,4 +73,3 @@ class MapaTransporte(IMapa):
         pygame.mixer.init()
         pygame.mixer.music.load("./novo_prototipo/trilha/trilha_transporte.mp3")
         pygame.mixer.music.play(-1)
-        #pygame.mixer.music.stop()     
