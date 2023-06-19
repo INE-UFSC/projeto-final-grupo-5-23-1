@@ -68,14 +68,6 @@ class IMapa(ABC):
 
     def desenhar(self, tela: pygame.Surface):
         self.grupoAll.custom_draw(self.jogador)
-        #self.__grupoBlocos.draw(tela)
-        #for linha in self.blocos:
-         #   for bloco in linha:
-          #      bloco.desenhar(tela)
-
-        #self.__grupoPlantas.draw(tela)
-        #self.__grupoEntidades.draw(tela)
-        #self.__grupoJogador.draw(tela)
 
     @property
     def observadores(self):
