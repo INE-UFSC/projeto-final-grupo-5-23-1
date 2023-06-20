@@ -4,6 +4,7 @@ from menus.MenuVendedor import MenuVendedor
 from entidades.jogador.inventario import Inventario
 from itens.sementes.SementeDeTrigo import SementeDeTrigo
 from itens.ferramentas.Enxada import Enxada
+from itens.ferramentas.Regador import Regador
 
 class Vendedor(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador):
@@ -26,6 +27,7 @@ class Vendedor(IBlocoComInteracao):
         self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo8', quantidade = 10))
         self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo9', quantidade = 10))
         self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo10', quantidade = 10))
+        self.__inventario.adicionar_item(Regador())
         self.__imagem = pygame.image.load('novo_prototipo/assets/ui/vendedor_TESTE.png')
         self.__imagem_dialogo = pygame.image.load('novo_prototipo/assets/ui/dialogo_TESTE.png')
 
