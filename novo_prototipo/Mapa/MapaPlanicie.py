@@ -60,7 +60,5 @@ class MapaPlanicie(IMapa):
 
     def tocar_musica(self):
         pygame.mixer.music.stop()        
-        pygame.mixer.init()
         pygame.mixer.music.load("./novo_prototipo/trilha/trilha_planicie.mp3")
-        pygame.mixer.music.set_volume(0.2)
         pygame.mixer.music.play(-1)      
