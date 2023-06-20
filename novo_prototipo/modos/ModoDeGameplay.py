@@ -70,6 +70,7 @@ class ModoDeGameplay(ModoGenerico):
     def __atualiza_entidades(self):
         for mapa in self.__controleMapa.mapas.values():
             mapa.grupoPlantas.update()
+            mapa.grupoBlocos.update()
         self.__jogador.update()
         return
 
