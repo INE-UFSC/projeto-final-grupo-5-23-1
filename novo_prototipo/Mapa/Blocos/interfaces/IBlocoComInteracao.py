@@ -9,6 +9,9 @@ class IBlocoComInteracao(IBloco):
     def notifica_troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
         self.observador.troca_bloco(posicao_x_matriz, posicao_y_matriz, novo_bloco)
 
+    def notifica_adiciona_entidade(self, entidade):
+        self.observador.adiciona_entidade(entidade)
+
     def notifica_exclui_entidade(self, entidade):
         self.observador.exclui_entidade(entidade)
 
