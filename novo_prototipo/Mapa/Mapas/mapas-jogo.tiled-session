@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "transporte.tmx",
+    "activeFile": "floresta.tmx",
     "expandedProjectPaths": [
         ".",
         "Tilesets"
@@ -40,10 +40,10 @@
                 4
             ],
             "scale": 0.25,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1604,
-                "y": 1406
+                "x": 1600,
+                "y": 1402
             }
         },
         "neve.tmx": {
@@ -83,7 +83,7 @@
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1384.8484848484848,
+                "x": 1381.818181818182,
                 "y": 1095.4545454545455
             }
         }
@@ -104,12 +104,12 @@
     ],
     "project": "mapas-jogo.tiled-project",
     "recentFiles": [
-        "floresta.tmx",
-        "planicie.tmx",
-        "deserto.tmx",
-        "neve.tmx",
-        "caverna.tmx",
         "transporte.tmx",
+        "caverna.tmx",
+        "neve.tmx",
+        "deserto.tmx",
+        "planicie.tmx",
+        "floresta.tmx",
         "savana.tmx",
         "Tilesets/tileset.tsx"
     ],
