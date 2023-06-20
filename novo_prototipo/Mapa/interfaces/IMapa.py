@@ -8,6 +8,7 @@ from Mapa.Blocos.TerraArada import TerraArada
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 
 from Mapa.Camera import Camera
+from Mapa import ControleMapa
 
 class IMapa(ABC):
 
@@ -29,7 +30,7 @@ class IMapa(ABC):
         self.adiciona_observador(observador)
 
         self.construir_blocos()
-        self.adiciona_entidades()
+        self.adiciona_jogador()
     
     @abstractmethod
     def construir_blocos(self):
@@ -42,16 +43,19 @@ class IMapa(ABC):
     def adiciona_observador(self, observador):
         self.__observadores.append(observador)
 
+    def adiciona_jogador(self):
+        self.__entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), [self.__grupoAll, self.__grupoJogador]))
+
+    def adiciona_entidade(self, entidade):
+        self.__grupoAll.add(entidade)
+
     def notifica_troca_mapa(self, mapa):
         self.__observadores[0].trocar_mapa_atual(mapa)
 
     def notifica_ativa_menu(self, menu: MenuGenerico):
         for observador in self.__observadores:
             observador.notifica_ativa_menu(menu)
-
-    def adiciona_entidades(self):
-        self.__entidades.append(Jogador((self.__playerSpawnX, self.__playerSpawnY), [self.__grupoAll, self.__grupoJogador]))
-
+    
     def troca_bloco(self, posicao_x_matriz, posicao_y_matriz, novo_bloco):
         self.__blocos[posicao_y_matriz][posicao_x_matriz] = novo_bloco
         return
@@ -65,18 +69,9 @@ class IMapa(ABC):
         self.jogador.inventario.remover_item(semente)
 
     def exclui_entidade(self, entidade_a_ser_excluida):
-        for grupo in self.grupos:
+        grupos_de_entidades = [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]
+        for grupo in grupos_de_entidades:
             grupo.remove(entidade_a_ser_excluida)
-    
-    def exclui_camada(self, tipo_bloco):
-        for grupo in self.grupos:
-            for entidade in grupo:
-                if isinstance(entidade, tipo_bloco):
-                    grupo.remove(entidade)
-    
-    def notifica_exclui_barreira(self, mapa):
-        self.controleMapa.desbloquear_mapa(mapa)
-
 
     def desenhar(self, tela: pygame.Surface):
         self.grupoAll.custom_draw(self.jogador)
@@ -132,11 +127,3 @@ class IMapa(ABC):
     @property
     def spawns(self):
         return self.__spawns
-    
-    @property
-    def controleMapa(self):
-        return self.__observadores[0]
-    
-    @property
-    def grupos(self):
-        return [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]
