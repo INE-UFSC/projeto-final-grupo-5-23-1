@@ -6,12 +6,12 @@ from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
 from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
+from Mapa.Blocos.Barreira import Barreira
 
 class MapaFloresta(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
         self.__id = 'Floresta'
-        self.tamanho = 49
     
     @property
     def id(self):
@@ -55,6 +55,18 @@ class MapaFloresta(IMapa):
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
                     bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
+                    self.blocos[y][x] = bloco
+            
+            if layer.name == 'ConstrucaoNeve':
+                for x, y, surf in layer.tiles():
+                    pos = (x*64, y*64)
+                    bloco = Barreira(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
+                    self.blocos[y][x] = bloco
+            
+            if layer.name == 'ConstrucaoDeserto':
+                for x, y, surf in layer.tiles():
+                    pos = (x*64, y*64)
+                    bloco = Barreira(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
                     self.blocos[y][x] = bloco
 
             if layer.name == 'Spawns':

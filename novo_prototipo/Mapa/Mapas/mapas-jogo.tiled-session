@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "floresta.tmx",
+    "activeFile": "caverna.tmx",
     "expandedProjectPaths": [
-        ".",
-        "Tilesets"
+        "Tilesets",
+        "."
     ],
     "fileStates": {
         "Tilesets/tileset.tsx": {
@@ -20,30 +20,30 @@
             "scale": 0.25,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1568,
-                "y": 1566
+                "x": 1628,
+                "y": 1134
             }
         },
         "deserto.tmx": {
             "expandedObjectLayers": [
                 5
             ],
-            "scale": 0.27233737244897954,
-            "selectedLayer": 0,
+            "scale": 0.33,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 1567.9082020958963,
-                "y": 1566.0722440138165
+                "x": 1666.6666666666665,
+                "y": 1453.0303030303032
             }
         },
         "floresta.tmx": {
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 0.25,
-            "selectedLayer": 2,
+            "scale": 0.33,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 1600,
-                "y": 1402
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "neve.tmx": {
@@ -51,7 +51,7 @@
                 8
             ],
             "scale": 0.25,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 1568,
                 "y": 1566
@@ -83,8 +83,8 @@
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1381.818181818182,
-                "y": 1095.4545454545455
+                "x": 1245.4545454545455,
+                "y": 1246.969696969697
             }
         }
     },
@@ -104,12 +104,12 @@
     ],
     "project": "mapas-jogo.tiled-project",
     "recentFiles": [
+        "floresta.tmx",
+        "planicie.tmx",
+        "deserto.tmx",
+        "neve.tmx",
         "transporte.tmx",
         "caverna.tmx",
-        "neve.tmx",
-        "deserto.tmx",
-        "planicie.tmx",
-        "floresta.tmx",
         "savana.tmx",
         "Tilesets/tileset.tsx"
     ],

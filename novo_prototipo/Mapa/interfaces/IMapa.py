@@ -8,7 +8,6 @@ from Mapa.Blocos.TerraArada import TerraArada
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 
 from Mapa.Camera import Camera
-from Mapa import ControleMapa
 
 class IMapa(ABC):
 
@@ -66,9 +65,18 @@ class IMapa(ABC):
         self.jogador.inventario.remover_item(semente)
 
     def exclui_entidade(self, entidade_a_ser_excluida):
-        grupos_de_entidades = [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]
-        for grupo in grupos_de_entidades:
+        for grupo in self.grupos:
             grupo.remove(entidade_a_ser_excluida)
+    
+    def exclui_camada(self, tipo_bloco):
+        for grupo in self.grupos:
+            for entidade in grupo:
+                if isinstance(entidade, tipo_bloco):
+                    grupo.remove(entidade)
+    
+    def notifica_exclui_barreira(self, mapa):
+        self.controleMapa.desbloquear_mapa(mapa)
+
 
     def desenhar(self, tela: pygame.Surface):
         self.grupoAll.custom_draw(self.jogador)
@@ -124,3 +132,11 @@ class IMapa(ABC):
     @property
     def spawns(self):
         return self.__spawns
+    
+    @property
+    def controleMapa(self):
+        return self.__observadores[0]
+    
+    @property
+    def grupos(self):
+        return [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]

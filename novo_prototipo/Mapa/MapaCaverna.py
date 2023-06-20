@@ -4,6 +4,7 @@ from pytmx.util_pygame import load_pygame
 from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
+from Mapa.Blocos.Barreira import Barreira
 from Mapa.interfaces.IMapa import IMapa
 
 class MapaCaverna(IMapa):
@@ -47,6 +48,12 @@ class MapaCaverna(IMapa):
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
                     bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
+                    self.blocos[y][x] = bloco
+            
+            if layer.name == 'ConstrucaoNeve':
+                for x, y, surf in layer.tiles():
+                    pos = (x*64, y*64)
+                    bloco = Barreira(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Spawns':

@@ -137,6 +137,10 @@ class ModoDeGameplay(ModoGenerico):
                 self.__controleMapa.trocar_mapa_atual('Caverna')
             if keys[pygame.K_LCTRL] and keys[pygame.K_6]:
                 self.__controleMapa.trocar_mapa_atual('Transporte')
+            if keys[pygame.K_LCTRL] and keys[pygame.K_LSHIFT] and keys[pygame.K_1]:
+                mapas = self.__controleMapa.mapas.values()
+                for mapa in mapas:
+                    mapa.set_bloqueado(False)
 
                         
             # Keyboard controls the moves of the player's unit

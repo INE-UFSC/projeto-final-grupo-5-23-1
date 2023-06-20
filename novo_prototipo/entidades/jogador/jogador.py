@@ -107,6 +107,9 @@ class Jogador(pygame.sprite.Sprite):
     @property
     def moedas(self):
         return self.__moedas
+    
+    def set_moedas(self, moedas):
+        self.__moedas = moedas
 
     @property
     def z(self):

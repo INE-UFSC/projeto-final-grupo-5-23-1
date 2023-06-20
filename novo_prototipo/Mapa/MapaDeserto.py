@@ -3,6 +3,7 @@ from pytmx.util_pygame import load_pygame
 from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
+from Mapa.Blocos.Barreira import Barreira
 from Mapa.interfaces.IMapa import IMapa
 import pygame
 
@@ -48,11 +49,25 @@ class MapaDeserto(IMapa):
                     pos = (x*64, y*64)
                     bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Planicie')
                     self.blocos[y][x] = bloco
+            
+            #if layer.name == 'Barreiras':
 
             if layer.name == 'Spawns':
                 for obj in layer:
                     self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
                     
+            if layer.name == 'Barreiras':
+                for obj in layer:
+                    if obj.name == 'Transporte':
+                        bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Transporte')
+                    if obj.name == 'Floresta':
+                        bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Floresta')
+                    if obj.name == 'Planicie':
+                        bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Planicie')
+                    
+                    x_matriz = int(obj.x // 64)
+                    y_matriz = int(obj.y // 64)
+                    self.blocos[y_matriz][x_matriz] = bloco
     
     def adiciona_entidades(self):
         self.entidades.append(Jogador(self.spawns['Default'], [self.grupoAll, self.grupoJogador]))
