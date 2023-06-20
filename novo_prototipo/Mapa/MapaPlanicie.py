@@ -66,7 +66,7 @@ class MapaPlanicie(IMapa):
                         
                     
     
-    def adiciona_entidades(self):
+    def adiciona_jogador(self):
         self.entidades.append(Jogador(self.spawns['Default'], [self.grupoAll, self.grupoJogador]))
 
     def tocar_musica(self):
