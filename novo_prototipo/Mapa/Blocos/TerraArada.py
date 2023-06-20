@@ -37,8 +37,9 @@ class TerraArada(IBlocoComInteracao):
         if isinstance(jogador.item_atual, Regador):
             self.regada = True
             self.__tempo_restante_regada = 5000
-            self.__sobreposicao_agua = SobreposicaoAgua(posicao=self.rect.topleft)
-            self.notifica_adiciona_entidade(self.__sobreposicao_agua)
+            if self.__sobreposicao_agua == None:
+                self.__sobreposicao_agua = SobreposicaoAgua(posicao=self.rect.topleft)
+                self.notifica_adiciona_entidade(self.__sobreposicao_agua)
             return
         if self.__planta == None:
             if isinstance(jogador.item_atual, ISemente):
