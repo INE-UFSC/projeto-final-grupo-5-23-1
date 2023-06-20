@@ -39,22 +39,18 @@ class MapaFloresta(IMapa):
                     bloco = Vendedor(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TpTransporte':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Transporte')
-                    self.blocos[y][x] = bloco
+            if layer.name == 'Tps':
+                for obj in layer:
+                    if obj.name == 'Transporte':
+                        bloco = Transporte(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Transporte')
+                    if obj.name == 'Deserto':
+                        bloco = Transporte(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
+                    if obj.name == 'Neve':
+                        bloco = Transporte(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa= 'Neve')
+                    
+                    x = int(obj.x // 64)
+                    y = int(obj.y // 64)
 
-            if layer.name == 'TpDeserto':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
-                    self.blocos[y][x] = bloco
-            
-            if layer.name == 'TpNeve':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Barreiras':
@@ -66,9 +62,10 @@ class MapaFloresta(IMapa):
                     if obj.name == 'Neve':
                         bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
                     
-                    x_matriz = int(obj.x // 64)
-                    y_matriz = int(obj.y // 64)
-                    self.blocos[y_matriz][x_matriz] = bloco
+                    x = int(obj.x // 64)
+                    y = int(obj.y // 64)
+
+                    self.blocos[y][x] = bloco
 
             if layer.name == 'Spawns':
                 for obj in layer:
