@@ -5,6 +5,9 @@ from Mapa.MapaNeve import MapaNeve
 from Mapa.MapaCaverna import MapaCaverna
 from Mapa.MapaTransporte import MapaTransporte
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
+from Mapa.Blocos.Barreira import Barreira
+from Mapa.Blocos.Grama import BlocoDeGrama
+from Mapa.Blocos.Chao import Chao
 import pygame
 
 class ControleMapa:
@@ -33,9 +36,11 @@ class ControleMapa:
     
     def __salvar_dados_jogador(self):
         self.__inventario = self.__jogador.inventario
+        self.__moedas = self.__jogador.moedas
 
     def __carregar_dados_jogador(self):
         self.__jogador.set_inventario(self.__inventario)
+        self.__jogador.set_moedas(self.__moedas)
         try:
             self.__jogador.atualiza_posicao(self.__mapa_atual.spawns[self.__mapa_anterior.id])
         except KeyError:
@@ -51,6 +56,20 @@ class ControleMapa:
 
     def notifica_ativa_menu(self, menu: MenuGenerico):
         self.__observador.ativa_menu(menu, self.__observador)
+    
+    def desbloquear_mapa(self, mapa):
+        for map in self.__mapas.values():
+            for grupo in map.grupos:
+                for entidade in grupo:
+                    if isinstance(entidade, Barreira) and entidade.mapa == mapa:
+                        grupo.remove(entidade)
+                        
+                        # Trocar os blocos de barreira por outros
+                        if map.id == 'Transporte':
+                            bloco = Chao(entidade.pos, entidade.surf, [map.grupoAll, map.grupoBlocos], map, True)
+                        else:
+                            bloco = BlocoDeGrama(entidade.pos, entidade.surf, [map.grupoAll, map.grupoBlocos], map, True)
+                        map.troca_bloco(entidade.posicao_matriz[0],entidade.posicao_matriz[1], bloco)
 
 
 

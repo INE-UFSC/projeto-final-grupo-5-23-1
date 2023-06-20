@@ -83,7 +83,7 @@ class Jogador(pygame.sprite.Sprite):
     
     @property
     def posicao_matriz(self):
-        posicao_matriz = [self.__posicao.x, self.__posicao.y]
+        posicao_matriz = [self.__rect.centerx, self.__rect.centery]
         for index, posicao in enumerate(posicao_matriz):
             posicao_matriz[index] = int(posicao // 64)
         return posicao_matriz
@@ -107,6 +107,9 @@ class Jogador(pygame.sprite.Sprite):
     @property
     def moedas(self):
         return self.__moedas
+    
+    def set_moedas(self, moedas):
+        self.__moedas = moedas
 
     @property
     def z(self):

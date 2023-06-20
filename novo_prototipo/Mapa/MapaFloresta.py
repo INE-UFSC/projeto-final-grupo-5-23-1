@@ -6,12 +6,12 @@ from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
 from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
+from Mapa.Blocos.Barreira import Barreira
 
 class MapaFloresta(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
         self.__id = 'Floresta'
-        self.tamanho = 49
     
     @property
     def id(self):
@@ -39,22 +39,32 @@ class MapaFloresta(IMapa):
                     bloco = Vendedor(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TpTransporte':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Transporte')
-                    self.blocos[y][x] = bloco
+            if layer.name == 'Tps':
+                for obj in layer:
+                    if obj.name == 'Transporte':
+                        bloco = Transporte(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Transporte')
+                    if obj.name == 'Deserto':
+                        bloco = Transporte(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
+                    if obj.name == 'Neve':
+                        bloco = Transporte(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa= 'Neve')
+                    
+                    x = int(obj.x // 64)
+                    y = int(obj.y // 64)
 
-            if layer.name == 'TpDeserto':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
                     self.blocos[y][x] = bloco
             
-            if layer.name == 'TpNeve':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Transporte(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
+            if layer.name == 'Barreiras':
+                for obj in layer:
+                    if obj.name == 'Transporte':
+                        bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Transporte')
+                    if obj.name == 'Deserto':
+                        bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Deserto')
+                    if obj.name == 'Neve':
+                        bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Neve')
+                    
+                    x = int(obj.x // 64)
+                    y = int(obj.y // 64)
+
                     self.blocos[y][x] = bloco
 
             if layer.name == 'Spawns':
