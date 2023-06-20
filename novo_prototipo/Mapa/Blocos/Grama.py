@@ -22,7 +22,7 @@ class BlocoDeGrama(IBlocoComInteracao):
         if self.observador.id == 'Planicie':
             return (64, 64, 64, 64)
         if self.observador.id == 'Neve':
-            return (576, 64, 64, 64)
+            return (576, 0, 64, 64)
         if self.observador.id == 'Caverna':
             return (320, 64, 64, 64)
     

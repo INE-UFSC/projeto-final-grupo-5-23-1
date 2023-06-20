@@ -60,8 +60,6 @@ class MapaDeserto(IMapa):
                 for obj in layer:
                     if obj.name == 'Transporte':
                         bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Transporte')
-                    if obj.name == 'Floresta':
-                        bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Floresta')
                     if obj.name == 'Planicie':
                         bloco = Barreira(pos= (obj.x,obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa='Planicie')
                     

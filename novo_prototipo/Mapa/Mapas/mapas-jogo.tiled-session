@@ -17,22 +17,23 @@
             "expandedObjectLayers": [
                 6
             ],
-            "scale": 0.25,
-            "selectedLayer": 0,
+            "scale": 0.33,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1628,
-                "y": 1134
+                "x": 1878.787878787879,
+                "y": 1395.4545454545455
             }
         },
         "deserto.tmx": {
             "expandedObjectLayers": [
+                10,
                 5
             ],
             "scale": 0.33,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 1666.6666666666665,
-                "y": 1453.0303030303032
+                "x": 1630.3030303030305,
+                "y": 1504.5454545454547
             }
         },
         "floresta.tmx": {
@@ -42,8 +43,8 @@
             "scale": 0.33,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 1566.6666666666665,
-                "y": 1565.151515151515
+                "x": 1551.5151515151515,
+                "y": 1728.7878787878785
             }
         },
         "neve.tmx": {
@@ -51,21 +52,22 @@
                 8
             ],
             "scale": 0.25,
-            "selectedLayer": 1,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 1568,
-                "y": 1566
+                "x": 1896,
+                "y": 1722
             }
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
+                9,
                 4
             ],
-            "scale": 0.25,
-            "selectedLayer": 0,
+            "scale": 0.33,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1568,
-                "y": 1566
+                "x": 1569.6969696969697,
+                "y": 1440.909090909091
             }
         },
         "savana.tmx": {
@@ -80,11 +82,15 @@
             }
         },
         "transporte.tmx": {
+            "expandedObjectLayers": [
+                10,
+                9
+            ],
             "scale": 0.33,
-            "selectedLayer": 0,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1245.4545454545455,
-                "y": 1246.969696969697
+                "x": 1457.5757575757575,
+                "y": 962.1212121212122
             }
         }
     },

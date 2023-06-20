@@ -267,9 +267,6 @@
 </data>
  </layer>
  <objectgroup id="10" name="Barreiras">
-  <object id="7" name="Floresta" gid="8" x="1472" y="384" width="64" height="64"/>
-  <object id="8" name="Floresta" gid="8" x="1536" y="384" width="64" height="64"/>
-  <object id="9" name="Floresta" gid="8" x="1600" y="384" width="64" height="64"/>
   <object id="10" name="Transporte" gid="8" x="2752" y="1536" width="64" height="64"/>
   <object id="11" name="Transporte" gid="8" x="2752" y="1600" width="64" height="64"/>
   <object id="12" name="Transporte" gid="8" x="2752" y="1664" width="64" height="64"/>
