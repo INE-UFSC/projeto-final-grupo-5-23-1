@@ -34,7 +34,7 @@ class Vendedor(IBlocoComInteracao):
             self.__nome = "Bolt, o supercão"
             self.__inventario = Inventario([4,5])
             self.__inventario.adicionar_item(SementeDeTrigo(nome= 'Trigo', quantidade= 0))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome= 'Canabis Gourmet', quantidade= 100))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome= 'Canabis', quantidade= 100))
 
         self.__imagem = pygame.image.load('novo_prototipo/assets/ui/vendedor_TESTE.png')
         self.__imagem_dialogo = pygame.image.load('novo_prototipo/assets/ui/dialogo_TESTE.png')
