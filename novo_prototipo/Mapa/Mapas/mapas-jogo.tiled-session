@@ -16,26 +16,26 @@
         "caverna.tmx": {
             "expandedObjectLayers": [
                 14,
-                13,
-                6
+                6,
+                13
             ],
             "scale": 0.33,
-            "selectedLayer": 4,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1778.787878787879,
-                "y": 1404.5454545454547
+                "x": 1772.727272727273,
+                "y": 1398.4848484848485
             }
         },
         "deserto.tmx": {
             "expandedObjectLayers": [
                 10,
-                5,
-                11
+                11,
+                5
             ],
             "scale": 0.33,
-            "selectedLayer": 4,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1893.9393939393938,
+                "x": 1887.8787878787878,
                 "y": 1195.4545454545455
             }
         },
@@ -45,36 +45,37 @@
                 4
             ],
             "scale": 0.33,
-            "selectedLayer": 5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1712.121212121212,
-                "y": 1704.5454545454547
+                "x": 1706.060606060606,
+                "y": 1698.4848484848485
             }
         },
         "neve.tmx": {
             "expandedObjectLayers": [
-                12,
+                11,
                 8,
-                11
+                12
             ],
             "scale": 0.25,
-            "selectedLayer": 4,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1488,
-                "y": 1366
+                "x": 1480,
+                "y": 1362
             }
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
                 10,
                 9,
+                12,
                 4
             ],
             "scale": 0.33,
-            "selectedLayer": 4,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1645.4545454545453,
-                "y": 1380.3030303030303
+                "x": 1178.787878787879,
+                "y": 671.2121212121211
             }
         },
         "savana.tmx": {
@@ -96,7 +97,7 @@
             "scale": 0.33,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1454.5454545454545,
+                "x": 1451.5151515151515,
                 "y": 962.1212121212122
             }
         }

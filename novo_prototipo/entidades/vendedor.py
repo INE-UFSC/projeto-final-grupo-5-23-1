@@ -7,27 +7,35 @@ from itens.ferramentas.Enxada import Enxada
 from itens.ferramentas.Regador import Regador
 
 class Vendedor(IBlocoComInteracao):
-    def __init__(self, pos, surf, groups, observador):
+    def __init__(self, pos, surf, groups, observador, mapa):
         super().__init__(pos, surf, groups, observador, True)
         self.__image = pygame.Surface((64,64))
         self.__image.fill((120,120,120))
         self.__rect = self.__image.get_rect(topleft= pos)
+        self.__mapa = mapa
         
         #Atributos personalidade:
-        self.__nome = "Flofler, a vendedora"
-        self.__inventario = Inventario([4, 5])
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo', quantidade = 10))
-        self.__inventario.adicionar_item(Enxada('Enxada'))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo2', quantidade = 10))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo3', quantidade = 10))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo4', quantidade = 10))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo5', quantidade = 10))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo6', quantidade = 10))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo7', quantidade = 10))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo8', quantidade = 10))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo9', quantidade = 10))
-        self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo10', quantidade = 10))
-        self.__inventario.adicionar_item(Regador())
+        if self.__mapa == 'Floresta':
+            self.__nome = "Flofler, a vendedora"
+            self.__inventario = Inventario([4, 5])
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo', quantidade = 10))
+            self.__inventario.adicionar_item(Enxada('Enxada'))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo2', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo3', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo4', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo5', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo6', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo7', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo8', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo9', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo10', quantidade = 10))
+        
+        if self.__mapa == 'Deserto':
+            self.__nome = "Bolt, o supercão"
+            self.__inventario = Inventario([4,5])
+            self.__inventario.adicionar_item(SementeDeTrigo(nome= 'Trigo', quantidade= 0))
+            self.__inventario.adicionar_item(SementeDeTrigo(nome= 'Canabis Gourmet', quantidade= 100))
+
         self.__imagem = pygame.image.load('novo_prototipo/assets/ui/vendedor_TESTE.png')
         self.__imagem_dialogo = pygame.image.load('novo_prototipo/assets/ui/dialogo_TESTE.png')
 

@@ -4,6 +4,7 @@ from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
 from Mapa.Blocos.Barreira import Barreira
+from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
 import pygame
 
@@ -30,6 +31,14 @@ class MapaDeserto(IMapa):
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
                     bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
+                    self.blocos[y][x] = bloco
+
+            if layer.name == 'Vendedor':
+                for obj in layer:
+                    bloco = Vendedor(pos= (obj.x, obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa= 'Deserto')
+
+                    x = int(obj.x // 64)
+                    y = int(obj.y // 64)
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Tps':

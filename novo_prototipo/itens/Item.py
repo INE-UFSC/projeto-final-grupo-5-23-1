@@ -17,6 +17,9 @@ class Item(ABC):
     def preco(self):
         return self.__preco
     
+    def set_preco(self, preco):
+        self.__preco = preco
+    
     @property
     def imagem(self):
         return self.__imagem

@@ -34,9 +34,12 @@ class MapaFloresta(IMapa):
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Vendedor':
-                for x, y, surf in layer.tiles():
-                    pos = (x*64, y*64)
-                    bloco = Vendedor(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
+                for obj in layer:
+                    bloco = Vendedor(pos= (obj.x, obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa= 'Floresta')
+
+                    x = int(obj.x // 64)
+                    y = int(obj.y // 64)
+
                     self.blocos[y][x] = bloco
             
             if layer.name == 'Tps':
