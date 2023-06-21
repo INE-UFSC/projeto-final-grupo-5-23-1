@@ -35,12 +35,11 @@ class Vendedor(IBlocoComInteracao):
         
         if self.__mapa == 'Deserto':
             self.__nome = "Bolt, o supercão"
-            self.__inventario.adicionar_item(SementeDasAreias(nome= 'Semente Arenosa', quantidade= 1))
-            self.__inventario.adicionar_item(SementeDasAreias(nome= 'Semente Arenosa', preco= 20,quantidade= 100))
+            self.__inventario.adicionar_item(SementeDasAreias(nome= 'Semente Arenosa', preco= 20,quantidade= 10))
         
         if self.__mapa == 'Planicie':
             self.__nome = "Power Ranger Rosa"
-            self.__inventario.adicionar_item(SementeDeCogumelo(nome='Cogumelo Jade', quantidade= 5, preco= 100))
+            self.__inventario.adicionar_item(SementeDeCogumelo(nome='Cogumelo Jade', quantidade= 5, preco= 10))
 
         self.__imagem = pygame.image.load('novo_prototipo/assets/ui/vendedor_TESTE.png')
         self.__imagem_dialogo = pygame.image.load('novo_prototipo/assets/ui/dialogo_TESTE.png')
