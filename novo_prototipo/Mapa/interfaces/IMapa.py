@@ -72,6 +72,9 @@ class IMapa(ABC):
         grupos_de_entidades = [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]
         for grupo in grupos_de_entidades:
             grupo.remove(entidade_a_ser_excluida)
+    
+    def notifica_exclui_barreira(self, mapa):
+        self.controleMapa.desbloquear_mapa(mapa)
 
     def desenhar(self, tela: pygame.Surface):
         self.grupoAll.custom_draw(self.jogador)
@@ -127,3 +130,11 @@ class IMapa(ABC):
     @property
     def spawns(self):
         return self.__spawns
+
+    @property
+    def controleMapa(self):
+        return self.__observadores[0]
+
+    @property
+    def grupos(self):
+        return [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]
