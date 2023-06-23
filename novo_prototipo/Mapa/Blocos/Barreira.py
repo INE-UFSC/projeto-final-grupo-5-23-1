@@ -1,5 +1,6 @@
 import pygame
 from Mapa.Blocos.interfaces.IBlocoComInteracao import IBlocoComInteracao
+from menus.MenuDesbloqueio import MenuDesbloqueio
 
 class Barreira(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador, mapa):
@@ -20,12 +21,12 @@ class Barreira(IBlocoComInteracao):
             return 75
     
     def interagir(self, jogador):
-        if jogador.moedas >= self.__custo:
-            jogador.set_moedas(jogador.moedas - self.__custo)
-            self.observador.notifica_exclui_barreira(self.__mapa)
-        else:
-            print('Dinheiro insuficiente')
+        self.observador.notifica_ativa_menu(MenuDesbloqueio(self, jogador))
     
     @property
     def mapa(self):
         return self.__mapa
+    
+    @property
+    def custo(self):
+        return self.__custo
