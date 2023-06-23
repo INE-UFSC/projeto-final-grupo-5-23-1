@@ -15,14 +15,10 @@ class Trigo(IPlanta):
         
         #--------------------------------------------------------
          # Tempo de crescimento dos estágios
-        self.nascimento = pygame.time.get_ticks()
+        self.temposBase = [3.0,10.0]
+        self.temposRegada = [2.25, 7.5]
 
-        self.baseTempoEstagio1 = 3.0
-        self.baseTempoCrescido = 10.0
-
-        self.tempoEstagio1 = 3.0
-        self.tempoCrescido = 10.0
-
+        self.temposAtuais = self.temposBase
         #--------------------------------------------------------
         
     @property
@@ -33,38 +29,26 @@ class Trigo(IPlanta):
     def rect(self):
         return self.__rect
     
-    
-    def atualiza_tempos(self):
-        if self.observadores[0].regada:
-            self.tempoEstagio1 = self.baseTempoEstagio1 * 0.75
-            self.tempoCrescido = self.baseTempoCrescido * 0.75
-        else:
-            self.tempoEstagio1 = self.baseTempoEstagio1
-            self.tempoCrescido = self.baseTempoCrescido
-    
     def atualiza_sprite(self):
         posicao_antiga = self.__rect.midbottom
         self.agora = pygame.time.get_ticks()
         segundos = self.calcular_segundos()
-        if segundos < self.tempoEstagio1:
+
+        if segundos < self.temposAtuais[0]:
             self.__image = pygame.Surface((5,10))
             self.__image.fill('saddlebrown')
-        elif self.tempoEstagio1 < segundos < self.tempoCrescido:
+            
+        elif self.temposAtuais[0] < segundos < self.temposAtuais[1]:
             self.__image = pygame.Surface((10,40))
             self.__image.fill('chartreuse')
-        elif segundos >= self.tempoCrescido:
+
+        elif segundos >= self.temposAtuais[1]:
             self.__image = pygame.Surface((20,80))
             self.__image.fill('yellow')
             self.em_crescimento = False
+        
         self.__rect = self.__image.get_rect(midbottom = posicao_antiga)
-    
-    def calcular_segundos(self):
-        return (self.agora - self.nascimento) / 1000
-    
-    def update(self):
-        self.atualiza_tempos()
-        if self.em_crescimento:
-            self.atualiza_sprite()
+
 
     def interagir(self, jogador):
         if not self.em_crescimento:

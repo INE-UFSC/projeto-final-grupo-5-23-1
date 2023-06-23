@@ -12,11 +12,15 @@ class Cogumelo(IPlanta):
         self.__image = pygame.Surface((10,15))
         self.__image.fill('beige')
         self.__rect = self.__image.get_rect(midbottom=pos)
+
         #--------------------------------------------------------
-        self.taxa_de_crescimento = 5
-        self.taxa_de_crescimento_base = 5
-        self.progresso_crescimento = 0
-        
+         # Tempo de crescimento dos estágios
+        self.temposBase = [10.0,25.0]
+        self.temposRegada = [8.0, 20.0]
+
+        self.temposAtuais = self.temposBase
+        #--------------------------------------------------------
+
     @property
     def image(self):
         return self.__image
@@ -24,33 +28,26 @@ class Cogumelo(IPlanta):
     @property
     def rect(self):
         return self.__rect
-    
-    
-    def atualiza_taxa_de_crescimento(self):
-        if self.observadores[0].regada:
-            self.taxa_de_crescimento = 40
-        else:
-            self.taxa_de_crescimento = self.taxa_de_crescimento_base
-    
+
     def atualiza_sprite(self):
         posicao_antiga = self.__rect.midbottom
-        if self.progresso_crescimento < 1000:
+        self.agora = pygame.time.get_ticks()
+        segundos = self.calcular_segundos()
+
+        if segundos < self.temposAtuais[0]:
             self.__image = pygame.Surface((10,15))
             self.__image.fill('beige')
-        elif self.progresso_crescimento < 2500: 
+            
+        elif self.temposAtuais[0] < segundos < self.temposAtuais[1]:
             self.__image = pygame.Surface((15,30))
             self.__image.fill('#e2fef4')
-        elif self.progresso_crescimento >= 4000:
+
+        elif segundos >= self.temposAtuais[1]:
             self.__image = pygame.Surface((40,60))
             self.__image.fill('#78ffce')
             self.em_crescimento = False
+        
         self.__rect = self.__image.get_rect(midbottom = posicao_antiga)
-    
-    def update(self):
-        self.atualiza_taxa_de_crescimento()
-        if self.em_crescimento:
-            self.progresso_crescimento +=  self.taxa_de_crescimento
-            self.atualiza_sprite()
 
     def interagir(self, jogador):
         if not self.em_crescimento:

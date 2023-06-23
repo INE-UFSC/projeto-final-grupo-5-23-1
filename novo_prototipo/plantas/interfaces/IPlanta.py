@@ -14,6 +14,22 @@ class IPlanta(pygame.sprite.Sprite, ABC):
         self.__regada = False
         self.__z = LAYERS['main']
 
+        self.__nascimento = pygame.time.get_ticks()
+
+    def atualiza_tempos(self):
+        if self.observadores[0].regada:
+            self.temposAtuais = self.temposRegada
+        else:
+            self.temposAtuais = self.temposBase
+
+    def calcular_segundos(self):
+        return (self.agora - self.nascimento) / 1000
+
+    def update(self):
+        self.atualiza_tempos()
+        if self.em_crescimento:
+            self.atualiza_sprite()
+
     @property
     def nome(self):
         return self.__nome
@@ -25,6 +41,10 @@ class IPlanta(pygame.sprite.Sprite, ABC):
     @property
     def em_crescimento(self):
         return self.__em_crescimento
+    
+    @property
+    def nascimento(self):
+        return self.__nascimento
     
     @em_crescimento.setter
     def em_crescimento(self, em_crescimento: bool):
@@ -61,10 +81,6 @@ class IPlanta(pygame.sprite.Sprite, ABC):
 
     @abstractmethod
     def atualiza_sprite(self):
-        pass
-
-    @abstractmethod
-    def update(self):
         pass
 
     @abstractmethod
