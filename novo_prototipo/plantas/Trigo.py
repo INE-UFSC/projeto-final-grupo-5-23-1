@@ -12,10 +12,18 @@ class Trigo(IPlanta):
         self.__image = pygame.Surface((10,10))
         self.__image.fill('saddlebrown')
         self.__rect = self.__image.get_rect(midbottom=pos)
+        
         #--------------------------------------------------------
-        self.taxa_de_crescimento = 10
-        self.taxa_de_crescimento_base = 10
-        self.progresso_crescimento = 0
+         # Tempo de crescimento dos estágios
+        self.nascimento = pygame.time.get_ticks()
+
+        self.baseTempoEstagio1 = 3.0
+        self.baseTempoCrescido = 10.0
+
+        self.tempoEstagio1 = 3.0
+        self.tempoCrescido = 10.0
+
+        #--------------------------------------------------------
         
     @property
     def image(self):
@@ -26,30 +34,36 @@ class Trigo(IPlanta):
         return self.__rect
     
     
-    def atualiza_taxa_de_crescimento(self):
+    def atualiza_tempos(self):
         if self.observadores[0].regada:
-            self.taxa_de_crescimento = 50
+            self.tempoEstagio1 = self.baseTempoEstagio1 * 0.75
+            self.tempoCrescido = self.baseTempoCrescido * 0.75
         else:
-            self.taxa_de_crescimento = self.taxa_de_crescimento_base
+            self.tempoEstagio1 = self.baseTempoEstagio1
+            self.tempoCrescido = self.baseTempoCrescido
     
     def atualiza_sprite(self):
         posicao_antiga = self.__rect.midbottom
-        if self.progresso_crescimento < 1000:
+        self.agora = pygame.time.get_ticks()
+        segundos = self.calcular_segundos()
+        if segundos < self.tempoEstagio1:
             self.__image = pygame.Surface((5,10))
             self.__image.fill('saddlebrown')
-        elif self.progresso_crescimento < 2000: 
+        elif self.tempoEstagio1 < segundos < self.tempoCrescido:
             self.__image = pygame.Surface((10,40))
             self.__image.fill('chartreuse')
-        elif self.progresso_crescimento >= 4000:
+        elif segundos >= self.tempoCrescido:
             self.__image = pygame.Surface((20,80))
             self.__image.fill('yellow')
             self.em_crescimento = False
         self.__rect = self.__image.get_rect(midbottom = posicao_antiga)
     
+    def calcular_segundos(self):
+        return (self.agora - self.nascimento) / 1000
+    
     def update(self):
-        self.atualiza_taxa_de_crescimento()
+        self.atualiza_tempos()
         if self.em_crescimento:
-            self.progresso_crescimento +=  self.taxa_de_crescimento
             self.atualiza_sprite()
 
     def interagir(self, jogador):

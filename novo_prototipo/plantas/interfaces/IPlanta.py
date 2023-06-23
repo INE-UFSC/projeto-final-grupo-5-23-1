@@ -14,10 +14,6 @@ class IPlanta(pygame.sprite.Sprite, ABC):
         self.__regada = False
         self.__z = LAYERS['main']
 
-        self.__taxa_de_crescimento = 0
-        self.__taxa_de_crescimento_base = 0
-        self.__progresso_crescimento = 0
-
     @property
     def nome(self):
         return self.__nome
@@ -34,14 +30,6 @@ class IPlanta(pygame.sprite.Sprite, ABC):
     def em_crescimento(self, em_crescimento: bool):
         if isinstance(em_crescimento, bool):
             self.__em_crescimento = em_crescimento
-
-    @property
-    def progresso_crescimento(self):
-        return self.__progresso_crescimento
-    
-    @progresso_crescimento.setter
-    def progresso_crescimento(self, progresso_crescimento):
-        self.__progresso_crescimento = progresso_crescimento
     
     @pos.setter
     def pos(self, pos):
@@ -60,22 +48,6 @@ class IPlanta(pygame.sprite.Sprite, ABC):
     def regada(self, regada: bool):
         self.__regada = regada
 
-    @property
-    def taxa_de_crescimento(self):
-        return self.__taxa_de_crescimento
-
-    @taxa_de_crescimento.setter
-    def taxa_de_crescimento(self, nova_taxa_de_crescimento):
-        self.__taxa_de_crescimento = nova_taxa_de_crescimento
-
-    @property
-    def taxa_de_crescimento_base(self):
-        return self.__taxa_de_crescimento_base
-
-    @taxa_de_crescimento_base.setter
-    def taxa_de_crescimento_base(self, nova_taxa_de_crescimento_base):
-        self.__taxa_de_crescimento_base = nova_taxa_de_crescimento_base
-
     def adiciona_observador(self, observador):
         self.observadores.append(observador)
 
@@ -86,10 +58,6 @@ class IPlanta(pygame.sprite.Sprite, ABC):
     @property
     def z(self):
         return self.__z
-    
-    @abstractmethod
-    def atualiza_taxa_de_crescimento(self):
-        pass
 
     @abstractmethod
     def atualiza_sprite(self):
