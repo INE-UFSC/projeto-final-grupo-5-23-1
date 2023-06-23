@@ -12,6 +12,9 @@ class SobreposicaoAgua(pygame.sprite.Sprite):
         self.__rect_image = self.__image.get_rect(topleft=posicao)
         self.__z = LAYERS['sobreposicao_bloco']
 
+        self.__nascimento = pygame.time.get_ticks() / 1000
+        self.__duracao = 50
+
     @property
     def image(self):
         return self.__image
@@ -23,3 +26,11 @@ class SobreposicaoAgua(pygame.sprite.Sprite):
     @property
     def z(self):
         return self.__z
+
+    @property
+    def duracao(self):
+        return self.__duracao
+
+    @property
+    def nascimento(self):
+        return self.__nascimento
