@@ -5,6 +5,7 @@ from entidades.jogador.jogador import Jogador
 from menus.botoes.BotaoItem import BotaoItem
 from comandos.ComandoComprarItem import ComandoComprarItem
 from comandos.ComandoVenderItem import ComandoVenderItem
+from comandos.ComandoFechaMenu import ComandoFechaMenu
 
 
 class MenuVendedor(MenuGenerico):
@@ -107,7 +108,7 @@ class MenuVendedor(MenuGenerico):
         for event in eventos:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    self.notifica_desativa_menu()
+                    self.__comandos.append(ComandoFechaMenu(self))
 
                 elif event.key == pygame.K_DOWN:
                     
