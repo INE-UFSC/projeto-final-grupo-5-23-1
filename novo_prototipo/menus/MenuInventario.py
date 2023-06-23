@@ -2,6 +2,7 @@ import pygame
 
 from comandos.ComandoSelecionaItemAtual import ComandoSelecionaItemAtual
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
+from comandos.ComandoFechaMenu import ComandoFechaMenu
 from .botoes.SlotItem import SlotItem
 
 class MenuInventario(MenuGenerico):
@@ -86,7 +87,7 @@ class MenuInventario(MenuGenerico):
         for event in eventos:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE or event.key == pygame.K_i:
-                    self.notifica_desativa_menu()
+                    self.__comandos.append(ComandoFechaMenu(self))
                 elif event.key == pygame.K_DOWN:
                     if self.__indice_selecionado[0] < self.__nro_linhas - 1:
                         self.__indice_selecionado[0] += 1
