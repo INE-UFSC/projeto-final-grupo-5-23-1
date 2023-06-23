@@ -5,6 +5,8 @@ from entidades.jogador.inventario import Inventario
 from itens.sementes.SementeDeTrigo import SementeDeTrigo
 from itens.ferramentas.Enxada import Enxada
 from itens.ferramentas.Regador import Regador
+from itens.sementes.SementeCogumelo import SementeDeCogumelo
+from itens.sementes.SementeDasAreias import SementeDasAreias
 
 class Vendedor(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador, mapa):
@@ -14,10 +16,11 @@ class Vendedor(IBlocoComInteracao):
         self.__rect = self.__image.get_rect(topleft= pos)
         self.__mapa = mapa
         
+        self.__inventario = Inventario([4,5])
+
         #Atributos personalidade:
         if self.__mapa == 'Floresta':
             self.__nome = "Flofler, a vendedora"
-            self.__inventario = Inventario([4, 5])
             self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo', quantidade = 10))
             self.__inventario.adicionar_item(Enxada('Enxada'))
             self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo2', quantidade = 10))
@@ -32,9 +35,11 @@ class Vendedor(IBlocoComInteracao):
         
         if self.__mapa == 'Deserto':
             self.__nome = "Bolt, o supercão"
-            self.__inventario = Inventario([4,5])
-            self.__inventario.adicionar_item(SementeDeTrigo(nome= 'Trigo', quantidade= 0))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome= 'Canabis', quantidade= 100))
+            self.__inventario.adicionar_item(SementeDasAreias(nome= 'Semente Arenosa', preco= 20,quantidade= 10))
+        
+        if self.__mapa == 'Planicie':
+            self.__nome = "Power Ranger Rosa"
+            self.__inventario.adicionar_item(SementeDeCogumelo(nome='Cogumelo Jade', quantidade= 5, preco= 10))
 
         self.__imagem = pygame.image.load('novo_prototipo/assets/ui/vendedor_TESTE.png')
         self.__imagem_dialogo = pygame.image.load('novo_prototipo/assets/ui/dialogo_TESTE.png')

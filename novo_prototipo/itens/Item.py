@@ -23,3 +23,6 @@ class Item(ABC):
     @property
     def imagem(self):
         return self.__imagem
+    
+    def set_imagem(self, imagem):
+        self.__imagem = imagem

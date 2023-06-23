@@ -28,8 +28,8 @@ class Jogador(pygame.sprite.Sprite):
 
         #Adicição de itens provisória
         self.__inventario.adicionar_item(Enxada('Enxada'))
-        self.__inventario.adicionar_item(SementeDeTrigo(quantidade = 10))
         self.__inventario.adicionar_item(Regador())
+        self.__inventario.adicionar_item(SementeDeTrigo(quantidade = 10))
         #Comércio
         self.__moedas = 15
 
