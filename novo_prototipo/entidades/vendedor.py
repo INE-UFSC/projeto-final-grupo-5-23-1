@@ -8,6 +8,7 @@ from itens.ferramentas.Regador import Regador
 from itens.sementes.SementeCogumelo import SementeDeCogumelo
 from itens.sementes.SementeDasAreias import SementeDasAreias
 from itens.sementes.SementeGelada import SementeGelada
+from itens.sementes.SementeCaverna import SementeCaverna
 
 class Vendedor(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador, mapa):
@@ -48,6 +49,7 @@ class Vendedor(IBlocoComInteracao):
         
         if self.__mapa == 'Caverna':
             self.__nome = "The Princess is in another castle"
+            self.__inventario.adicionar_item(SementeCaverna(nome='Cavernite', quantidade= 3))
 
         if self.__mapa == 'Transporte':
             self.__nome = 'Michael Jackson'
