@@ -6,7 +6,8 @@ class Item(ABC):
     @abstractmethod
     def __init__(self, nome, preco, caminho_imagem: str):
         self.__nome = nome
-        self.__preco = preco
+        self.__preco = 0
+        self.preco = preco
         self.__imagem = pygame.transform.scale(pygame.image.load(caminho_imagem), (72, 72))
 
     @property
@@ -17,7 +18,8 @@ class Item(ABC):
     def preco(self):
         return self.__preco
     
-    def set_preco(self, preco):
+    @preco.setter
+    def preco(self, preco):
         self.__preco = preco
     
     @property

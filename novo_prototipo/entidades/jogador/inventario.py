@@ -43,7 +43,7 @@ class Inventario:
                     self.__itens[indice_item].aumenta_quantidade(item_a_ser_adicionado.quantidade)
                 elif self.capacidade_atual < self.capacidade_maxima:
                     classe_item = item_a_ser_adicionado.__class__
-                    novo_item = classe_item(nome=item_a_ser_adicionado.nome,quantidade=item_a_ser_adicionado.quantidade)
+                    novo_item = classe_item(nome=item_a_ser_adicionado.nome, preco= item_a_ser_adicionado.preco,quantidade=item_a_ser_adicionado.quantidade)
                     for item in self.itens:
                         if item is None:
                             indice_novo_item = self.itens.index(item)
