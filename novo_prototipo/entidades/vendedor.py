@@ -7,6 +7,7 @@ from itens.ferramentas.Enxada import Enxada
 from itens.ferramentas.Regador import Regador
 from itens.sementes.SementeCogumelo import SementeDeCogumelo
 from itens.sementes.SementeDasAreias import SementeDasAreias
+from itens.sementes.SementeGelada import SementeGelada
 
 class Vendedor(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador, mapa):
@@ -35,11 +36,21 @@ class Vendedor(IBlocoComInteracao):
         
         if self.__mapa == 'Deserto':
             self.__nome = "Bolt, o supercão"
-            self.__inventario.adicionar_item(SementeDasAreias(nome= 'Semente Arenosa', preco= 20,quantidade= 10))
+            self.__inventario.adicionar_item(SementeDasAreias(nome= 'Semente Arenosa', preco= 20,quantidade= 20))
         
         if self.__mapa == 'Planicie':
             self.__nome = "Power Ranger Rosa"
-            self.__inventario.adicionar_item(SementeDeCogumelo(nome='Cogumelo Jade', quantidade= 5, preco= 10))
+            self.__inventario.adicionar_item(SementeDeCogumelo(nome='Cogumelo Jade', quantidade= 20, preco= 10))
+        
+        if self.__mapa == 'Neve':
+            self.__nome = "SaNs UndERtaLe"
+            self.__inventario.adicionar_item(SementeGelada(nome= 'Semente Gelada', quantidade= 15))
+        
+        if self.__mapa == 'Caverna':
+            self.__nome = "The Princess is in another castle"
+
+        if self.__mapa == 'Transporte':
+            self.__nome = 'Michael Jackson'
 
         self.__imagem = pygame.image.load('novo_prototipo/assets/ui/vendedor_TESTE.png')
         self.__imagem_dialogo = pygame.image.load('novo_prototipo/assets/ui/dialogo_TESTE.png')
