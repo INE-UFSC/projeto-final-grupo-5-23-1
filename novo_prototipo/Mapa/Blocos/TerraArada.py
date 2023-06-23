@@ -64,9 +64,8 @@ class TerraArada(IBlocoComInteracao):
 
     def update(self):
         if self.__regada:
-            self.__tempo_restante_regada -= self.__taxa_decaimento_regada
-            if self.__tempo_restante_regada <= 0:
-                self.__tempo_restante_regada = 0
+            agora = pygame.time.get_ticks() / 1000
+            if (agora - self.__sobreposicao_agua.nascimento) >= self.__sobreposicao_agua.duracao:
                 self.__regada = False
                 self.notifica_exclui_entidade(self.__sobreposicao_agua)
                 self.__sobreposicao_agua = None

@@ -6,6 +6,7 @@ from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
 from Mapa.Blocos.Barreira import Barreira
 from Mapa.interfaces.IMapa import IMapa
+from entidades.vendedor import Vendedor
 
 class MapaNeve(IMapa):
     def __init__(self, observador):
@@ -32,6 +33,15 @@ class MapaNeve(IMapa):
                     bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
         
+            if layer.name == 'Vendedor':
+                for obj in layer:
+                    bloco = Vendedor(pos= (obj.x, obj.y), surf= obj.image, groups= [self.grupoAll, self.grupoBlocos], observador= self, mapa= 'Neve')
+
+                    x = int(obj.x // 64)
+                    y = int(obj.y // 64)
+
+                    self.blocos[y][x] = bloco
+
             if layer.name == 'Tps':
                 for obj in layer:
                     if obj.name == 'Transporte':
