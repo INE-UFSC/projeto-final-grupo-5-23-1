@@ -11,7 +11,11 @@ import pygame
 class MapaDeserto(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.id = 'Deserto'
+        self.__id = 'Deserto'
+    
+    @property
+    def id(self):
+        return self.__id
     
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/deserto.tmx')

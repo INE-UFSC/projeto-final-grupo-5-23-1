@@ -6,8 +6,8 @@ from plantas.interfaces.IPlanta import IPlanta
 
 class Trigo(IPlanta):
 
-    def __init__(self, pos, grupo, mapa):
-        super().__init__(mapa=mapa,nome='Trigo', pos=pos, grupo=grupo)
+    def __init__(self, pos, grupo):
+        super().__init__(nome='Trigo', pos=pos, grupo=grupo)
         #Trocar por uma classe que lidará com as sprites depois:
         self.__image = pygame.Surface((10,10))
         self.__image.fill('saddlebrown')
@@ -29,22 +29,6 @@ class Trigo(IPlanta):
     def rect(self):
         return self.__rect
     
-    def multiplicador_mapa(self):
-        multiplicador = 0
-        if self.mapa == 'Floresta':
-            multiplicador = 1
-        elif self.mapa == 'Deserto':
-            multiplicador = 1.5
-        elif self.mapa == 'Caverna':
-            multiplicador = 2
-        elif self.mapa == 'Neve':
-            multiplicador = 1.2
-        elif self.mapa == 'Planicie':
-            multiplicador = 1
-        else:
-            multiplicador = 1
-        return multiplicador
-
     def atualiza_sprite(self):
         posicao_antiga = self.__rect.midbottom
         self.agora = pygame.time.get_ticks()

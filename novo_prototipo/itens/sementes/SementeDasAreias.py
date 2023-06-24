@@ -13,6 +13,6 @@ class SementeDasAreias(ISemente):
         self.set_imagem(pygame.Surface((72,72)))
         self.imagem.fill('#afcc33')
 
-    def constroi_planta(self, pos, grupo, mapa) -> IPlanta:
-        planta = PlantaAreia(pos, grupo, mapa)
+    def constroi_planta(self, pos, grupo) -> IPlanta:
+        planta = PlantaAreia(pos, grupo)
         return planta

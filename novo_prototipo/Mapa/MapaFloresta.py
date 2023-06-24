@@ -11,7 +11,11 @@ from Mapa.Blocos.Barreira import Barreira
 class MapaFloresta(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.id = 'Floresta'
+        self.__id = 'Floresta'
+    
+    @property
+    def id(self):
+        return self.__id
     
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/floresta.tmx')
