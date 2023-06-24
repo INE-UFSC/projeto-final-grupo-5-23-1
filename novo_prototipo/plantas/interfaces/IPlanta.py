@@ -29,7 +29,6 @@ class IPlanta(pygame.sprite.Sprite, ABC):
 
         for i, tempo in enumerate(temposAtuaisProvisorio):
             temposAtuaisProvisorio[i] = tempo * self.multiplicador_mapa()
-        print(temposAtuaisProvisorio)
         self.temposAtuais = temposAtuaisProvisorio
 
     def calcular_segundos(self):
