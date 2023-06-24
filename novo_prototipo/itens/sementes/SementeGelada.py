@@ -13,6 +13,6 @@ class SementeGelada(ISemente):
         self.set_imagem(pygame.Surface((72,72)))
         self.imagem.fill('#afcc33')
 
-    def constroi_planta(self, pos, grupo) -> IPlanta:
-        planta = Crisalida(pos, grupo)
+    def constroi_planta(self, pos, grupo, mapa) -> IPlanta:
+        planta = Crisalida(pos, grupo, mapa)
         return planta

@@ -13,6 +13,6 @@ class SementeCaverna(ISemente):
         self.set_imagem(pygame.Surface((72,72)))
         self.imagem.fill('#e31cc1')
 
-    def constroi_planta(self, pos, grupo) -> IPlanta:
-        planta = PlantaCaverna(pos, grupo)
+    def constroi_planta(self, pos, grupo, mapa) -> IPlanta:
+        planta = PlantaCaverna(pos, grupo, mapa)
         return planta

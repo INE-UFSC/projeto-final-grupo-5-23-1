@@ -11,11 +11,7 @@ from entidades.vendedor import Vendedor
 class MapaCaverna(IMapa):
     def __init__(self, observador):
         super().__init__(observador)
-        self.__id = 'Caverna'
-    
-    @property
-    def id(self):
-        return self.__id
+        self.id = 'Caverna'
     
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/caverna.tmx')

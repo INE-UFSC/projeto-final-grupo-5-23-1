@@ -6,8 +6,8 @@ from plantas.interfaces.IPlanta import IPlanta
 
 class PlantaCaverna(IPlanta):
 
-    def __init__(self, pos, grupo):
-        super().__init__(nome='Crisalida', pos=pos, grupo=grupo)
+    def __init__(self, pos, grupo, mapa):
+        super().__init__(mapa=mapa,nome='Crisalida', pos=pos, grupo=grupo)
         #Trocar por uma classe que lidará com as sprites depois:
         self.__image = pygame.Surface((5,15))
         self.__image.fill('#2737d8')

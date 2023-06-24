@@ -15,6 +15,7 @@ class IMapa(ABC):
     @abstractmethod
     def __init__(self, observador, tamanho=49):
         self.__entidades = []
+        self.__id = None
         self.__grupoAll = Camera(tamanho)
         self.__grupoBlocos = pygame.sprite.Group()
         self.__grupoJogador = pygame.sprite.Group()
@@ -64,7 +65,7 @@ class IMapa(ABC):
         posicao_planta = Vector2()
         posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.x + 32
         posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.y + 40
-        planta = semente.constroi_planta(posicao_planta, [self.__grupoAll, self.__grupoPlantas])
+        planta = semente.constroi_planta(posicao_planta, [self.__grupoAll, self.__grupoPlantas], self.id)
         self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
         self.jogador.inventario.remover_item(semente)
 
@@ -138,3 +139,11 @@ class IMapa(ABC):
     @property
     def grupos(self):
         return [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]
+    
+    @property
+    def id(self):
+        return self.__id
+    
+    @id.setter
+    def id(self, id):
+        self.__id = id

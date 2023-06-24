@@ -10,6 +10,6 @@ class SementeDeTrigo(ISemente):
                          caminho_imagem,
                          quantidade)
 
-    def constroi_planta(self, pos, grupo) -> IPlanta:
-        planta = Trigo(pos, grupo)
+    def constroi_planta(self, pos, grupo, mapa) -> IPlanta:
+        planta = Trigo(pos, grupo, mapa)
         return planta

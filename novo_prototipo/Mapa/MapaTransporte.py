@@ -11,11 +11,7 @@ from entidades.vendedor import Vendedor
 class MapaTransporte(IMapa):
     def __init__(self, observador, tamanho):
         super().__init__(observador, tamanho)
-        self.__id = 'Transporte'
-    
-    @property
-    def id(self):
-        return self.__id
+        self.id = 'Transporte'
     
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/transporte.tmx')
