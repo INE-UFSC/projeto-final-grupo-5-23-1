@@ -59,3 +59,18 @@ class PlantaAreia(IPlanta):
             if (jogador.inventario.capacidade_atual < jogador.inventario.capacidade_maxima) or (item.nome in  lista_nomes_itens):
                 jogador.inventario.adicionar_item(item)
                 self.notifica_exclui_planta()
+
+    def multiplicador_clima(self):
+        if self.clima == 'Floresta':
+            multiplicador = 1
+        elif self.clima == 'Deserto':
+            multiplicador = 1.5
+        elif self.clima == 'Caverna':
+            multiplicador = 2
+        elif self.clima == 'Neve':
+            multiplicador = 1.2
+        elif self.clima == 'Planicie':
+            multiplicador = 1
+        else:
+            multiplicador = 1
+        return multiplicador

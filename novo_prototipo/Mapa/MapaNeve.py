@@ -7,15 +7,12 @@ from Mapa.Blocos.Transporte import Transporte
 from Mapa.Blocos.Barreira import Barreira
 from Mapa.interfaces.IMapa import IMapa
 from entidades.vendedor import Vendedor
+from Mapa.Climas.climas.ClimaNeve import ClimaNeve
 
 class MapaNeve(IMapa):
     def __init__(self, observador):
-        super().__init__(observador)
-        self.__id = 'Neve'
-    
-    @property
-    def id(self):
-        return self.__id
+        super().__init__(observador, clima=ClimaNeve())
+        self.id = 'Neve'
     
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/neve.tmx')

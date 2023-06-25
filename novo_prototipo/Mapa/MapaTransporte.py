@@ -7,16 +7,13 @@ from Mapa.Blocos.Transporte import Transporte
 from Mapa.Blocos.Barreira import Barreira
 from Mapa.interfaces.IMapa import IMapa
 from entidades.vendedor import Vendedor
+from Mapa.Climas.climas.ClimaTransporte import ClimaTransporte
 
 class MapaTransporte(IMapa):
     def __init__(self, observador, tamanho):
-        super().__init__(observador, tamanho)
-        self.__id = 'Transporte'
-    
-    @property
-    def id(self):
-        return self.__id
-    
+        super().__init__(observador, tamanho=tamanho, clima=ClimaTransporte())
+        self.id = 'Transporte'
+
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/transporte.tmx')
         

@@ -71,13 +71,13 @@ class ModoDeGameplay(ModoGenerico):
         for mapa in self.__controleMapa.mapas.values():
             mapa.grupoPlantas.update()
             mapa.grupoBlocos.update()
+            mapa.notifica_atualiza_clima()
         self.__jogador.update()
         return
 
     def checa_eventos(self, delta_tempo):
         # Eventos Pygame
         direcao = Vector2()
-        mouseClicked = False
         eventos = pygame.event.get()
         
         for event in eventos:
@@ -95,12 +95,11 @@ class ModoDeGameplay(ModoGenerico):
                         self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__controleMapa.mapa_atual.blocos, self.__jogador))
                     if event.key == pygame.K_i:
                         self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
+                    # Remover:
                     if event.key == pygame.K_l:
                         print(self.__controleMapa.mapa_atual.jogador.posicao)
+                    # --------
 
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                mouseClicked = True
-        
         if not self.estado_jogo.menu_ingame_ativo:
             keys = pygame.key.get_pressed()
             # Hud

@@ -7,15 +7,12 @@ from Mapa.Blocos.Transporte import Transporte
 from Mapa.Blocos.Barreira import Barreira
 from Mapa.interfaces.IMapa import IMapa
 from entidades.vendedor import Vendedor
+from Mapa.Climas.climas.ClimaPlanicie import ClimaPlanicie
 
 class MapaPlanicie(IMapa):
     def __init__(self, observador):
-        super().__init__(observador)
-        self.__id = 'Planicie'
-    
-    @property
-    def id(self):
-        return self.__id
+        super().__init__(observador, clima=ClimaPlanicie())
+        self.id = 'Planicie'
     
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/planicie.tmx')

@@ -8,12 +8,12 @@ from Mapa.Blocos.TerraArada import TerraArada
 from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 
 from Mapa.Camera import Camera
-from Mapa import ControleMapa
+from Mapa.Climas.interfaces.IClima import IClima
 
 class IMapa(ABC):
 
     @abstractmethod
-    def __init__(self, observador, tamanho=49):
+    def __init__(self, observador, clima: IClima, tamanho=49):
         self.__entidades = []
         self.__grupoAll = Camera(tamanho)
         self.__grupoBlocos = pygame.sprite.Group()
@@ -22,6 +22,8 @@ class IMapa(ABC):
         self.__grupoPlantas = pygame.sprite.Group()
         self.__observadores = []
         self.__spawns = {}
+        self.__clima = clima
+        self.__id = None
 
         # Criar matriz dos blocos
         self.__blocos = [[ None for coluna in range(tamanho)]
@@ -39,6 +41,9 @@ class IMapa(ABC):
     @abstractmethod
     def tocar_musica(self):
         pass
+
+    def notifica_atualiza_clima(self):
+        self.__clima.notifica_atualiza_clima()
     
     def adiciona_observador(self, observador):
         self.__observadores.append(observador)
@@ -65,6 +70,7 @@ class IMapa(ABC):
         posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.x + 32
         posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.y + 40
         planta = semente.constroi_planta(posicao_planta, [self.__grupoAll, self.__grupoPlantas])
+        self.clima.adiciona_observador(planta)
         self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
         self.jogador.inventario.remover_item(semente)
 
@@ -138,3 +144,20 @@ class IMapa(ABC):
     @property
     def grupos(self):
         return [self.__grupoAll, self.__grupoBlocos, self.__grupoJogador, self.__grupoEntidades, self.__grupoPlantas]
+    
+    @property
+    def clima(self):
+        return self.__clima
+    
+    @clima.setter
+    def clima(self, clima):
+        self.__clima = clima
+        return
+    
+    @property
+    def id(self):
+        return self.__id
+    
+    @id.setter
+    def id(self, id):
+        self.__id = id

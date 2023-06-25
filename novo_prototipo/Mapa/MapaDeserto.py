@@ -8,15 +8,13 @@ from entidades.vendedor import Vendedor
 from Mapa.interfaces.IMapa import IMapa
 import pygame
 
+from Mapa.Climas.climas.ClimaDeserto import ClimaDeserto
+
 class MapaDeserto(IMapa):
     def __init__(self, observador):
-        super().__init__(observador)
-        self.__id = 'Deserto'
-    
-    @property
-    def id(self):
-        return self.__id
-    
+        super().__init__(observador, clima=ClimaDeserto())
+        self.id = 'Deserto'
+
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/deserto.tmx')
         

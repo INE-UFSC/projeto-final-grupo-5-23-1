@@ -7,15 +7,12 @@ from Mapa.Blocos.Transporte import Transporte
 from Mapa.Blocos.Barreira import Barreira
 from Mapa.interfaces.IMapa import IMapa
 from entidades.vendedor import Vendedor
+from  Mapa.Climas.climas.ClimaCaverna import ClimaCaverna
 
 class MapaCaverna(IMapa):
     def __init__(self, observador):
-        super().__init__(observador)
-        self.__id = 'Caverna'
-    
-    @property
-    def id(self):
-        return self.__id
+        super().__init__(observador, clima=ClimaCaverna())
+        self.id = 'Caverna'
     
     def construir_blocos(self):
         tmx_data = load_pygame('novo_prototipo/Mapa/Mapas/caverna.tmx')
