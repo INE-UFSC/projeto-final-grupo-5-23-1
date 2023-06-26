@@ -41,7 +41,10 @@ class ComandoMover(Comando):
         nova_posicao.y = unit.posicao.y + movimento_y
 
         entidade_nova_posicao = pygame.sprite.Sprite(pygame.sprite.Group())
-        entidade_nova_posicao.rect = self.__entidade.rect.copy()
+        try:
+            entidade_nova_posicao.rect = self.__entidade.hitbox.copy()
+        except:
+            entidade_nova_posicao.rect = self.__entidade.rect.copy()
         entidade_nova_posicao.rect.midbottom = nova_posicao
 
         if self.__checa_colisao(self.__grupoBlocos, entidade_nova_posicao):

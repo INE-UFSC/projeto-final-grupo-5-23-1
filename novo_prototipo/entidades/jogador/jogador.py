@@ -13,6 +13,7 @@ class Jogador(pygame.sprite.Sprite):
         super().__init__(group)
         self.__nome = 'Nome do Principal'
         # Setup Geral TROCAR NOME DO ATRIBUTO 'IMAGE' NA IMPLEMENTAÇÃO DA TEXTURA
+        self.__hitbox = pygame.Surface((40,40)).get_rect(midbottom= pos)
         self.__image = pygame.Surface((40,80))
         self.__image.fill('red')
         self.__rect = self.__image.get_rect(midbottom= pos)
@@ -53,6 +54,7 @@ class Jogador(pygame.sprite.Sprite):
         self.__posicao.x = posicao.x
         self.__posicao.y = posicao.y
         self.__rect.midbottom = posicao
+        self.__hitbox.midbottom = posicao
         return
 
     def update(self):
@@ -115,3 +117,7 @@ class Jogador(pygame.sprite.Sprite):
     @property
     def z(self):
         return self.__z
+    
+    @property
+    def hitbox(self):
+        return self.__hitbox
