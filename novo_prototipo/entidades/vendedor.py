@@ -1,3 +1,4 @@
+import os
 import pygame
 from Mapa.Blocos.interfaces.IBlocoComInteracao import IBlocoComInteracao
 from menus.MenuVendedor import MenuVendedor
@@ -54,14 +55,24 @@ class Vendedor(IBlocoComInteracao):
         if self.__mapa == 'Transporte':
             self.__nome = 'Michael Jackson'
 
-        self.__imagem = pygame.image.load('novo_prototipo/assets/ui/vendedor_TESTE.png')
-        self.__imagem_dialogo = pygame.image.load('novo_prototipo/assets/ui/dialogo_TESTE.png')
+        self.__dir_atual = os.path.dirname(os.path.abspath(__file__))
+        self.__pasta_assets = os.path.join(self.__dir_atual, '..', 'assets', 'ui')
+        self.__caminho_imagem_vendedor = os.path.join(self.__pasta_assets, 'vendedor_TESTE.png')
+        self.__caminho_dialogo_vendedor = os.path.join(self.__pasta_assets, 'dialogo_TESTE.png')
+        self.__caminho_fundo_menu_vendedor = os.path.join(self.__pasta_assets, 'fundo_menu_TESTE.png')
+        self.__caminho_seta = os.path.join(self.__pasta_assets, 'seta_TESTE.png')
+
+        self.__imagem = pygame.image.load(self.__caminho_imagem_vendedor)
+        self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_vendedor)
 
     def desenhar(self, tela):
         tela.blit(self.__image, self.__rect)
 
     def interagir(self, jogador):
-        self.observador.notifica_ativa_menu(MenuVendedor(vendedor=self, caminho_fundo='novo_prototipo/assets/ui/fundo_menu_TESTE.png',caminho_seta='novo_prototipo/assets/ui/seta_TESTE.png', jogador=jogador))
+        self.observador.notifica_ativa_menu(MenuVendedor(vendedor=self,
+                                                         caminho_fundo=self.__caminho_fundo_menu_vendedor,
+                                                         caminho_seta=self.__caminho_seta,
+                                                         jogador=jogador))
 
     @property
     def rect(self):

@@ -1,3 +1,4 @@
+import os
 import pygame
 from settings import *
 
@@ -18,7 +19,12 @@ class Jogador(pygame.sprite.Sprite):
         self.__image.fill('red')
         self.__rect = self.__image.get_rect(midbottom= pos)
         self.__inventario = Inventario([3,4])
-        self.__imagem = pygame.image.load('novo_prototipo/assets/ui/jogador_TESTE.png')
+
+        self.__dir_atual = os.path.dirname(os.path.abspath(__file__))
+        self.__pasta_assets = os.path.join(self.__dir_atual, '..', '..', 'assets', 'ui')
+        self.__caminho_imagem = os.path.join(self.__pasta_assets, 'jogador_TESTE.png')
+        
+        self.__imagem = pygame.image.load(self.__caminho_imagem)
         self.__z = LAYERS['main']
 
         # Movimentação
