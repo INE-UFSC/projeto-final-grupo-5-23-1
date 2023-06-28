@@ -22,8 +22,8 @@ class ModoMenuPrincipal(ModoGenerico):
         self.__caminho_tela_instrucao = os.path.join(self.__pasta_assets, 'tela_instrucao.png')
 
         # Font
-        self.titleFont = pygame.font.Font(self.__caminho_fonte, 56)
-        self.itemFont = pygame.font.Font(self.__caminho_fonte, 90)
+        self.titleFont = pygame.font.Font(self.__caminho_fonte, 60)
+        self.itemFont = pygame.font.Font(self.__caminho_fonte, 80)
 
         # Tela de instruções
         self.__tela_instrucao = pygame.transform.scale(pygame.image.load(self.__caminho_tela_instrucao), (1280, 768))
@@ -150,12 +150,19 @@ class ModoMenuPrincipal(ModoGenerico):
 
             # Initial y
             y = 100
-            
+            # Initial x
+            x = (window.get_width()) // 2
             # Titleself.
             surface = self.titleFont.render("Vale dos Cultivos", True, 'white')
+            surface_frame = pygame.Surface((surface.get_width()+10, surface.get_height()+10))
+            surface_frame.fill('black')
+            surface_frame = pygame.Surface.convert_alpha(surface_frame)
+            surface_frame.set_alpha(150)
+            surface_frame_rect = surface_frame.get_rect(center=(x,y))
+            window.blit(surface_frame, surface_frame_rect)
+
             
-            x = (window.get_width()) // 2
-            surface_rect = surface.get_rect(center=(x,y))
+            surface_rect = surface.get_rect(center=(x+5,y))
             window.blit(surface, surface_rect)
             y += (250 * surface.get_height()) // 100
             
@@ -178,7 +185,7 @@ class ModoMenuPrincipal(ModoGenerico):
                 surface_frame = pygame.Surface((item['surface'].get_width()+10, item['surface'].get_height()+10))
                 surface_frame.fill('black')
                 surface_frame = pygame.Surface.convert_alpha(surface_frame)
-                surface_frame.set_alpha(120)
+                surface_frame.set_alpha(150)
                 surface_frame_rect = surface_frame.get_rect(center=(x,y))
                 window.blit(surface_frame, surface_frame_rect)
 
