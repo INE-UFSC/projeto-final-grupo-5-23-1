@@ -91,7 +91,7 @@ class ModoDeGameplay(ModoGenerico):
                     if event.key == pygame.K_ESCAPE:
                         self.notifyShowMenuRequested()
                         break
-                    if event.key == pygame.K_e:
+                    if event.key == pygame.K_e or event.key == pygame.K_RETURN:
                         self.__comandos.append(ComandoDeInteracao(self.__jogador.posicao_matriz, self.__jogador.status, self.__controleMapa.mapa_atual.blocos, self.__jogador))
                     if event.key == pygame.K_i:
                         self.__comandos.append(ComandoAbrirMenu(MenuInventario(self.__jogador.inventario, self.__jogador), self))
@@ -105,19 +105,19 @@ class ModoDeGameplay(ModoGenerico):
             # Hud
             self.__hud.checa_eventos(eventos)
             # Direções ---
-            if keys[pygame.K_w]:
+            if keys[pygame.K_w] or keys[pygame.K_UP]:
                 direcao.y = -1
                 status = 'cima'
-            elif keys[pygame.K_s]:
+            elif keys[pygame.K_s] or keys[pygame.K_DOWN]:
                 direcao.y = 1
                 status = 'baixo'
             else:
                 direcao.y = 0
 
-            if keys[pygame.K_d]:
+            if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
                 direcao.x = 1
                 status = 'direita'
-            elif keys[pygame.K_a]:
+            elif keys[pygame.K_a] or keys[pygame.K_LEFT]:
                 direcao.x = -1
                 status = 'esquerda'
             else:

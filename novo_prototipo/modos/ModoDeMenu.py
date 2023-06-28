@@ -39,15 +39,15 @@ class ModoDeMenu(ModoGenerico):
                 self.notifyQuitRequested()
                 break
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE :
                     self.notifyShowGameRequested()
-                elif event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     if self.currentMenuItem < len(self.menuItems) - 1:
                         self.currentMenuItem += 1
-                elif event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP or event.key == pygame.K_w:
                     if self.currentMenuItem > 0:
                         self.currentMenuItem -= 1
-                elif event.key == pygame.K_RETURN:
+                elif event.key == pygame.K_RETURN or event.key == pygame.K_e:
                     menuItem = self.menuItems[self.currentMenuItem]
                     try:
                         menuItem['action']()

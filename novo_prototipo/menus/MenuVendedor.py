@@ -110,7 +110,7 @@ class MenuVendedor(MenuGenerico):
                 if event.key == pygame.K_ESCAPE:
                     self.__comandos.append(ComandoFechaMenu(self))
 
-                elif event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     
                     if self.__item_selecionado < len(self.__botoes[self.__pagina_atual_inventario]) -1:
                         self.__item_selecionado += 1
@@ -118,22 +118,22 @@ class MenuVendedor(MenuGenerico):
                         self.__item_selecionado = 0
                         self.__pagina_atual_inventario += 1
 
-                elif event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP or event.key == pygame.K_w:
                     if self.__item_selecionado > 0:
                         self.__item_selecionado -= 1
                     elif self.__pagina_atual_inventario > 0:
                         self.__item_selecionado = 4
                         self.__pagina_atual_inventario -= 1
                 
-                elif event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                     self.__pagina_atual_inventario = 0
                     self.__modo_vendedor = 'Vender'
 
-                elif event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
                     self.__pagina_atual_inventario = 0
                     self.__modo_vendedor = 'Comprar'
                     
-                elif event.key == pygame.K_RETURN:
+                elif event.key == pygame.K_RETURN or event.key == pygame.K_e:
                     if self.lista_botoes_vazia == False:
                         if self.__modo_vendedor == 'Comprar':
                             self.__comandos.append(ComandoComprarItem(item=self.__botoes[self.__pagina_atual_inventario][self.__item_selecionado].item,jogador=self.__jogador))

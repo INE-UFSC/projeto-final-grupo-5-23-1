@@ -88,19 +88,19 @@ class MenuInventario(MenuGenerico):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE or event.key == pygame.K_i:
                     self.__comandos.append(ComandoFechaMenu(self))
-                elif event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     if self.__indice_selecionado[0] < self.__nro_linhas - 1:
                         self.__indice_selecionado[0] += 1
-                elif event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP or event.key == pygame.K_w:
                     if self.__indice_selecionado[0] > 0:
                         self.__indice_selecionado[0] -= 1
-                elif event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
                     if self.__indice_selecionado[1] > 0:
                         self.__indice_selecionado[1] -= 1
-                elif event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                     if self.__indice_selecionado[1] < self.__nro_colunas - 1:
                         self.__indice_selecionado[1] += 1
-                elif event.key == pygame.K_RETURN:
+                elif event.key == pygame.K_RETURN or event.key == pygame.K_e:
                     if self.__item_selecionado == None:
                         item = self.__inventario_matriz[self.__indice_selecionado[0]][self.__indice_selecionado[1]].item
                         self.__indice_item_selecionado = self.__indice_selecionado[1] + self.__indice_selecionado[0] * (self.__inventario.tamanho_matriz[1] - 1)

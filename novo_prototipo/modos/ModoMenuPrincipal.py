@@ -101,10 +101,10 @@ class ModoMenuPrincipal(ModoGenerico):
                 self.notifyQuitRequested()
                 break
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_DOWN:
+                if event.key == pygame.K_DOWN or event.key == pygame.K_s:
                     if self.currentMenuItem < len(self.__menuItemsAtual) - 1:
                         self.currentMenuItem += 1
-                elif event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP or event.key == pygame.K_w:
                     if self.currentMenuItem > 0:
                         self.currentMenuItem -= 1
                 if event.key == pygame.K_RETURN or event.key == pygame.K_e:

@@ -57,17 +57,17 @@ class MenuDesbloqueio(MenuGenerico):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE or event.key == pygame.K_i:
                     self.notifica_desativa_menu()
-                elif event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_LEFT or event.key == pygame.K_a:
                     novo_indice = self.__indice_selecionado - 1
                     if novo_indice < 0:
                         novo_indice = len(self.__lista_botoes) - 1
                     self.__indice_selecionado = novo_indice
-                elif event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
                     novo_indice = self.__indice_selecionado + 1
                     if novo_indice > len(self.__lista_botoes) - 1:
                         novo_indice = 0
                     self.__indice_selecionado = novo_indice
-                elif event.key == pygame.K_RETURN:
+                elif event.key == pygame.K_RETURN or event.key == pygame.K_e:
                     if self.__indice_selecionado == 0:
                         moedas_resultante = self.__jogador.moedas - self.__barreira.custo
                         if moedas_resultante >= 0:
