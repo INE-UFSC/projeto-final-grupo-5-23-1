@@ -131,7 +131,7 @@ class ModoMenuPrincipal(ModoGenerico):
     def update(self):
         self.menuAudioItems = [
             {
-                'title': f'Volume {int(pygame.mixer.music.get_volume()*10)}',
+                'title': f'Volume {round(pygame.mixer.music.get_volume()*10)}',
                 'action1': lambda: self.notifica_aumenta_volume(),
                 'action2': lambda: self.notifica_baixa_volume()
             },

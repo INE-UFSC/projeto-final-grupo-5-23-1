@@ -35,8 +35,11 @@ class Sistema(ObservadorModoDeJogo):
 
     def baixa_volume(self):
         volume = pygame.mixer.music.get_volume()
-        if volume > 0:
-            volume -= 0.1
+        novo_volume = volume - 0.1
+        if novo_volume > 0:
+            volume = novo_volume
+        else:
+            volume = 0
         pygame.mixer.music.set_volume(volume)
 
     def aumenta_volume(self):
