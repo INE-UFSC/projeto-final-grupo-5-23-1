@@ -6,7 +6,12 @@ from menus.botoes.BotaoItem import BotaoItem
 from comandos.ComandoComprarItem import ComandoComprarItem
 from comandos.ComandoVenderItem import ComandoVenderItem
 from comandos.ComandoFechaMenu import ComandoFechaMenu
+import os
 
+dir_atual = os.path.dirname(os.path.abspath(__file__))
+pasta_assets = os.path.join(dir_atual, '..', 'assets', 'ui')
+caminho_fonte = os.path.join(pasta_assets, 'font.ttf')
+caminho_moeda = os.path.join(pasta_assets, 'imagem_moeda.png')
 
 class MenuVendedor(MenuGenerico):
 
@@ -35,19 +40,19 @@ class MenuVendedor(MenuGenerico):
         
         #Coluna da direita:
         #Texto 'Comprar':
-        self.__fonte_comprar = pygame.font.Font('novo_prototipo/assets/ui/font.ttf', 16)
+        self.__fonte_comprar = pygame.font.Font(caminho_fonte, 16)
         self.__texto_comprar = self.__fonte_comprar.render('Comprar', True, 'White')
         #Texto 'Vender':
-        self.__fonte_vender = pygame.font.Font('novo_prototipo/assets/ui/font.ttf', 16)
+        self.__fonte_vender = pygame.font.Font(caminho_fonte, 16)
         self.__texto_vender = self.__fonte_vender.render('Vender', True, 'White')
         #Imagem moeda do jogo: 25x25
-        self.__imagem_moeda = pygame.image.load('novo_prototipo/assets/ui/imagem_moeda_TESTE.png')
+        self.__imagem_moeda = pygame.transform.scale(pygame.image.load(caminho_moeda), (50,50))
         #Número de moedas do jogador
-        self.__fonte_texto_numero_moedas = pygame.font.Font('novo_prototipo/assets/ui/font.ttf', 16)
+        self.__fonte_texto_numero_moedas = pygame.font.Font(caminho_fonte, 16)
         self.__texto_numero_moedas = self.__fonte_texto_numero_moedas.render(str(self.__jogador.moedas), True, 'White')
         #Botões: 320x82
         self.__num_itens_por_pagina = 5
-        self.__fonte_botoes = 'novo_prototipo/assets/ui/font.ttf'
+        self.__fonte_botoes = caminho_fonte
         self.__cor_fonte_botoes = 'white'
         self.__botoes = None #Na renderização botoes é inicializado
         #Seta abaixo da lista de botões: 61x21
@@ -212,7 +217,7 @@ class MenuVendedor(MenuGenerico):
         #Quantidade de moedas jogador:
         rect_texto_numero_moedas = self.__texto_numero_moedas.get_rect(midright=(centro[0] + 346, centro[1] - 225))
         window.blit(self.__texto_numero_moedas, rect_texto_numero_moedas)
-        rect_imagem_moeda = self.__imagem_moeda.get_rect(midright=(rect_texto_numero_moedas.midleft[0] - 10, rect_texto_numero_moedas.midleft[1]))
+        rect_imagem_moeda = self.__imagem_moeda.get_rect(midright=(rect_texto_numero_moedas.midleft[0] - 5, rect_texto_numero_moedas.midleft[1]-5))
         window.blit(self.__imagem_moeda, rect_imagem_moeda)
 
         #Lista de botoes
