@@ -3,7 +3,12 @@ from menus.ClassesAbstratas.MenuGenerico import MenuGenerico
 from menus.botoes.BotaoTexto import BotaoTexto
 from comandos.ComandoDesbloquearBarreira import ComandoDesbloquearBarreira
 from comandos.ComandoFechaMenu import ComandoFechaMenu
+import os
 
+dir_atual = os.path.dirname(os.path.abspath(__file__))
+pasta_assets = os.path.join(dir_atual, '..', 'assets', 'ui')
+caminho_fundo = os.path.join(pasta_assets, 'fundo_menu_desbloqueio.png')
+caminho_fonte = os.path.join(pasta_assets, 'font.ttf')
 
 class MenuDesbloqueio(MenuGenerico):
     
@@ -14,14 +19,14 @@ class MenuDesbloqueio(MenuGenerico):
         self.__comandos = []
 
         # Fonte
-        self.__fonte = pygame.font.Font('novo_prototipo/assets/ui/font.ttf', 20)
+        self.__fonte = pygame.font.Font(caminho_fonte, 20)
 
         #  Informações para centralizar menu
         self.__tamanho_tela = list(pygame.display.get_window_size())
         self.__centro_tela = (self.__tamanho_tela[0] / 2, self.__tamanho_tela[1] / 2)
 
         # Fundo do menu
-        self.__fundo = pygame.image.load('novo_prototipo/assets/ui/fundo_menu_desbloqueio_TESTE.png')
+        self.__fundo = pygame.image.load(caminho_fundo)
         self.__rect_fundo = self.__fundo.get_rect(center=(self.__centro_tela))
 
         # Botoes
@@ -30,24 +35,24 @@ class MenuDesbloqueio(MenuGenerico):
 
         # Texto do menu
         self.__texto_0 = self.__fonte.render('Você deseja desblo-', True, 'white')
-        self.__rect_texto_0 = self.__texto_0.get_rect(center=(self.__centro_tela[0], self.__centro_tela[1]-25))
+        self.__rect_texto_0 = self.__texto_0.get_rect(center=(self.__centro_tela[0], self.__centro_tela[1]-35))
         self.__texto_1 = self.__fonte.render('quear a próxima cúpula', True, 'white')
-        self.__rect_texto_1 = self.__texto_1.get_rect(center=self.__centro_tela)
+        self.__rect_texto_1 = self.__texto_1.get_rect(center=(self.__centro_tela[0], self.__centro_tela[1]-10))
         self.__texto_2 = self.__fonte.render(f'por {barreira.custo}?', True, 'white')
-        self.__rect_texto_2 = self.__texto_2.get_rect(center=(self.__centro_tela[0], self.__centro_tela[1]+25))
+        self.__rect_texto_2 = self.__texto_2.get_rect(center=(self.__centro_tela[0], self.__centro_tela[1]+15))
 
     def __criar_botoes(self):
         lista_botoes = []
         posicao_botao_desbloqueio = (self.__rect_fundo.centerx - 110, self.__rect_fundo.centery + 75)
         if self.__indice_selecionado == 0:
-            botao_desbloqueio = BotaoTexto(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_desbloqueio_TESTE.png',posicao=posicao_botao_desbloqueio,selecionado=True,texto='Desbloquear')
+            botao_desbloqueio = BotaoTexto(posicao=posicao_botao_desbloqueio,selecionado=True,texto='Desbloquear')
         else:
-            botao_desbloqueio = BotaoTexto(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_desbloqueio_TESTE.png',posicao=posicao_botao_desbloqueio,selecionado=False,texto='Desbloquear')
+            botao_desbloqueio = BotaoTexto(posicao=posicao_botao_desbloqueio,selecionado=False,texto='Desbloquear')
         posicao_botao_cancelar = (botao_desbloqueio.rect.midright[0] + 120, botao_desbloqueio.rect.midright[1])
         if self.__indice_selecionado == 1:
-            botao_cancelar = BotaoTexto(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_desbloqueio_TESTE.png',posicao=posicao_botao_cancelar,selecionado=True,texto='Cancelar')
+            botao_cancelar = BotaoTexto(posicao=posicao_botao_cancelar,selecionado=True,texto='Cancelar')
         else:
-            botao_cancelar = BotaoTexto(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_desbloqueio_TESTE.png',posicao=posicao_botao_cancelar,selecionado=False,texto='Cancelar')
+            botao_cancelar = BotaoTexto(posicao=posicao_botao_cancelar,selecionado=False,texto='Cancelar')
         lista_botoes.append(botao_desbloqueio)
         lista_botoes.append(botao_cancelar)
         return lista_botoes
