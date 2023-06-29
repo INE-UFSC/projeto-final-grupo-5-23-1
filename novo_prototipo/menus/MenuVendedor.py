@@ -11,6 +11,7 @@ import os
 dir_atual = os.path.dirname(os.path.abspath(__file__))
 pasta_assets = os.path.join(dir_atual, '..', 'assets', 'ui')
 caminho_fonte = os.path.join(pasta_assets, 'font.ttf')
+caminho_fonte_vendedor = os.path.join(pasta_assets, 'raidercrusadersemistraight.ttf')
 caminho_moeda = os.path.join(pasta_assets, 'imagem_moeda.png')
 
 class MenuVendedor(MenuGenerico):
@@ -34,7 +35,7 @@ class MenuVendedor(MenuGenerico):
         #Imagem de Dialogo 320x120
         self.__imagem_dialogo = vendedor.imagem_dialogo
         #Texto nome do Vendedor
-        self.__fonte_nome_vendedor = pygame.font.Font('novo_prototipo/assets/ui/raidercrusadersemistraight.ttf', 25)
+        self.__fonte_nome_vendedor = pygame.font.Font(caminho_fonte_vendedor, 25)
         self.__texto_nome_vendedor = self.__fonte_nome_vendedor.render(vendedor.nome, True, 'white')
         
         
