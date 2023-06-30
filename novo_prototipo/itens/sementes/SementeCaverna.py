@@ -7,7 +7,7 @@ import os
 
 dir_atual = os.path.dirname(os.path.abspath(__file__))
 pasta_assets = os.path.join(dir_atual, '..', '..', 'assets', 'ui')
-caminho_imagem = os.path.join(pasta_assets, 'sprite_semente_TESTE.png')
+caminho_imagem = os.path.join(pasta_assets, 'semente_roxa.png')
 
 class SementeCaverna(ISemente):
 
@@ -16,8 +16,6 @@ class SementeCaverna(ISemente):
                          preco,
                          caminho_imagem,
                          quantidade)
-        self.set_imagem(pygame.Surface((72,72)))
-        self.imagem.fill('#e31cc1')
 
     def constroi_planta(self, pos, grupo) -> IPlanta:
         planta = PlantaCaverna(pos, grupo)

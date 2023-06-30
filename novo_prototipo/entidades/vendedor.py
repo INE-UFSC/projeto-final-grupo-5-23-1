@@ -3,7 +3,7 @@ import pygame
 from Mapa.Blocos.interfaces.IBlocoComInteracao import IBlocoComInteracao
 from menus.MenuVendedor import MenuVendedor
 from entidades.jogador.inventario import Inventario
-from itens.sementes.SementeDeTrigo import SementeDeTrigo
+from itens.sementes.SementeDaFloresta import SementeDaFloresta
 from itens.ferramentas.Enxada import Enxada
 from itens.ferramentas.Regador import Regador
 from itens.sementes.SementeCogumelo import SementeDeCogumelo
@@ -24,17 +24,13 @@ class Vendedor(IBlocoComInteracao):
         #Atributos personalidade:
         if self.__mapa == 'Floresta':
             self.__nome = "Flofler, a vendedora"
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo', quantidade = 10))
-            self.__inventario.adicionar_item(Enxada('Enxada'))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo2', quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo3', quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo4', quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo5', quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo6', quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo7', quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo8', quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo9', quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeTrigo(nome = 'Trigo10', quantidade = 10))
+            self.__inventario.adicionar_item(SementeDaFloresta(quantidade = 10))
+            self.__inventario.adicionar_item(SementeDeCogumelo())
+            self.__inventario.adicionar_item(SementeDasAreias())
+            self.__inventario.adicionar_item(SementeCaverna())
+            self.__inventario.adicionar_item(SementeGelada())
+            self.__inventario.adicionar_item(Enxada())
+            self.__inventario.adicionar_item(Regador())
         
         if self.__mapa == 'Deserto':
             self.__nome = "Bolt, o supercão"

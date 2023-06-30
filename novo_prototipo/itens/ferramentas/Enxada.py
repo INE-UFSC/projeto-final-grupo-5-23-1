@@ -4,7 +4,7 @@ import os
 
 dir_atual = os.path.dirname(os.path.abspath(__file__))
 pasta_assets = os.path.join(dir_atual, '..', '..', 'assets', 'ui')
-caminho_imagem = os.path.join(pasta_assets, 'enxada_TESTE.png')
+caminho_imagem = os.path.join(pasta_assets, 'enxada.png')
 
 class Enxada(Ferramenta):
 

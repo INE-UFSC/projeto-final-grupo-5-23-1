@@ -9,10 +9,6 @@ class Jogador(pygame.sprite.Sprite):
         self.__image = pygame.Surface((40,80))
         self.__image.fill('red')
         self.__rect = self.__image.get_rect(center= pos)
-        
-        # Colisao
-        #self.__hitbox = self.rect.copy().inflate()
-
 
         # Movimentação
         self.__status = 'baixo' # Refere-se a direção que o player está olhando

@@ -1,17 +1,24 @@
 import pygame
 from itens.recursos.Luxiaria import Luxiaria
 from itens.Item import Item
-
 from plantas.interfaces.IPlanta import IPlanta
+import os
 
+
+dir_atual = os.path.dirname(os.path.abspath(__file__))
+pasta_assets = os.path.join(dir_atual, '..', 'assets', 'ui')
+caminho_broto = os.path.join(pasta_assets, 'broto_roxo.png')
+caminho_muda = os.path.join(pasta_assets, 'muda_roxa.png')
+caminho_planta = os.path.join(pasta_assets, 'planta_roxa.png')
 class PlantaCaverna(IPlanta):
 
     def __init__(self, pos, grupo):
         super().__init__(nome='Crisalida', pos=pos, grupo=grupo)
-        #Trocar por uma classe que lidará com as sprites depois:
-        self.__image = pygame.Surface((5,15))
-        self.__image.fill('#2737d8')
-        self.__rect = self.__image.get_rect(midbottom=pos)
+        self.__imagem_broto = pygame.transform.scale(pygame.image.load(caminho_broto), (200, 200))
+        self.__imagem_muda = pygame.transform.scale(pygame.image.load(caminho_muda), (200, 200))
+        self.__imagem_planta = pygame.transform.scale(pygame.image.load(caminho_planta), (250, 250))
+        self.__imagem_atual = self.__imagem_broto
+        self.__rect = self.image.get_rect(midbottom=pos)
         
         #--------------------------------------------------------
          # Tempo de crescimento dos estágios
@@ -23,8 +30,12 @@ class PlantaCaverna(IPlanta):
         
     @property
     def image(self):
-        return self.__image
+        return self.__imagem_atual
     
+    @image.setter
+    def image(self, nova_imagem):
+        self.__imagem_atual = nova_imagem
+
     @property
     def rect(self):
         return self.__rect
@@ -35,19 +46,16 @@ class PlantaCaverna(IPlanta):
         segundos = self.calcular_segundos()
 
         if segundos < self.temposAtuais[0]:
-            self.__image = pygame.Surface((20,10))
-            self.__image.fill('#e8ad17')
+            self.image = self.__imagem_broto
             
         elif self.temposAtuais[0] < segundos < self.temposAtuais[1]:
-            self.__image = pygame.Surface((15,30))
-            self.__image.fill('#d52a2c')
+            self.image = self.__imagem_muda
 
         elif segundos >= self.temposAtuais[1]:
-            self.__image = pygame.Surface((15,70))
-            self.__image.fill('#d02f7d')
+            self.image = self.__imagem_planta
             self.em_crescimento = False
         
-        self.__rect = self.__image.get_rect(midbottom = posicao_antiga)
+        self.__rect = self.image.get_rect(midbottom = posicao_antiga)
 
 
     def interagir(self, jogador):

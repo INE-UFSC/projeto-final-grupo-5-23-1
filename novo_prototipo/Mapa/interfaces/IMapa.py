@@ -68,7 +68,7 @@ class IMapa(ABC):
     def plantar(self, posicao_x_matriz, posicao_y_matriz, semente: ISemente):
         posicao_planta = Vector2()
         posicao_planta.x = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.x + 32
-        posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.y + 40
+        posicao_planta.y = self.__blocos[posicao_y_matriz][posicao_x_matriz].rect.y + 45
         planta = semente.constroi_planta(posicao_planta, [self.__grupoAll, self.__grupoPlantas])
         self.clima.adiciona_observador(planta)
         self.__blocos[posicao_y_matriz][posicao_x_matriz].adiciona_planta(planta)
