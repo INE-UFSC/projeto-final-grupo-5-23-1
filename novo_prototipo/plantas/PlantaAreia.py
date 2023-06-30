@@ -15,9 +15,9 @@ class PlantaAreia(IPlanta):
 
     def __init__(self, pos, grupo):
         super().__init__(nome='Planta da Areia', pos=pos, grupo=grupo)
-        self.__imagem_broto = pygame.transform.scale(pygame.image.load(caminho_broto), (200, 200))
-        self.__imagem_muda = pygame.transform.scale(pygame.image.load(caminho_muda), (200, 200))
-        self.__imagem_planta = pygame.transform.scale(pygame.image.load(caminho_planta), (250, 250))
+        self.__imagem_broto = pygame.transform.scale(pygame.image.load(caminho_broto), (100, 100))
+        self.__imagem_muda = pygame.transform.scale(pygame.image.load(caminho_muda), (150, 150))
+        self.__imagem_planta = pygame.transform.scale(pygame.image.load(caminho_planta), (200, 200))
         self.__imagem_atual = self.__imagem_broto
         self.__rect = self.image.get_rect(midbottom=pos)
 

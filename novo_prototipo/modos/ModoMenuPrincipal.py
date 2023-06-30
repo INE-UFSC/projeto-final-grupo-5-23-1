@@ -43,11 +43,11 @@ class ModoMenuPrincipal(ModoGenerico):
                 'action': lambda: self.mostra_instrucoes()
             },
             {
-                'title': 'Audio',
+                'title': 'Áudio',
                 'action': lambda: self.mostra_opcoes_audio()
             },
             {
-                'title': 'Quit',
+                'title': 'Sair',
                 'action': lambda: self.notifyQuitRequested()
             }
         ]

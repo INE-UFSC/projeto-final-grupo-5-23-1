@@ -32,7 +32,7 @@ class Camera(pygame.sprite.Group):
         self.calcular_offset(jogador)
 
         for layer in LAYERS.values():
-            for sprite in sorted(self.sprites(), key= lambda sprite: sprite.rect.centery):
+            for sprite in sorted(self.sprites(), key= lambda sprite: sprite.rect.midbottom[1]):
                 if sprite.z == layer:
                     offset_rect = sprite.rect.copy()
                     offset_rect.center -= self.offset
