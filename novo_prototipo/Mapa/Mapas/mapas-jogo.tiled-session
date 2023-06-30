@@ -5,8 +5,8 @@
     },
     "activeFile": "caverna.tmx",
     "expandedProjectPaths": [
-        "Tilesets",
-        "."
+        ".",
+        "Tilesets"
     ],
     "fileStates": {
         "Tilesets/tileset.tsx": {
@@ -15,67 +15,67 @@
         },
         "caverna.tmx": {
             "expandedObjectLayers": [
-                14,
                 6,
+                14,
                 13
             ],
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1772.727272727273,
-                "y": 1398.4848484848485
+                "x": 1769.6969696969697,
+                "y": 1395.4545454545455
             }
         },
         "deserto.tmx": {
             "expandedObjectLayers": [
+                5,
                 10,
-                11,
-                5
+                11
             ],
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1887.8787878787878,
-                "y": 1195.4545454545455
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "floresta.tmx": {
             "expandedObjectLayers": [
-                17,
-                4
+                4,
+                17
             ],
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1706.060606060606,
-                "y": 1698.4848484848485
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "neve.tmx": {
             "expandedObjectLayers": [
                 11,
-                8,
-                12
+                12,
+                8
             ],
             "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1480,
-                "y": 1362
+                "x": 1568,
+                "y": 1566
             }
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
-                10,
+                4,
                 9,
-                12,
-                4
+                10,
+                12
             ],
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1178.787878787879,
-                "y": 671.2121212121211
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "savana.tmx": {
@@ -91,14 +91,14 @@
         },
         "transporte.tmx": {
             "expandedObjectLayers": [
-                10,
-                9
+                9,
+                10
             ],
             "scale": 0.33,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 1451.5151515151515,
-                "y": 962.1212121212122
+                "x": 1245.4545454545455,
+                "y": 1246.969696969697
             }
         }
     },
