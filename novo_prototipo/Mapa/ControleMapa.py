@@ -65,7 +65,7 @@ class ControleMapa:
                         grupo.remove(entidade)
                         
                         # Trocar os blocos de barreira por outros
-                        if map.id == 'Transporte':
+                        if map.id == 'Transporte' or map.id == 'Deserto':
                             bloco = Chao(entidade.pos, entidade.surf, [map.grupoAll, map.grupoBlocos], map, True)
                         else:
                             bloco = BlocoDeGrama(entidade.pos, entidade.surf, [map.grupoAll, map.grupoBlocos], map, True)
