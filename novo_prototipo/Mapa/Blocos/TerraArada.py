@@ -14,11 +14,14 @@ class TerraArada(IBlocoComInteracao):
         self.__textura = self.definir_textura()
         self.__z = LAYERS['solo']
 
+        # Atributos para plantação
         self.__planta = None
         self.__regada = False
-        self.__taxa_decaimento_regada = 5
-        self.__tempo_restante_regada = 0
         self.__sobreposicao_agua = None
+
+        # Atributos para controlar o tempo da terra arada
+        self.__tempo_inicial_sem_planta = None
+        self.__tempo_restante_arada = 45
 
     def adiciona_planta(self, planta: IPlanta):
         if isinstance(planta, IPlanta):
@@ -69,6 +72,20 @@ class TerraArada(IBlocoComInteracao):
                 self.__regada = False
                 self.notifica_exclui_entidade(self.__sobreposicao_agua)
                 self.__sobreposicao_agua = None
+        
+        if self.__planta != None:
+            self.__tempo_inicial_sem_planta = None
+
+        if self.__planta == None and self.__tempo_inicial_sem_planta == None:
+            self.__tempo_inicial_sem_planta = pygame.time.get_ticks() / 1000
+        
+        if self.__tempo_inicial_sem_planta != None:
+            agora = pygame.time.get_ticks() / 1000
+            if (agora - self.__tempo_inicial_sem_planta) >= self.__tempo_restante_arada:
+                self.__tempo_inicial_sem_planta = None
+                if self.__sobreposicao_agua != None:
+                    self.__sobreposicao_agua.kill()
+                self.kill()
 
     def desenhar(self, tela):
         pass

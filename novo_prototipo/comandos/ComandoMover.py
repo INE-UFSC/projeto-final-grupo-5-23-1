@@ -3,7 +3,7 @@ import copy
 import pygame
 from .Comando import Comando
 from pygame.math import Vector2
-from comandos.Utilitarios.Colisao import Colisao
+from Utilitarios.Colisao import Colisao
 
 class ComandoMover(Comando):
     """

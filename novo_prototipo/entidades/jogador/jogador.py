@@ -1,6 +1,6 @@
 import os
 import pygame
-from TabelaSprite import TabelaSprite
+from Utilitarios.TabelaSprite import TabelaSprite
 from settings import *
 
 from entidades.jogador.inventario import Inventario
@@ -49,7 +49,7 @@ class Jogador(pygame.sprite.Sprite):
         self.__inventario.adicionar_item(Enxada('Enxada'))
         self.__inventario.adicionar_item(Regador())
         self.__inventario.adicionar_item(SementeDaFloresta(quantidade = 10))
-        
+
         #Comércio
         self.__moedas = 15
 
