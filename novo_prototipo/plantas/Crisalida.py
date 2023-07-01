@@ -72,15 +72,15 @@ class Crisalida(IPlanta):
 
     def multiplicador_clima(self):
         if self.clima == 'Floresta':
-            multiplicador = 1
-        elif self.clima == 'Deserto':
             multiplicador = 1.5
+        elif self.clima == 'Deserto':
+            multiplicador = 3
         elif self.clima == 'Caverna':
-            multiplicador = 2
+            multiplicador = 1.8
         elif self.clima == 'Neve':
-            multiplicador = 1.2
-        elif self.clima == 'Planicie':
             multiplicador = 1
+        elif self.clima == 'Planicie':
+            multiplicador = 2
         else:
             multiplicador = 1
         return multiplicador
