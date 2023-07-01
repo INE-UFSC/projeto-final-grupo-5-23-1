@@ -60,6 +60,9 @@ class Sistema(ObservadorModoDeJogo):
         if self.__modo_de_jogo is not None:
             self.__modo_ativo = 'Jogo'
 
+    def ativa_menu_principal(self):
+        self.__menu_principal_ativo = True
+
     def desativa_menu_principal(self):
         self.__menu_principal_ativo = False
 

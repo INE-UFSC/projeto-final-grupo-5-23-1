@@ -27,12 +27,16 @@ class ModoGenerico(ABC):
     def notifica_desativa_menu_principal(self):
         for observer in self.__observers:
             observer.desativa_menu_principal()
+    def notifica_ativa_menu_principal(self):
+        for observer in self.__observers:
+            observer.ativa_menu_principal()
     def notifica_aumenta_volume(self):
         for observer in self.__observers:
             observer.aumenta_volume()
     def notifica_baixa_volume(self):
         for observer in self.__observers:
             observer.baixa_volume()
+        
     @property
     def observadores(self):
         return self.__observers

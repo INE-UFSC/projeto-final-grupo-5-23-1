@@ -1,6 +1,12 @@
 from modos.ClassesAbstratas.ModoGenerico import ModoGenerico
 
 import pygame
+import os
+
+dir_atual = os.path.dirname(os.path.abspath(__file__))
+pasta_assets = os.path.join(dir_atual, '..', 'assets', 'ui')
+caminho_fonte = os.path.join(pasta_assets, 'font.ttf')
+
 '''
 Esta classe implementa o modo de jogo Mensagem, o qual tem os métodos
 "checa_eventos", "update", "render";
@@ -8,7 +14,7 @@ Esta classe implementa o modo de jogo Mensagem, o qual tem os métodos
 class ModoDeMensagem(ModoGenerico):
     def __init__(self, mensagem):     
         super().__init__()
-        self.__fonte = pygame.font.Font("novo_prototipo/assets/ui/font.ttf", 36)
+        self.__fonte = pygame.font.Font(caminho_fonte, 36)
         self.__mensagem = mensagem
 
     def checa_eventos(self):
