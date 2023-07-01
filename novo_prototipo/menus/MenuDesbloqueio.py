@@ -38,7 +38,7 @@ class MenuDesbloqueio(MenuGenerico):
         self.__rect_texto_0 = self.__texto_0.get_rect(center=(self.__centro_tela[0], self.__centro_tela[1]-35))
         self.__texto_1 = self.__fonte.render('quear a próxima cúpula', True, 'white')
         self.__rect_texto_1 = self.__texto_1.get_rect(center=(self.__centro_tela[0], self.__centro_tela[1]-10))
-        self.__texto_2 = self.__fonte.render(f'por {barreira.custo}?', True, 'white')
+        self.__texto_2 = self.__fonte.render(f'por {barreira.custo} moedas?', True, 'white')
         self.__rect_texto_2 = self.__texto_2.get_rect(center=(self.__centro_tela[0], self.__centro_tela[1]+15))
 
     def __criar_botoes(self):

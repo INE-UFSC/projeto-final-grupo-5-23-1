@@ -47,7 +47,7 @@ class MenuVendedor(MenuGenerico):
         self.__fonte_vender = pygame.font.Font(caminho_fonte, 16)
         self.__texto_vender = self.__fonte_vender.render('Vender', True, 'White')
         #Imagem moeda do jogo: 25x25
-        self.__imagem_moeda = pygame.transform.scale(pygame.image.load(caminho_moeda), (50,50))
+        self.__imagem_moeda = pygame.transform.scale(pygame.image.load(caminho_moeda), (45,45))
         #Número de moedas do jogador
         self.__fonte_texto_numero_moedas = pygame.font.Font(caminho_fonte, 16)
         self.__texto_numero_moedas = self.__fonte_texto_numero_moedas.render(str(self.__jogador.moedas), True, 'White')
@@ -83,7 +83,8 @@ class MenuVendedor(MenuGenerico):
     
     def __constroi_matriz_botoes(self, window):
         centro = self.__calcula_centro(window)
-        posicoes_botoes = [(centro[0] + 192, centro[1] - 166), (centro[0] + 192, centro[1] - 77), (centro[0] + 192, centro[1] + 14), (centro[0] + 192, centro[1] + 103), (centro[0] + 192, centro[1] + 192)]
+        centro_coluna_botoes = centro[0] + 182
+        posicoes_botoes = [(centro_coluna_botoes, centro[1] - 164), (centro_coluna_botoes, centro[1] - 75), (centro_coluna_botoes, centro[1] + 12), (centro_coluna_botoes, centro[1] + 101), (centro_coluna_botoes, centro[1] + 190)]
         pagina_provisoria = []
         matriz_paginas = []
         itens = self.__inventario_selecionado[self.__modo_vendedor].itens
@@ -168,18 +169,18 @@ class MenuVendedor(MenuGenerico):
         centro = self.__calcula_centro(window)
         self.__constroi_matriz_botoes(window)
 
-        #Coluna da esquerda:
-        
         #Fundo
         rect_fundo = self.__fundo.get_rect(center=(centro))
         window.blit(self.__fundo, rect_fundo)
-        
+
+        #Coluna da esquerda:
+
         #Imagem do vendedor
-        rect_imagem_vendedor = self.__imagem_vendedor.get_rect(center=(centro[0] - (rect_fundo.width * (195/770)), centro[1] - (rect_fundo.height * (52/570))))
+        rect_imagem_vendedor = self.__imagem_vendedor.get_rect(center=(centro[0] - (rect_fundo.width * (170/770)), centro[1] - (rect_fundo.height * (52/570))))
         window.blit(self.__imagem_vendedor, rect_imagem_vendedor)
         
         #Imagem do dialogo
-        rect_imagem_dialogo = self.__imagem_dialogo.get_rect(center=(centro[0] - (rect_fundo.width * (195/770)), centro[1] + (rect_fundo.height * (175/570))))
+        rect_imagem_dialogo = self.__imagem_dialogo.get_rect(center=(centro[0] - (rect_fundo.width * (170/770)), centro[1] + (rect_fundo.height * (175/570))))
         window.blit(self.__imagem_dialogo, rect_imagem_dialogo)
         
         #Nome do vendedor
@@ -193,30 +194,30 @@ class MenuVendedor(MenuGenerico):
             #Texto 'Comprar':
             self.__texto_comprar = self.__fonte_comprar.render('Comprar', True, 'White')
             rect_texto_comprar = self.__texto_comprar.get_rect()
-            rect_texto_comprar.midleft = (centro[0] + 33, centro[1] - 225)
+            rect_texto_comprar.midleft = (centro[0] + 28, centro[1] - 220)
             window.blit(self.__texto_comprar, rect_texto_comprar)
 
             #Texto 'Vender':
             self.__texto_vender = self.__fonte_vender.render('Vender', True, 'azure4')
             rect_texto_vender = self.__texto_vender.get_rect()
-            rect_texto_vender.midleft = (rect_texto_comprar.midright[0] + 15, centro[1] - 225)
+            rect_texto_vender.midleft = (rect_texto_comprar.midright[0] + 10, centro[1] - 220)
             window.blit(self.__texto_vender, rect_texto_vender)
 
         elif self.__modo_vendedor == 'Vender':
             #Texto 'Comprar':
             self.__texto_comprar = self.__fonte_comprar.render('Comprar', True, 'azure4')
             rect_texto_comprar = self.__texto_comprar.get_rect()
-            rect_texto_comprar.midleft = (centro[0] + 33, centro[1] - 225)
+            rect_texto_comprar.midleft = (centro[0] + 28, centro[1] - 220)
             window.blit(self.__texto_comprar, rect_texto_comprar)
 
             #Texto 'Vender':
             self.__texto_vender = self.__fonte_vender.render('Vender', True, 'White')
             rect_texto_vender = self.__texto_vender.get_rect()
-            rect_texto_vender.midleft = (rect_texto_comprar.midright[0] + 15, centro[1] - 225)
+            rect_texto_vender.midleft = (rect_texto_comprar.midright[0] + 10, centro[1] - 220)
             window.blit(self.__texto_vender, rect_texto_vender)
 
         #Quantidade de moedas jogador:
-        rect_texto_numero_moedas = self.__texto_numero_moedas.get_rect(midright=(centro[0] + 346, centro[1] - 225))
+        rect_texto_numero_moedas = self.__texto_numero_moedas.get_rect(midright=(centro[0] + 341, centro[1] - 220))
         window.blit(self.__texto_numero_moedas, rect_texto_numero_moedas)
         rect_imagem_moeda = self.__imagem_moeda.get_rect(midright=(rect_texto_numero_moedas.midleft[0] - 5, rect_texto_numero_moedas.midleft[1]-5))
         window.blit(self.__imagem_moeda, rect_imagem_moeda)
@@ -227,5 +228,5 @@ class MenuVendedor(MenuGenerico):
 
         #Seta
         if len(self.botoes[self.__pagina_atual_inventario]) == 5:
-            rect_seta = self.__imagem_seta.get_rect(center=(self.botoes[self.__pagina_atual_inventario][4].rect.centerx, self.botoes[self.__pagina_atual_inventario][4].rect.centery + 59))
+            rect_seta = self.__imagem_seta.get_rect(center=(self.botoes[self.__pagina_atual_inventario][4].rect.centerx, self.botoes[self.__pagina_atual_inventario][4].rect.centery + 55))
             window.blit(self.__imagem_seta, rect_seta)

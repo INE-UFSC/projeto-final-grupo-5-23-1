@@ -9,7 +9,7 @@ import os
 dir_atual = os.path.dirname(os.path.abspath(__file__))
 pasta_assets = os.path.join(dir_atual, '..', 'assets', 'ui')
 caminho_fonte_jogador = os.path.join(pasta_assets, 'raidercrusadersemistraight.ttf')
-caminho_fundo_menu = os.path.join(pasta_assets, "fundo_menu_TESTE.png")
+caminho_fundo_menu = os.path.join(pasta_assets, "fundo_menu.png")
 caminho_fundo_status = os.path.join(pasta_assets, "fundo_status_TESTE.png")
 
 class MenuInventario(MenuGenerico):
@@ -32,7 +32,7 @@ class MenuInventario(MenuGenerico):
         self.__rect_fundo = self.__fundo.get_rect(center=(self.__centro_tela))
         #Imagem jogador
         self.__imagem_jogador = self.__jogador.imagem
-        self.__rect_imagem_jogador = self.__imagem_jogador.get_rect(center=(self.__centro_tela[0] - (self.__rect_fundo.width * (195/770)), self.__centro_tela[1] - (self.__rect_fundo.height * (52/570))))
+        self.__rect_imagem_jogador = self.__imagem_jogador.get_rect(center=(self.__centro_tela[0] - (self.__rect_fundo.width * (170/770)), self.__centro_tela[1] - (self.__rect_fundo.height * (52/570))))
         #Texto nome do jogador
         self.__fonte_nome_jogador = pygame.font.Font(caminho_fonte_jogador, 25)
         self.__texto_nome_jogador = self.__fonte_nome_jogador.render(jogador.nome, True, 'white')
@@ -40,7 +40,7 @@ class MenuInventario(MenuGenerico):
         self.__rect_texto_nome_jogador.midleft = (self.__rect_imagem_jogador.midleft[0], self.__rect_imagem_jogador.centery - (self.__rect_imagem_jogador.height/2) - (self.__rect_texto_nome_jogador.height/2))
         #Fundo Status
         self.__fundo_status = pygame.image.load(caminho_fundo_status)        
-        self.__rect_fundo_status = self.__fundo_status.get_rect(center=(self.__centro_tela[0] - (self.__rect_fundo.width * (195/770)), self.__centro_tela[1] + (self.__rect_fundo.height * (175/570))))
+        self.__rect_fundo_status = self.__fundo_status.get_rect(center=(self.__centro_tela[0] - (self.__rect_fundo.width * (170/770)), self.__centro_tela[1] + (self.__rect_fundo.height * (175/570))))
         #Informações para a matriz do inventário
         self.__nro_colunas = self.__inventario.tamanho_matriz[0]
         self.__nro_linhas = self.__inventario.tamanho_matriz[1]

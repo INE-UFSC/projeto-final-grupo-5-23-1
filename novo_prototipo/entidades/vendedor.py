@@ -55,7 +55,7 @@ class Vendedor(IBlocoComInteracao):
         self.__pasta_assets = os.path.join(self.__dir_atual, '..', 'assets', 'ui')
         self.__caminho_imagem_vendedor = os.path.join(self.__pasta_assets, 'vendedor_TESTE.png')
         self.__caminho_dialogo_vendedor = os.path.join(self.__pasta_assets, 'dialogo_TESTE.png')
-        self.__caminho_fundo_menu_vendedor = os.path.join(self.__pasta_assets, 'fundo_menu_TESTE.png')
+        self.__caminho_fundo_menu_vendedor = os.path.join(self.__pasta_assets, 'fundo_menu.png')
         self.__caminho_seta = os.path.join(self.__pasta_assets, 'seta_TESTE.png')
 
         self.__imagem = pygame.image.load(self.__caminho_imagem_vendedor)
