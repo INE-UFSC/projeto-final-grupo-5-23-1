@@ -5,10 +5,11 @@ dir_atual = os.path.dirname(os.path.abspath(__file__))
 pasta_assets = os.path.join(dir_atual, '..', '..', 'assets', 'ui')
 caminho_botao_pressionado = os.path.join(pasta_assets, 'botao_pressionado.png')
 caminho_botao_solto = os.path.join(pasta_assets, 'botao_solto.png')
+caminho_fonte = os.path.join(pasta_assets, 'font.ttf')
 
 class BotaoTexto():
     
-    def __init__(self, posicao, selecionado: bool, texto:str, cor_fonte: str = 'gray18', caminho_fonte: str = 'novo_prototipo/assets/ui/font.ttf', tamanho_fonte:int = 20, caminho_fundo_solto: str = caminho_botao_solto, caminho_fundo_pressionado: str = caminho_botao_pressionado):
+    def __init__(self, posicao, selecionado: bool, texto:str, cor_fonte: str = 'gray18', caminho_fonte: str = caminho_fonte, tamanho_fonte:int = 20, caminho_fundo_solto: str = caminho_botao_solto, caminho_fundo_pressionado: str = caminho_botao_pressionado):
         self.__posicao = posicao
         self.__selecionado = selecionado
         self.__fonte = pygame.font.Font(caminho_fonte, tamanho_fonte)

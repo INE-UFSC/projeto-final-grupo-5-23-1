@@ -1,11 +1,15 @@
 
 import pygame
 from itens.Item import Item
+import os
 
+dir_atual = os.path.dirname(os.path.abspath(__file__))
+pasta_assets = os.path.join(dir_atual, '..', '..', 'assets', 'ui')
+caminho_fundo = os.path.join(pasta_assets, 'fundo_botao_TESTE.png')
 
 class BotaoItem():
 
-    def __init__(self, caminho_fundo: str, posicao, caminho_fonte: str, cor_fonte, item: Item, selecionado: bool):
+    def __init__(self, posicao, caminho_fonte: str, cor_fonte, item: Item, selecionado: bool, caminho_fundo: str = caminho_fundo):
         #Informações do botão
         self.__x_pos = posicao[0]
         self.__y_pos = posicao[1]

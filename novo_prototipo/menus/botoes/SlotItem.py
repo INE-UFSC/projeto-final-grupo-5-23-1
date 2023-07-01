@@ -1,11 +1,17 @@
 import pygame
 from itens.Item import Item
 from itens.ItemQuantizavel import ItemQuantizavel
+import os
 
+dir_atual = os.path.dirname(os.path.abspath(__file__))
+pasta_assets = os.path.join(dir_atual, '..', '..', 'assets', 'ui')
+caminho_fundo = os.path.join(pasta_assets, 'fundo_slot.png')
+caminho_fundo_selecionado = os.path.join(pasta_assets, 'fundo_slot_selecionado.png')
+caminho_fonte = os.path.join(pasta_assets, 'font.ttf')
 
 class SlotItem():
 
-    def __init__(self, posicao, selecionado: bool, item: Item = None, caminho_fundo: str = 'novo_prototipo/assets/ui/fundo_slot_TESTE.png', caminho_fonte: str = 'novo_prototipo/assets/ui/font.ttf', cor_fonte: str = 'White'):
+    def __init__(self, posicao, selecionado: bool, item: Item = None, caminho_fonte: str = caminho_fonte, cor_fonte: str = 'White'):
         self.__x_pos = posicao[0]
         self.__y_pos = posicao[1]
         self.__caminho_fonte = caminho_fonte
@@ -15,6 +21,7 @@ class SlotItem():
 
         #Fundo do botão
         self.__fundo = pygame.image.load(caminho_fundo)
+        self.__fundo_selecionado = pygame.image.load(caminho_fundo_selecionado)
         self.__rect_fundo = self.__fundo.get_rect(topleft=(self.__x_pos, self.__y_pos))
 
         #Imagem do item
@@ -62,10 +69,11 @@ class SlotItem():
         self.item = None                    
     
     def render(self, tela):
-        tela.blit(self.__fundo, self.__rect_fundo)
+        if self.__selecionado == False:
+            tela.blit(self.__fundo, self.__rect_fundo)
+        else:
+            tela.blit(self.__fundo_selecionado, self.__rect_fundo)
         if self.__item != None:
             tela.blit(self.__imagem_item, self.__rect_imagem_item)
             if isinstance(self.__item, ItemQuantizavel):
                 tela.blit(self.__texto_quantidade_visual, self.__texto_quantidade_visual_rect)
-        if self.__selecionado == True:
-            pygame.draw.rect(tela, 'crimson', pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height), 1)

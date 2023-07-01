@@ -92,9 +92,9 @@ class MenuVendedor(MenuGenerico):
         for item in itens:
             if isinstance(item, Item):
                 if indice_botao_provisorio == self.__item_selecionado:
-                    pagina_provisoria.append(BotaoItem(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_TESTE.png', posicao=posicoes_botoes[indice_botao_provisorio], caminho_fonte=self.__fonte_botoes, cor_fonte=self.__cor_fonte_botoes, item=item, selecionado=True))
+                    pagina_provisoria.append(BotaoItem(posicao=posicoes_botoes[indice_botao_provisorio], caminho_fonte=self.__fonte_botoes, cor_fonte=self.__cor_fonte_botoes, item=item, selecionado=True))
                 else:
-                    pagina_provisoria.append(BotaoItem(caminho_fundo='novo_prototipo/assets/ui/fundo_botao_TESTE.png', posicao=posicoes_botoes[indice_botao_provisorio], caminho_fonte=self.__fonte_botoes, cor_fonte=self.__cor_fonte_botoes, item=item, selecionado=False))
+                    pagina_provisoria.append(BotaoItem(posicao=posicoes_botoes[indice_botao_provisorio], caminho_fonte=self.__fonte_botoes, cor_fonte=self.__cor_fonte_botoes, item=item, selecionado=False))
                 indice_botao_provisorio += 1
                 if len(pagina_provisoria) == self.__num_itens_por_pagina:
                     matriz_paginas.append(pagina_provisoria)
