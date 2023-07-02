@@ -5,6 +5,7 @@ from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
 from Mapa.Blocos.Barreira import Barreira
+from Mapa.Blocos.Chao import Chao
 from Mapa.interfaces.IMapa import IMapa
 from entidades.vendedor import Vendedor
 from  Mapa.Climas.climas.ClimaCaverna import ClimaCaverna
@@ -28,6 +29,12 @@ class MapaCaverna(IMapa):
                 for x, y, surf in layer.tiles():
                     pos = (x*64, y*64)
                     bloco = BlocoDeGrama(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
+                    self.blocos[y][x] = bloco
+            
+            if layer.name == 'Chao':
+                for x, y, surf in layer.tiles():
+                    pos = (x*64, y*64)
+                    bloco = Chao(pos= pos, surf= surf, groups= [self.grupoAll, self.grupoBlocos], observador= self)
                     self.blocos[y][x] = bloco
 
             if layer.name == 'Vendedor':
