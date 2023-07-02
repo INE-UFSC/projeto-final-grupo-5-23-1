@@ -7,7 +7,7 @@ from plantas.interfaces.IPlanta import IPlanta
 from settings import *
 
 class TerraArada(IBlocoComInteracao):
-    def __init__(self, pos, surf, groups, observador):
+    def __init__(self, pos, surf, groups, observador, criador):
         super().__init__(pos, surf, groups, observador)
         self.__image = pygame.image.load('novo_prototipo/Mapa/Mapas/Tilesets/tileset.png')
         self.__rect = self.__image.get_rect(topleft= pos)
@@ -20,6 +20,7 @@ class TerraArada(IBlocoComInteracao):
         self.__sobreposicao_agua = None
 
         # Atributos para controlar o tempo da terra arada
+        self.__blocoCriador = criador
         self.__tempo_inicial_sem_planta = None
         self.__tempo_restante_arada = 45
 
@@ -86,6 +87,7 @@ class TerraArada(IBlocoComInteracao):
                 if self.__sobreposicao_agua != None:
                     self.__sobreposicao_agua.kill()
                 self.kill()
+                self.notifica_troca_bloco(self.posicao_matriz[0], self.posicao_matriz[1], self.__blocoCriador)
 
     def desenhar(self, tela):
         pass
@@ -113,3 +115,7 @@ class TerraArada(IBlocoComInteracao):
     @regada.setter
     def regada(self, regada: bool):
         self.__regada = regada
+    
+    @property
+    def blocoCriador(self):
+        return self.__blocoCriador
