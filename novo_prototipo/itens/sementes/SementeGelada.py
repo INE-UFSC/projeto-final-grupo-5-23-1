@@ -11,7 +11,7 @@ caminho_imagem = os.path.join(pasta_assets, 'semente_azul.png')
 
 class SementeGelada(ISemente):
 
-    def __init__(self, nome='Neve', preco = 8, caminho_imagem = caminho_imagem, quantidade = 1):
+    def __init__(self, nome='Órion', preco = 8, caminho_imagem = caminho_imagem, quantidade = 1):
         super().__init__(nome,
                          preco,
                          caminho_imagem,

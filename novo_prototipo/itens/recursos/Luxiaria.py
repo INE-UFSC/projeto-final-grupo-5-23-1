@@ -9,5 +9,5 @@ caminho_imagem = os.path.join(pasta_assets, 'fruto_roxo.png')
 
 class Luxiaria(ItemQuantizavel):
 
-    def __init__(self, nome='Luxiaria', preco=50, caminho_imagem=caminho_imagem, quantidade=1):
+    def __init__(self, nome='Cassiopeia', preco=50, caminho_imagem=caminho_imagem, quantidade=1):
         super().__init__(nome, preco, caminho_imagem, quantidade)

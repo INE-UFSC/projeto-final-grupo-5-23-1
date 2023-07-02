@@ -82,6 +82,7 @@ class MenuHud(MenuGenerico):
         
                         
     def update(self, jogador):
+        self.__comandos.append(ComandoSelecionaItemAtual(self.__jogador, self.__inventario[self.__indice_selecionado]))
         for comando in self.__comandos:
             comando.run()
         self.__comandos.clear()

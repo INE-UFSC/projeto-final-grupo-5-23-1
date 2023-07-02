@@ -24,8 +24,8 @@ class Floresta(IPlanta):
         
         #--------------------------------------------------------
          # Tempo de crescimento dos estágios
-        self.temposBase = [3.0,10.0]
-        self.temposRegada = [2.25, 7.5]
+        self.temposBase = [10.0,20.0]
+        self.temposRegada = [5.0, 10.0]
 
         self.temposAtuais = self.temposBase
         #--------------------------------------------------------

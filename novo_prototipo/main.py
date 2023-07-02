@@ -53,9 +53,6 @@ class Sistema(ObservadorModoDeJogo):
         self.__modo_de_overlay.adiciona_observador(self)
         self.__modo_ativo = 'Overlay'
 
-    def worldSizeChanged(self, worldSize):
-        self.window = pygame.display.set_mode((int(worldSize.x), int(worldSize.y)))
-
     def showGameRequested(self):
         if self.__modo_de_jogo is not None:
             self.__modo_ativo = 'Jogo'

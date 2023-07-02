@@ -6,9 +6,6 @@ Posteriormente UserInterface implementará as operações desta classe
 from abc import ABC, abstractmethod
 class ObservadorModoDeJogo(ABC):
     @abstractmethod
-    def worldSizeChanged(self, worldSize):
-        pass
-    @abstractmethod
     def showMenuRequested(self):
         pass
     @abstractmethod

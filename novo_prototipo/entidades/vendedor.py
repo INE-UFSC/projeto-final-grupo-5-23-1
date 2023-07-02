@@ -10,20 +10,29 @@ from itens.sementes.SementeCogumelo import SementeDeCogumelo
 from itens.sementes.SementeDasAreias import SementeDasAreias
 from itens.sementes.SementeGelada import SementeGelada
 from itens.sementes.SementeCaverna import SementeCaverna
+import os
+
+from settings import LAYERS
+
+
+dir_atual = os.path.dirname(os.path.abspath(__file__))
+pasta_assets = os.path.join(dir_atual, '..', 'assets', 'ui')
+caminho_sprite = os.path.join(pasta_assets, 'sprite_vendedor.png')
 
 class Vendedor(IBlocoComInteracao):
     def __init__(self, pos, surf, groups, observador, mapa):
         super().__init__(pos, surf, groups, observador, True)
-        self.__image = pygame.Surface((64,64))
-        self.__image.fill((120,120,120))
-        self.__rect = self.__image.get_rect(topleft= pos)
+        self.__image = pygame.transform.scale(pygame.image.load(caminho_sprite), (64*2, 64*2))
+        self.__hitbox = pygame.Surface((64,64)).get_rect(topleft= pos)
+        self.__rect = self.__image.get_rect(midbottom= self.hitbox.midbottom)
         self.__mapa = mapa
         
         self.__inventario = Inventario([4,5])
+        self.z = LAYERS['main']
 
         #Atributos personalidade:
         if self.__mapa == 'Floresta':
-            self.__nome = "Flofler, a vendedora"
+            self.__nome = 'Halley, a "viajante"'
             self.__inventario.adicionar_item(SementeDaFloresta(quantidade = 10))
             self.__inventario.adicionar_item(SementeDeCogumelo())
             self.__inventario.adicionar_item(SementeDasAreias())
@@ -33,32 +42,32 @@ class Vendedor(IBlocoComInteracao):
             self.__inventario.adicionar_item(Regador())
         
         if self.__mapa == 'Deserto':
-            self.__nome = "Bolt, o supercão"
-            self.__inventario.adicionar_item(SementeDasAreias(nome= 'Semente Arenosa', preco= 20,quantidade= 20))
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeDasAreias(preco= 20,quantidade= 20))
         
         if self.__mapa == 'Planicie':
-            self.__nome = "Power Ranger Rosa"
-            self.__inventario.adicionar_item(SementeDeCogumelo(nome='Cogumelo Jade', quantidade= 20, preco= 10))
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeDeCogumelo(quantidade= 20, preco= 10))
         
         if self.__mapa == 'Neve':
-            self.__nome = "SaNs UndERtaLe"
-            self.__inventario.adicionar_item(SementeGelada(nome= 'Semente Gelada', quantidade= 15))
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeGelada(quantidade= 15))
         
         if self.__mapa == 'Caverna':
-            self.__nome = "The Princess is in another castle"
-            self.__inventario.adicionar_item(SementeCaverna(nome='Cavernite', quantidade= 3))
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeCaverna(quantidade= 3))
 
         if self.__mapa == 'Transporte':
-            self.__nome = 'Michael Jackson'
+            self.__nome = 'Halley, a "viajante"'
 
         self.__dir_atual = os.path.dirname(os.path.abspath(__file__))
         self.__pasta_assets = os.path.join(self.__dir_atual, '..', 'assets', 'ui')
-        self.__caminho_imagem_vendedor = os.path.join(self.__pasta_assets, 'vendedor_TESTE.png')
+        self.__caminho_imagem_vendedor = os.path.join(self.__pasta_assets, 'vendedor.png')
         self.__caminho_dialogo_vendedor = os.path.join(self.__pasta_assets, 'dialogo_TESTE.png')
         self.__caminho_fundo_menu_vendedor = os.path.join(self.__pasta_assets, 'fundo_menu.png')
         self.__caminho_seta = os.path.join(self.__pasta_assets, 'seta_TESTE.png')
 
-        self.__imagem = pygame.image.load(self.__caminho_imagem_vendedor)
+        self.__imagem = pygame.transform.scale(pygame.image.load(self.__caminho_imagem_vendedor), (320, 310))
         self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_vendedor)
 
     def desenhar(self, tela):
@@ -93,3 +102,7 @@ class Vendedor(IBlocoComInteracao):
     @property
     def imagem_dialogo(self):
         return self.__imagem_dialogo
+
+    @property
+    def hitbox(self):
+        return self.__hitbox

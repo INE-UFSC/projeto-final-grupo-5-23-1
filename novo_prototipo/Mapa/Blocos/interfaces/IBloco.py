@@ -50,6 +50,10 @@ class IBloco(ABC, pygame.sprite.Sprite):
     def z(self):
          return self.__z
     
+    @z.setter
+    def z(self, z):
+         self.__z = z
+    
     @image.setter
     def image(self, image):
          self.__image = image

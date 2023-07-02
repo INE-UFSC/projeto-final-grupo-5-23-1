@@ -22,7 +22,7 @@ class ControleMapa:
             'Transporte' : MapaTransporte(self,tamanho=39)
         }
 
-        self.__mapa_atual = None #self.__mapas['Floresta']
+        self.__mapa_atual = None
         self.__atualizar_mapa('Floresta')
         self.__jogador = self.__mapa_atual.jogador
 
