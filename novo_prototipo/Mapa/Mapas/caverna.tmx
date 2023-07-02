@@ -161,7 +161,7 @@
 </data>
  </layer>
  <objectgroup id="15" name="Vendedor">
-  <object id="26" name="Vendedor" gid="11" x="1152" y="640" width="64" height="64"/>
+  <object id="26" name="Vendedor" gid="11" x="2496" y="1088" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="6" name="Spawns">
   <object id="1" name="Default" x="1572" y="928">

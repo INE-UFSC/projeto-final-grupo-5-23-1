@@ -22,48 +22,48 @@
         "caverna.tmx": {
             "expandedObjectLayers": [
                 13,
-                6,
-                14
+                14,
+                6
             ],
             "scale": 0.5,
-            "selectedLayer": 1,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1752,
-                "y": 1593
+                "x": 1836,
+                "y": 1163
             }
         },
         "deserto.tmx": {
             "expandedObjectLayers": [
-                11,
                 10,
-                5
+                5,
+                11
             ],
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1566.6666666666665,
-                "y": 1565.151515151515
+                "x": 1839.3939393939393,
+                "y": 1337.8787878787878
             }
         },
         "floresta.tmx": {
             "scale": 0.33,
-            "selectedLayer": 0,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1566.6666666666665,
-                "y": 1565.151515151515
+                "x": 1800,
+                "y": 1437.8787878787878
             }
         },
         "neve.tmx": {
             "expandedObjectLayers": [
-                11,
                 8,
+                11,
                 12
             ],
             "scale": 0.25,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1568,
-                "y": 1570
+                "x": 1560,
+                "y": 1566
             }
         },
         "planicie.tmx": {
@@ -76,8 +76,8 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1566.6666666666665,
-                "y": 1565.151515151515
+                "x": 1606.060606060606,
+                "y": 1486.3636363636363
             }
         },
         "savana.tmx": {
