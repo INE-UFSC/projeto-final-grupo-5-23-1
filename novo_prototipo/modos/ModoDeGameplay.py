@@ -1,9 +1,11 @@
 from comandos import ComandoDeInteracao, ComandoAbrirMenu, ComandoMover
+from comandos.ComandoDeslizar import ComandoDeslizar
 from menus import MenuInventario, MenuGenerico
 from estado.ClassesAbstratas.IEstadoJogo import IEstadoJogo
 from menus.MenuHud import MenuHud
 from .ClassesAbstratas.ModoGenerico import ModoGenerico
 from Mapa.ControleMapa import ControleMapa
+from Mapa.Blocos.Gelo import Gelo
 
 import pygame
 from pygame.math import Vector2
@@ -142,7 +144,13 @@ class ModoDeGameplay(ModoGenerico):
 
                         
             # Keyboard controls the moves of the player's unit
-            if direcao.x != 0 or direcao.y != 0:
+            posicao_jogador = self.__jogador.posicao_matriz
+            onIce = isinstance(self.__controleMapa.mapa_atual.blocos[posicao_jogador[1]][posicao_jogador[0]], Gelo)
+            if onIce:
+                self.__comandos.append(
+                    ComandoDeslizar(self.__jogador, self.jogador.status, delta_tempo)
+                )
+            elif direcao.x != 0 or direcao.y != 0:
                 self.__comandos.append(
                     ComandoMover(self.__controleMapa.mapa_atual.grupoBlocos,self.__jogador, direcao, status, delta_tempo)
                 )
