@@ -5,7 +5,8 @@ import os
 
 dir_atual = os.path.dirname(os.path.abspath(__file__))
 pasta_assets = os.path.join(dir_atual, '..', '..', 'assets', 'ui')
-caminho_fundo = os.path.join(pasta_assets, 'fundo_botao_TESTE.png')
+caminho_fundo = os.path.join(pasta_assets, 'fundo_botao.png')
+caminho_fundo_selecionado = os.path.join(pasta_assets, 'fundo_botao_selecionado.png')
 
 class BotaoItem():
 
@@ -20,6 +21,7 @@ class BotaoItem():
 
         #Fundo do botão 320x82
         self.__fundo = pygame.image.load(caminho_fundo)
+        self.__fundo_selecionado = pygame.image.load(caminho_fundo_selecionado)
         self.__rect_fundo = self.__fundo.get_rect(center=(self.__x_pos, self.__y_pos))
 
 		#Texto do nome do item
@@ -64,9 +66,10 @@ class BotaoItem():
         return (posicao_x, posicao_y)
 
     def render(self, tela):
-        tela.blit(self.__fundo, self.__rect_fundo)
+        if self.__selecionado == False:
+            tela.blit(self.__fundo, self.__rect_fundo)
+        else:
+            tela.blit(self.__fundo_selecionado, self.__rect_fundo)
         tela.blit(self.__imagem_item, self.__rect_imagem_item)
         tela.blit(self.__texto_nome_visual, self.__texto_nome_visual_rect)
         tela.blit(self.__texto_preco_visual, self.__texto_preco_visual_rect)
-        if self.__selecionado == True:
-            pygame.draw.rect(tela, 'white', pygame.Rect(self.rect.x, self.rect.y, self.rect.width, self.rect.height), 1)
