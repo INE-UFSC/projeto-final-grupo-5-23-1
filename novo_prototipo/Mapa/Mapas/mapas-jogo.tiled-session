@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "deserto.tmx",
+    "activeFile": "caverna.tmx",
     "expandedProjectPaths": [
         ".",
-        "Decoracao",
-        "Tilesets"
+        "Tilesets",
+        "Decoracao"
     ],
     "fileStates": {
         "Decoracao/decoracao.tsx": {
@@ -22,42 +22,42 @@
         "caverna.tmx": {
             "expandedObjectLayers": [
                 13,
-                14,
-                6
+                6,
+                14
             ],
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.5,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1566.6666666666665,
-                "y": 1565.151515151515
+                "x": 1752,
+                "y": 1593
             }
         },
         "deserto.tmx": {
             "expandedObjectLayers": [
                 11,
-                5,
-                10
+                10,
+                5
             ],
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1898,
-                "y": 455
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "floresta.tmx": {
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1769.6969696969697,
-                "y": 1628.7878787878785
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "neve.tmx": {
             "expandedObjectLayers": [
                 11,
-                12,
-                8
+                8,
+                12
             ],
             "scale": 0.25,
             "selectedLayer": 2,
@@ -68,10 +68,10 @@
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
-                4,
-                12,
                 9,
-                10
+                10,
+                4,
+                12
             ],
             "scale": 0.33,
             "selectedLayer": 2,
@@ -123,11 +123,11 @@
     "recentFiles": [
         "floresta.tmx",
         "planicie.tmx",
+        "deserto.tmx",
+        "neve.tmx",
         "Decoracao/decoracao.tsx",
         "transporte.tmx",
         "caverna.tmx",
-        "neve.tmx",
-        "deserto.tmx",
         "savana.tmx",
         "Tilesets/tileset.tsx"
     ],
