@@ -89,9 +89,6 @@ class TerraArada(IBlocoComInteracao):
                 self.kill()
                 self.notifica_troca_bloco(self.posicao_matriz[0], self.posicao_matriz[1], self.__blocoCriador)
 
-    def desenhar(self, tela):
-        pass
-
     @property
     def z(self):
         return self.__z

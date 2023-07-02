@@ -21,29 +21,29 @@
         },
         "caverna.tmx": {
             "expandedObjectLayers": [
-                15,
-                13,
                 14,
-                6
+                13,
+                6,
+                15
             ],
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1836,
-                "y": 1163
+                "x": 1568,
+                "y": 1567
             }
         },
         "deserto.tmx": {
             "expandedObjectLayers": [
-                10,
                 5,
+                10,
                 11
             ],
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1839.3939393939393,
-                "y": 1337.8787878787878
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "floresta.tmx": {
@@ -53,35 +53,35 @@
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1800,
-                "y": 1437.8787878787878
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "neve.tmx": {
             "expandedObjectLayers": [
+                12,
                 8,
-                11,
-                12
+                11
             ],
             "scale": 0.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1660,
-                "y": 1333
+                "x": 1568,
+                "y": 1567
             }
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
-                9,
+                12,
                 10,
-                4,
-                12
+                9,
+                4
             ],
             "scale": 0.33,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 1606.060606060606,
-                "y": 1486.3636363636363
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "savana.tmx": {
@@ -97,8 +97,8 @@
         },
         "transporte.tmx": {
             "expandedObjectLayers": [
-                9,
-                10
+                10,
+                9
             ],
             "scale": 0.33,
             "selectedLayer": 4,

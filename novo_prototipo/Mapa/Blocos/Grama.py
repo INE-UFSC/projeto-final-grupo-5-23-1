@@ -36,6 +36,3 @@ class BlocoDeGrama(IBlocoComInteracao):
             tela.blit(self.image, self.rect, self.textura)
         else:
             super().draw()
-
-    def desenhar(self, tela):
-        pass

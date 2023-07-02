@@ -61,7 +61,3 @@ class IBloco(ABC, pygame.sprite.Sprite):
     @rect.setter
     def rect(self, rect):
          self.__rect = rect
-
-    #@abstractmethod
-    #def desenhar(self, tela: pygame.Surface):
-     #   pass
