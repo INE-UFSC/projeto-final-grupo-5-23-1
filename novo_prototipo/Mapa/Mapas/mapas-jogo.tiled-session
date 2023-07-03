@@ -5,8 +5,8 @@
     },
     "activeFile": "floresta.tmx",
     "expandedProjectPaths": [
-        "Tilesets",
         ".",
+        "Tilesets",
         "Decoracao"
     ],
     "fileStates": {
@@ -27,16 +27,16 @@
         },
         "caverna.tmx": {
             "expandedObjectLayers": [
-                15,
-                6,
+                13,
                 14,
-                13
+                6,
+                15
             ],
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1656,
-                "y": 1317
+                "x": 1568,
+                "y": 1567
             }
         },
         "decoracao.tsx": {
@@ -46,51 +46,53 @@
         },
         "deserto.tmx": {
             "expandedObjectLayers": [
-                5,
                 11,
-                10
+                10,
+                5
             ],
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1560.6060606060607,
-                "y": 1559.0909090909092
+                "x": 1566.6666666666665,
+                "y": 1565.151515151515
             }
         },
         "floresta.tmx": {
             "expandedObjectLayers": [
-                19
+                17,
+                19,
+                18
             ],
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.5,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 1560.6060606060607,
-                "y": 1559.0909090909092
+                "x": 1278,
+                "y": 1553
             }
         },
         "neve.tmx": {
             "expandedObjectLayers": [
-                8,
+                12,
                 11,
-                12
+                8
             ],
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1148,
-                "y": 1451
+                "x": 1568,
+                "y": 1567
             }
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
-                22,
-                12
+                12,
+                22
             ],
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 1680,
-                "y": 1461
+                "x": 1599.9999999999998,
+                "y": 1513.6363636363637
             }
         },
         "savana.tmx": {
@@ -106,14 +108,14 @@
         },
         "transporte.tmx": {
             "expandedObjectLayers": [
-                9,
-                10
+                10,
+                9
             ],
             "scale": 0.75,
-            "selectedLayer": -1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 821.3333333333334,
-                "y": 1850
+                "x": 1248,
+                "y": 1247.3333333333335
             }
         },
         "transporte.tmx#tileset": {
