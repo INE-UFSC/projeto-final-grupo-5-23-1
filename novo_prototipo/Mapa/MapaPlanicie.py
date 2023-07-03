@@ -5,6 +5,7 @@ from Mapa.Blocos.Grama import BlocoDeGrama
 from Mapa.Blocos.Parede import Parede
 from Mapa.Blocos.Transporte import Transporte
 from Mapa.Blocos.Barreira import Barreira
+from Mapa.Blocos.Decoracao import Decoracao
 from Mapa.interfaces.IMapa import IMapa
 from entidades.vendedor import Vendedor
 from Mapa.Climas.climas.ClimaPlanicie import ClimaPlanicie
@@ -69,8 +70,10 @@ class MapaPlanicie(IMapa):
             if layer.name == 'Spawns':
                 for obj in layer:
                     self.spawns[obj.name] = pygame.math.Vector2(obj.x, obj.y)
-                        
-                    
+
+            if layer.name == 'Decoracao':
+                for obj in layer:
+                    Decoracao(pos=(obj.x,obj.y), surf= obj.image, groups= [self.grupoAll])
     
     def adiciona_jogador(self):
         self.entidades.append(Jogador(self.spawns['Default'], [self.grupoAll, self.grupoJogador]))

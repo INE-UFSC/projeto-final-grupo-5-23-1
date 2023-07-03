@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "neve.tmx",
+    "activeFile": "floresta.tmx",
     "expandedProjectPaths": [
-        "Decoracao",
         ".",
-        "Tilesets"
+        "Tilesets",
+        "Decoracao"
     ],
     "fileStates": {
         "Decoracao/decoracao.tsx": {
@@ -15,14 +15,20 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Tilesets/decoracao.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Tilesets/tileset.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "caverna.tmx": {
             "expandedObjectLayers": [
-                14,
                 13,
+                14,
                 6,
                 15
             ],
@@ -33,11 +39,16 @@
                 "y": 1567
             }
         },
+        "decoracao.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "deserto.tmx": {
             "expandedObjectLayers": [
-                5,
+                11,
                 10,
-                11
+                5
             ],
             "scale": 0.33,
             "selectedLayer": 1,
@@ -48,40 +59,40 @@
         },
         "floresta.tmx": {
             "expandedObjectLayers": [
-                19
+                17,
+                19,
+                18
             ],
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "scale": 0.5,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 1566.6666666666665,
-                "y": 1565.151515151515
+                "x": 1278,
+                "y": 1553
             }
         },
         "neve.tmx": {
             "expandedObjectLayers": [
                 12,
-                8,
-                11
+                11,
+                8
             ],
             "scale": 0.5,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 1492,
-                "y": 1485
+                "x": 1568,
+                "y": 1567
             }
         },
         "planicie.tmx": {
             "expandedObjectLayers": [
                 12,
-                10,
-                9,
-                4
+                22
             ],
             "scale": 0.33,
-            "selectedLayer": 2,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1566.6666666666665,
-                "y": 1565.151515151515
+                "x": 1599.9999999999998,
+                "y": 1513.6363636363637
             }
         },
         "savana.tmx": {
@@ -100,12 +111,15 @@
                 10,
                 9
             ],
-            "scale": 0.33,
-            "selectedLayer": 4,
+            "scale": 0.75,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 1245.4545454545455,
-                "y": 1250
+                "x": 1248,
+                "y": 1247.3333333333335
             }
+        },
+        "transporte.tmx#tileset": {
+            "scaleInDock": 1
         }
     },
     "last.imagePath": "/home/gabriel/Downloads",
@@ -120,18 +134,19 @@
         "deserto.tmx",
         "neve.tmx",
         "caverna.tmx",
-        "transporte.tmx",
-        "Decoracao/decoracao.tsx"
+        "transporte.tmx"
     ],
     "project": "mapas-jogo.tiled-project",
     "recentFiles": [
-        "floresta.tmx",
-        "planicie.tmx",
-        "deserto.tmx",
-        "Decoracao/decoracao.tsx",
         "transporte.tmx",
         "caverna.tmx",
         "neve.tmx",
+        "deserto.tmx",
+        "planicie.tmx",
+        "floresta.tmx",
+        "decoracao.tsx",
+        "Tilesets/decoracao.tsx",
+        "Decoracao/decoracao.tsx",
         "savana.tmx",
         "Tilesets/tileset.tsx"
     ],
