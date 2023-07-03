@@ -13,7 +13,7 @@ class Jogador(pygame.sprite.Sprite):
 
     def __init__(self, pos, group):
         super().__init__(group)
-        self.__nome = 'Nome do Principal'      
+        self.__nome = 'Luna, a habilitadora'      
         self.__inventario = Inventario([3,4])
         self.__z = LAYERS['main']
 
@@ -26,11 +26,11 @@ class Jogador(pygame.sprite.Sprite):
         # Imports relativos
         self.__dir_atual = os.path.dirname(os.path.abspath(__file__))
         self.__pasta_assets = os.path.join(self.__dir_atual, '..', '..', 'assets', 'ui')
-        self.__caminho_imagem = os.path.join(self.__pasta_assets, 'jogador_TESTE.png')
+        self.__caminho_imagem = os.path.join(self.__pasta_assets, 'jogador.png')
         self.__caminho_sprite = os.path.join(self.__pasta_assets, 'sprite_jogador.png')
 
         # Carregamento de imagens
-        self.__imagem = pygame.image.load(self.__caminho_imagem)
+        self.__imagem = pygame.transform.scale(pygame.image.load(self.__caminho_imagem), (320, 310))
         self.__tabela_sprite = TabelaSprite(pygame.image.load(self.__caminho_sprite))
         self.__animacoes = self.__carrega_animacoes(self.__tabela_sprite)
         self.__direcao_animacao = { 'cima': 3, 'esquerda': 1, 'baixo': 2, 'direita': 0,}
