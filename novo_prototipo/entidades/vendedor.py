@@ -30,45 +30,57 @@ class Vendedor(IBlocoComInteracao):
         self.__inventario = Inventario([4,5])
         self.z = LAYERS['main']
 
-        #Atributos personalidade:
-        if self.__mapa == 'Floresta':
-            self.__nome = 'Halley, a "viajante"'
-            self.__inventario.adicionar_item(SementeDaFloresta(quantidade = 10))
-            self.__inventario.adicionar_item(SementeDeCogumelo())
-            self.__inventario.adicionar_item(SementeDasAreias())
-            self.__inventario.adicionar_item(SementeCaverna())
-            self.__inventario.adicionar_item(SementeGelada())
-            self.__inventario.adicionar_item(Enxada())
-            self.__inventario.adicionar_item(Regador())
-        
-        if self.__mapa == 'Deserto':
-            self.__nome = 'Halley, a "viajante"'
-            self.__inventario.adicionar_item(SementeDasAreias(preco= 20,quantidade= 20))
-        
-        if self.__mapa == 'Planicie':
-            self.__nome = 'Halley, a "viajante"'
-            self.__inventario.adicionar_item(SementeDeCogumelo(quantidade= 20, preco= 10))
-        
-        if self.__mapa == 'Neve':
-            self.__nome = 'Halley, a "viajante"'
-            self.__inventario.adicionar_item(SementeGelada(quantidade= 15))
-        
-        if self.__mapa == 'Caverna':
-            self.__nome = 'Halley, a "viajante"'
-            self.__inventario.adicionar_item(SementeCaverna(quantidade= 3))
-
-        if self.__mapa == 'Transporte':
-            self.__nome = 'Halley, a "viajante"'
-
         self.__dir_atual = os.path.dirname(os.path.abspath(__file__))
         self.__pasta_assets = os.path.join(self.__dir_atual, '..', 'assets', 'ui')
         self.__caminho_imagem_vendedor = os.path.join(self.__pasta_assets, 'vendedor.png')
-        self.__caminho_dialogo_vendedor = os.path.join(self.__pasta_assets, 'dialogo_TESTE.png')
+        self.__caminho_dialogo_floresta = os.path.join(self.__pasta_assets, 'dialogo_floresta.png')
+        self.__caminho_dialogo_deserto = os.path.join(self.__pasta_assets, 'dialogo_deserto.png')
+        self.__caminho_dialogo_planicie = os.path.join(self.__pasta_assets, 'dialogo_planicie.png')
+        self.__caminho_dialogo_gelo = os.path.join(self.__pasta_assets, 'dialogo_gelo.png')
+        self.__caminho_dialogo_caverna = os.path.join(self.__pasta_assets, 'dialogo_caverna.png')
+        self.__caminho_dialogo_transporte = os.path.join(self.__pasta_assets, 'dialogo_transporte.png')
         self.__caminho_fundo_menu_vendedor = os.path.join(self.__pasta_assets, 'fundo_menu.png')
         self.__caminho_seta = os.path.join(self.__pasta_assets, 'seta_TESTE.png')
+        
+        self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_floresta)
+        #Atributos personalidade:
+        if self.__mapa == 'Floresta':
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeDaFloresta())
+            self.__inventario.adicionar_item(Enxada())
+            self.__inventario.adicionar_item(Regador())
+            self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_floresta)
+        
+        if self.__mapa == 'Deserto':
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeDasAreias())
+            self.__inventario.adicionar_item(SementeDaFloresta(preco=6))
+            self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_deserto)
+
+        if self.__mapa == 'Planicie':
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeDeCogumelo())
+            self.__inventario.adicionar_item(SementeDasAreias(preco=18))
+            self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_planicie)
+
+        if self.__mapa == 'Neve':
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeDaFloresta(preco=6))
+            self.__inventario.adicionar_item(SementeGelada())
+            self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_gelo)
+        
+        if self.__mapa == 'Caverna':
+            self.__nome = 'Halley, a "viajante"'
+            self.__inventario.adicionar_item(SementeCaverna())
+            self.__inventario.adicionar_item(SementeGelada(preco=36))
+            self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_caverna)
+
+        if self.__mapa == 'Transporte':
+            self.__nome = 'Halley, a "viajante"'
+            self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_transporte)
 
         self.__imagem = pygame.transform.scale(pygame.image.load(self.__caminho_imagem_vendedor), (320, 310))
-        self.__imagem_dialogo = pygame.image.load(self.__caminho_dialogo_vendedor)
+        
 
     def desenhar(self, tela):
         tela.blit(self.__image, self.__rect)

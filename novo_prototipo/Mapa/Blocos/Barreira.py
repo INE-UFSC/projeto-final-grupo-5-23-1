@@ -10,15 +10,15 @@ class Barreira(IBlocoComInteracao):
     
     def definir_custo(self):
         if self.__mapa == 'Deserto':
-            return 10
-        elif self.__mapa == 'Neve':
-            return 20
-        elif self.__mapa == 'Transporte':
-            return 30
-        elif self.__mapa == 'Planicie':
             return 50
-        elif self.__mapa == 'Caverna':
+        elif self.__mapa == 'Neve':
             return 75
+        elif self.__mapa == 'Transporte':
+            return 200
+        elif self.__mapa == 'Planicie':
+            return 100
+        elif self.__mapa == 'Caverna':
+            return 150
     
     def interagir(self, jogador):
         self.observador.notifica_ativa_menu(MenuDesbloqueio(self, jogador))

@@ -1,4 +1,3 @@
-import pygame
 from itens.ItemQuantizavel import ItemQuantizavel
 import os
 

@@ -8,5 +8,5 @@ caminho_imagem = os.path.join(pasta_assets, 'regador.png')
 
 class Regador(Ferramenta):
 
-    def __init__(self, nome='Regador', preco=15, caminho_imagem=caminho_imagem):
+    def __init__(self, nome='Regador', preco=50, caminho_imagem=caminho_imagem):
         super().__init__(nome, preco, caminho_imagem)

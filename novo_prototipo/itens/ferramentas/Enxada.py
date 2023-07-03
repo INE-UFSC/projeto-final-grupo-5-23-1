@@ -8,5 +8,5 @@ caminho_imagem = os.path.join(pasta_assets, 'enxada.png')
 
 class Enxada(Ferramenta):
 
-    def __init__(self, nome='Enxada', preco = 10, caminho_imagem = caminho_imagem):
+    def __init__(self, nome='Enxada', preco = 0, caminho_imagem = caminho_imagem):
         super().__init__(nome, preco, caminho_imagem)

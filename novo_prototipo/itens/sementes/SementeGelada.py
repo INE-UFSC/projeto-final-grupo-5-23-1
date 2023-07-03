@@ -1,4 +1,3 @@
-import pygame
 from plantas.interfaces.IPlanta import IPlanta
 from plantas.Crisalida import Crisalida
 from .ISemente import ISemente
@@ -11,7 +10,7 @@ caminho_imagem = os.path.join(pasta_assets, 'semente_azul.png')
 
 class SementeGelada(ISemente):
 
-    def __init__(self, nome='Órion', preco = 8, caminho_imagem = caminho_imagem, quantidade = 1):
+    def __init__(self, nome='Semente de Órion', preco = 35, caminho_imagem = caminho_imagem, quantidade = 1):
         super().__init__(nome,
                          preco,
                          caminho_imagem,

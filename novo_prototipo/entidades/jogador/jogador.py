@@ -47,11 +47,9 @@ class Jogador(pygame.sprite.Sprite):
 
         #Adicição de itens provisória
         self.__inventario.adicionar_item(Enxada('Enxada'))
-        self.__inventario.adicionar_item(Regador())
-        self.__inventario.adicionar_item(SementeDaFloresta(quantidade = 10))
 
         #Comércio
-        self.__moedas = 15
+        self.__moedas = 5
 
     def __carrega_animacoes(self, tabela_sprite: TabelaSprite):
         animacao = []

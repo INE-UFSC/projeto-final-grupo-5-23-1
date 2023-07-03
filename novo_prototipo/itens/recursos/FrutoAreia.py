@@ -1,4 +1,3 @@
-import pygame
 from itens.ItemQuantizavel import ItemQuantizavel
 import os
 
@@ -9,5 +8,5 @@ caminho_imagem = os.path.join(pasta_assets, 'fruto_amarelo.png')
 
 class FrutoAreia(ItemQuantizavel):
 
-    def __init__(self, nome='Pégaso', preco=12, caminho_imagem=caminho_imagem, quantidade=1):
+    def __init__(self, nome='Pégaso', preco=25, caminho_imagem=caminho_imagem, quantidade=1):
         super().__init__(nome, preco, caminho_imagem, quantidade)

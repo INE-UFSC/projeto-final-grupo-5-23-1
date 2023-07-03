@@ -18,6 +18,8 @@ class BotaoItem():
         self.__fonte = pygame.font.Font(self.__caminho_fonte, 15)
         self.__cor_fonte = cor_fonte
         self.__item = item
+        
+
 
         #Fundo do botão 320x82
         self.__fundo = pygame.image.load(caminho_fundo)
@@ -25,9 +27,26 @@ class BotaoItem():
         self.__rect_fundo = self.__fundo.get_rect(center=(self.__x_pos, self.__y_pos))
 
 		#Texto do nome do item
-        self.__texto_nome = item.nome
-        self.__texto_nome_visual = self.__fonte.render(self.__texto_nome, True, self.__cor_fonte)
-        self.__texto_nome_visual_rect = self.__texto_nome_visual.get_rect(midleft=self.__calcula_posicao_texto())
+        if len(self.__item.nome.split())>1:
+            if len(self.__item.nome.split()) == 3:
+                self.__texto_nome = self.__item.nome.split()[0] + ' ' + self.__item.nome.split()[1]
+                self.__texto_nome_visual = self.__fonte.render(self.__texto_nome, True, self.__cor_fonte)
+                self.__texto_nome_visual_rect = self.__texto_nome_visual.get_rect(midleft=(self.__calcula_posicao_texto()[0], self.__calcula_posicao_texto()[1]-10))
+                self.__texto_secundario = self.__item.nome.split()[2]
+                self.__texto_nome_visual_secundario = self.__fonte.render(self.__texto_secundario, True, self.__cor_fonte)
+                self.__texto_nome_visual_secundario_rect = self.__texto_nome_visual_secundario.get_rect(midleft=(self.__calcula_posicao_texto()[0], self.__calcula_posicao_texto()[1]+10))
+            elif len(self.__item.nome.split()) == 2:
+                self.__texto_nome = self.__item.nome.split()[0]
+                self.__texto_secundario = self.__item.nome.split()[1]
+                self.__texto_nome_visual = self.__fonte.render(self.__texto_nome, True, self.__cor_fonte)
+                self.__texto_nome_visual_rect = self.__texto_nome_visual.get_rect(midleft=(self.__calcula_posicao_texto()[0], self.__calcula_posicao_texto()[1]-10))
+                self.__texto_nome_visual_secundario = self.__fonte.render(self.__texto_secundario, True, self.__cor_fonte)
+                self.__texto_nome_visual_secundario_rect = self.__texto_nome_visual_secundario.get_rect(midleft=(self.__calcula_posicao_texto()[0], self.__calcula_posicao_texto()[1]+10))
+        else:
+            self.__texto_nome = self.__item.nome
+            self.__texto_nome_visual = self.__fonte.render(self.__texto_nome, True, self.__cor_fonte)
+            self.__texto_nome_visual_rect = self.__texto_nome_visual.get_rect(midleft=self.__calcula_posicao_texto())
+                
 
         #Texto do preço do item
         self.__texto_preco = str(item.preco)
@@ -71,5 +90,9 @@ class BotaoItem():
         else:
             tela.blit(self.__fundo_selecionado, self.__rect_fundo)
         tela.blit(self.__imagem_item, self.__rect_imagem_item)
-        tela.blit(self.__texto_nome_visual, self.__texto_nome_visual_rect)
+        if len(self.__item.nome.split())>1:
+            tela.blit(self.__texto_nome_visual, self.__texto_nome_visual_rect)
+            tela.blit(self.__texto_nome_visual_secundario, self.__texto_nome_visual_secundario_rect)
+        else:
+            tela.blit(self.__texto_nome_visual, self.__texto_nome_visual_rect)
         tela.blit(self.__texto_preco_visual, self.__texto_preco_visual_rect)
